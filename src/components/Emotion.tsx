@@ -1,6 +1,10 @@
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 const Emotion = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section className="py-24 bg-gradient-to-br from-burgundy/10 via-background to-emerald/5 relative overflow-hidden">
+    <section id="emotion" ref={ref} className="py-24 bg-gradient-to-br from-burgundy/10 via-background to-emerald/5 relative overflow-hidden">
       {/* Decorative gradient orbs */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-emerald rounded-full blur-3xl animate-float"></div>
@@ -8,7 +12,7 @@ const Emotion = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
+        <div className={`max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Header */}
           <div className="text-center space-y-6 mb-16">
             <span className="text-sm font-sans font-medium tracking-[0.3em] uppercase text-burgundy">
