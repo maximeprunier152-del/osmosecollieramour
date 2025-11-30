@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
 import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
@@ -102,18 +103,24 @@ export const Shop = () => {
                 key={product.node.id}
                 className="group bg-card rounded-lg overflow-hidden border border-border hover:border-primary transition-all duration-300 hover:shadow-lg"
               >
-                {image && (
-                  <div className="aspect-square overflow-hidden bg-secondary/20">
-                    <img
-                      src={image.url}
-                      alt={image.altText || product.node.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                )}
+                <Link to={`/product/${product.node.handle}`}>
+                  {image && (
+                    <div className="aspect-square overflow-hidden bg-secondary/20">
+                      <img
+                        src={image.url}
+                        alt={image.altText || product.node.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
+                </Link>
                 
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{product.node.title}</h3>
+                  <Link to={`/product/${product.node.handle}`}>
+                    <h3 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">
+                      {product.node.title}
+                    </h3>
+                  </Link>
                   
                   {product.node.description && (
                     <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
