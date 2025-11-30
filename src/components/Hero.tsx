@@ -3,6 +3,13 @@ import { ArrowRight } from "lucide-react";
 import locketHeart from "@/assets/locket-heart.png";
 
 const Hero = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-champagne-light to-background">
       {/* Decorative elements */}
@@ -38,6 +45,7 @@ const Hero = () => {
                 variant="luxury" 
                 size="lg"
                 className="group"
+                onClick={() => scrollToSection("pricing")}
               >
                 Découvrir le bijou
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -45,6 +53,7 @@ const Hero = () => {
               <Button 
                 variant="outline" 
                 size="lg"
+                onClick={() => scrollToSection("product")}
               >
                 En savoir plus
               </Button>

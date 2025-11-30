@@ -30,6 +30,22 @@ const images = [
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleImageClick = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+    // After 2 seconds, close the dialog and scroll to pricing
+    setTimeout(() => {
+      setSelectedImage(null);
+      scrollToSection("pricing");
+    }, 2000);
+  };
+
   return (
     <section className="py-20 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-4">
@@ -56,7 +72,7 @@ const Gallery = () => {
               {images.map((image, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <button
-                    onClick={() => setSelectedImage(image.src)}
+                    onClick={() => handleImageClick(image.src)}
                     className="group relative aspect-square overflow-hidden rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
                   >
                     <img

@@ -2,8 +2,15 @@ import { Check, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Pricing = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="py-20 bg-gradient-to-b from-muted/20 to-background relative overflow-hidden">
+    <section id="pricing" className="py-20 bg-gradient-to-b from-muted/20 to-background relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
@@ -68,7 +75,7 @@ const Pricing = () => {
               </li>
             </ul>
 
-            <Button variant="outline" className="w-full">
+            <Button variant="outline" className="w-full" onClick={() => scrollToSection("cta")}>
               Choisir l'Essentiel
             </Button>
           </div>
@@ -129,7 +136,7 @@ const Pricing = () => {
               </li>
             </ul>
 
-            <Button className="w-full">Choisir le Précieux</Button>
+            <Button className="w-full" onClick={() => scrollToSection("cta")}>Choisir le Précieux</Button>
           </div>
         </div>
 
