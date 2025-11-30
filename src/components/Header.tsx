@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
+import { CartDrawer } from "./CartDrawer";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -49,6 +50,12 @@ const Header = () => {
             Le Produit
           </button>
           <button
+            onClick={() => scrollToSection("shop")}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Boutique
+          </button>
+          <button
             onClick={() => scrollToSection("emotion")}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
@@ -60,16 +67,20 @@ const Header = () => {
           >
             Questions
           </button>
+          <CartDrawer />
           <Button onClick={() => scrollToSection("cta")}>Commander</Button>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Menu Button & Cart */}
+        <div className="md:hidden flex items-center gap-2">
+          <CartDrawer />
+          <button
+            className="text-foreground"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -81,6 +92,12 @@ const Header = () => {
               className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
             >
               Le Produit
+            </button>
+            <button
+              onClick={() => scrollToSection("shop")}
+              className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
+            >
+              Boutique
             </button>
             <button
               onClick={() => scrollToSection("emotion")}
