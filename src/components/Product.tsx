@@ -4,7 +4,7 @@ import { Sparkles, Heart, Clock } from "lucide-react";
 
 const Product = () => {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section id="product" className="py-24 bg-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 left-0 w-64 h-64 bg-emerald rounded-full blur-3xl"></div>

@@ -2,8 +2,15 @@ import { Button } from "@/components/ui/button";
 import { ShoppingBag, Gift, ArrowRight } from "lucide-react";
 
 const CTA = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="py-32 bg-gradient-to-br from-emerald via-emerald-light to-emerald-dark relative overflow-hidden">
+    <section id="cta" className="py-32 bg-gradient-to-br from-emerald via-emerald-light to-emerald-dark relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-96 h-96 bg-champagne rounded-full blur-3xl animate-float"></div>
@@ -35,6 +42,7 @@ const CTA = () => {
               variant="elegant"
               size="xl"
               className="group shadow-strong hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
+              onClick={() => scrollToSection("pricing")}
             >
               <ShoppingBag className="w-5 h-5" />
               Commander maintenant
@@ -45,6 +53,7 @@ const CTA = () => {
               variant="outline"
               size="xl"
               className="bg-primary-foreground/10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 hover:border-primary-foreground/50 backdrop-blur-sm"
+              onClick={() => scrollToSection("pricing")}
             >
               <Gift className="w-5 h-5" />
               Offrir en cadeau
