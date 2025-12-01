@@ -99,7 +99,7 @@ const ProductDetail = () => {
         <Header />
         <div className="container mx-auto px-4 py-20">
           <div className="text-center space-y-4">
-            <h1 className="text-3xl font-serif">Produit non trouvé</h1>
+            <h1 className="text-3xl font-display">Produit non trouvé</h1>
             <Link to="/">
               <Button variant="outline">
                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -166,7 +166,7 @@ const ProductDetail = () => {
               <Badge className="mb-4 bg-emerald/10 text-emerald border-emerald/20">
                 Osmose Collection
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-serif mb-4">
+              <h1 className="text-4xl md:text-5xl tracking-wide font-display mb-4">
                 {product.node.title}
               </h1>
               <p className="text-2xl font-semibold text-emerald">

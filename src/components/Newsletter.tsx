@@ -34,7 +34,7 @@ const Newsletter = () => {
             <Mail className="text-primary" size={28} />
           </div>
 
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="font-display text-3xl md:text-4xl tracking-wide font-bold text-foreground mb-4">
             Rejoignez la communauté Osmose
           </h2>
 

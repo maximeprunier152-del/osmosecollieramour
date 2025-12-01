@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             {/* Brand */}
             <div className="space-y-4">
-              <h3 className="font-serif text-2xl">Osmose</h3>
+              <h3 className="font-display text-2xl">Osmose</h3>
               <p className="text-sm text-background/70 leading-relaxed">
                 Des bijoux qui portent l'âme d'un parfum
               </p>

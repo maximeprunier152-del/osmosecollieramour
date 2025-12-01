@@ -55,7 +55,7 @@ const Pricing = () => {
             <Sparkles size={16} />
             <span className="text-sm font-medium">Offre de lancement</span>
           </div>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-display text-4xl md:text-5xl tracking-wide font-bold text-foreground mb-4">
             Votre Médaillon Parfumé
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -66,7 +66,7 @@ const Pricing = () => {
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
           {/* Option Essentiel */}
           <div className="border border-border/50 rounded-2xl p-8 bg-card hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
-            <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
+            <h3 className="font-display text-2xl font-bold text-foreground mb-2">
               L'Essentiel
             </h3>
             <p className="text-muted-foreground mb-6">
@@ -116,7 +116,7 @@ const Pricing = () => {
               POPULAIRE
             </div>
 
-            <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
+            <h3 className="font-display text-2xl font-bold text-foreground mb-2">
               Le Précieux
             </h3>
             <p className="text-muted-foreground mb-6">

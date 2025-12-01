@@ -21,7 +21,7 @@ const CTA = () => {
               Prêt à porter votre parfum ?
             </span>
             
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-primary-foreground">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-wide leading-tight text-primary-foreground">
               Offrez-vous ce talisman parfumé
             </h2>
             
@@ -74,7 +74,7 @@ const CTA = () => {
 
           {/* Subtle quote */}
           <div className="pt-12 border-t border-primary-foreground/20">
-            <p className="font-serif text-lg text-primary-foreground/70 italic">
+            <p className="font-display text-lg text-primary-foreground/70 italic">
               « Fermez les yeux. Respirez. Souvenez-vous. »
             </p>
           </div>

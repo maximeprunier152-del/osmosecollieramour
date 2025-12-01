@@ -11,7 +11,7 @@ const Problem = () => {
             Le désir
           </span>
           
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-foreground">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-wide leading-tight text-foreground">
             Un parfum s'évapore,
             <br />
             <span className="italic text-burgundy">un souvenir reste</span>
@@ -35,7 +35,7 @@ const Problem = () => {
               <div className="w-12 h-12 bg-emerald/10 rounded-full flex items-center justify-center mx-auto">
                 <span className="text-2xl">✨</span>
               </div>
-              <h3 className="font-serif text-xl text-foreground">Éphémère</h3>
+              <h3 className="font-display text-xl text-foreground">Éphémère</h3>
               <p className="text-sm text-body-text">
                 Les parfums traditionnels s'évaporent en quelques heures
               </p>
@@ -45,7 +45,7 @@ const Problem = () => {
               <div className="w-12 h-12 bg-burgundy/10 rounded-full flex items-center justify-center mx-auto">
                 <span className="text-2xl">💭</span>
               </div>
-              <h3 className="font-serif text-xl text-foreground">Mémoire</h3>
+              <h3 className="font-display text-xl text-foreground">Mémoire</h3>
               <p className="text-sm text-body-text">
                 Chaque fragrance rappelle un moment, une personne
               </p>
@@ -55,7 +55,7 @@ const Problem = () => {
               <div className="w-12 h-12 bg-emerald/10 rounded-full flex items-center justify-center mx-auto">
                 <span className="text-2xl">🤍</span>
               </div>
-              <h3 className="font-serif text-xl text-foreground">Proximité</h3>
+              <h3 className="font-display text-xl text-foreground">Proximité</h3>
               <p className="text-sm text-body-text">
                 Le besoin de garder un lien invisible mais constant
               </p>
