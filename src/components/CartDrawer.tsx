@@ -13,6 +13,15 @@ import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 
+// Helper function to decode Unicode escape sequences
+const decodeTitle = (title: string): string => {
+  try {
+    return JSON.parse(`"${title}"`);
+  } catch {
+    return title;
+  }
+};
+
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [preparingCheckout, setPreparingCheckout] = useState(false);
@@ -90,7 +99,7 @@ export const CartDrawer = () => {
                       </div>
                       
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-medium truncate">{item.product.node.title}</h4>
+                        <h4 className="font-medium truncate">{decodeTitle(item.product.node.title)}</h4>
                         <p className="text-sm text-muted-foreground">
                           {item.selectedOptions.map(option => option.value).join(' • ')}
                         </p>
