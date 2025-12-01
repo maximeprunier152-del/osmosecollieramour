@@ -27,40 +27,31 @@ export const CartDrawer = () => {
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
 
   const handleCheckout = async () => {
-    try {
-      console.log('Starting checkout process...');
-      
-      // Afficher un état de chargement
-      toast.loading("Préparation du paiement...", { id: 'checkout' });
-      
-      await createCheckout();
-      const checkoutUrl = useCartStore.getState().checkoutUrl;
-      console.log('Checkout URL received:', checkoutUrl);
-      
-      toast.dismiss('checkout');
-      
-      if (checkoutUrl) {
-        // Technique spéciale pour Safari : créer et soumettre un formulaire
-        // Les soumissions de formulaire ne sont pas bloquées comme les redirections
-        const form = document.createElement('form');
-        form.method = 'GET';
-        form.action = checkoutUrl;
-        form.style.display = 'none';
-        document.body.appendChild(form);
-        form.submit();
-      } else {
-        console.error('No checkout URL available');
-        toast.error("Erreur lors de la création du panier", {
-          description: "URL de paiement non disponible.",
-        });
+    const { checkoutUrl } = useCartStore.getState();
+    
+    // Si pas d'URL en cache, la créer d'abord
+    if (!checkoutUrl) {
+      try {
+        toast.loading("Préparation du paiement...", { id: 'checkout' });
+        await createCheckout();
+        const newCheckoutUrl = useCartStore.getState().checkoutUrl;
+        toast.dismiss('checkout');
+        
+        if (newCheckoutUrl) {
+          window.location.href = newCheckoutUrl;
+        } else {
+          toast.error("Erreur lors de la création du panier");
+        }
+      } catch (error) {
+        console.error('Checkout failed:', error);
+        toast.dismiss('checkout');
+        toast.error("Erreur lors de la création du panier");
       }
-    } catch (error) {
-      console.error('Checkout failed:', error);
-      toast.dismiss('checkout');
-      toast.error("Erreur lors de la création du panier", {
-        description: "Veuillez réessayer.",
-      });
+      return;
     }
+    
+    // L'URL existe déjà, redirection immédiate (crucial pour Safari)
+    window.location.href = checkoutUrl;
   };
 
   return (
