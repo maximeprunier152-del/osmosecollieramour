@@ -115,7 +115,7 @@ const Hero = () => {
                   <CarouselContent>
                     {lifestyleImages.map((image, index) => (
                       <CarouselItem key={index}>
-                        <div className="rounded-2xl overflow-hidden shadow-strong hover:shadow-[0_20px_60px_rgba(160,90,70,0.25)] transition-shadow duration-500">
+                        <div className="rounded-3xl overflow-hidden transition-all duration-500 [filter:drop-shadow(0_0_30px_rgba(218,179,140,0.4))] hover:[filter:drop-shadow(0_0_45px_rgba(218,179,140,0.6))]">
                           <img 
                             src={image.src} 
                             alt={image.alt} 

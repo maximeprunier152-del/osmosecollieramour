@@ -68,7 +68,7 @@ const Gallery = () => {
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <button
                     onClick={() => handleImageClick(image.src)}
-                    className="group relative aspect-square overflow-hidden rounded-lg border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                    className="group relative aspect-square overflow-hidden rounded-2xl transition-all duration-300 [filter:drop-shadow(0_0_25px_rgba(218,179,140,0.35))] hover:[filter:drop-shadow(0_0_40px_rgba(218,179,140,0.6))]"
                   >
                     <img
                       src={image.src}

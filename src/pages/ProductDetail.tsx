@@ -129,7 +129,7 @@ const ProductDetail = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Image Gallery */}
           <div className="space-y-4">
-            <div className="aspect-square bg-secondary/20 rounded-2xl overflow-hidden">
+            <div className="aspect-square bg-secondary/20 rounded-3xl overflow-hidden transition-all duration-300 [filter:drop-shadow(0_0_30px_rgba(218,179,140,0.4))] hover:[filter:drop-shadow(0_0_45px_rgba(218,179,140,0.6))]">
               <img
                 src={selectedImage || images[0]?.url}
                 alt={product.node.title}
@@ -143,10 +143,10 @@ const ProductDetail = () => {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(image.url)}
-                    className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${
+                    className={`aspect-square rounded-xl overflow-hidden transition-all duration-300 ${
                       selectedImage === image.url
-                        ? "border-primary"
-                        : "border-transparent hover:border-border"
+                        ? "[filter:drop-shadow(0_0_20px_rgba(16,121,91,0.5))]"
+                        : "[filter:drop-shadow(0_0_10px_rgba(218,179,140,0.3))] hover:[filter:drop-shadow(0_0_20px_rgba(218,179,140,0.5))]"
                     }`}
                   >
                     <img
