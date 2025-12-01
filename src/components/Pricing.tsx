@@ -26,13 +26,19 @@ const Pricing = () => {
     p.node.title.includes("Essentiel") || p.node.handle.includes("essentiel")
   );
   
-  // Find the most recent "Le Précieux" product (should be the last one created)
-  const precieuxProducts = products.filter(p => 
-    p.node.title.includes("Précieux") || p.node.title.includes("Precieux") || p.node.handle.includes("precieux")
-  );
-  const precieuxProduct = precieuxProducts[precieuxProducts.length - 1]; // Get the last one
+  // Find "Le Précieux" - handle different character encodings
+  const precieuxProducts = products.filter(p => {
+    const title = p.node.title.toLowerCase();
+    const handle = p.node.handle.toLowerCase();
+    return title.includes("precieux") || 
+           title.includes("pr") && title.includes("cieux") ||
+           handle.includes("precieux") ||
+           handle.includes("pr") && handle.includes("cieux");
+  });
+  const precieuxProduct = precieuxProducts.length > 0 ? precieuxProducts[precieuxProducts.length - 1] : null;
 
   console.log("[Pricing] Total products loaded:", products.length);
+  console.log("[Pricing] All product titles:", products.map(p => p.node.title));
   console.log("[Pricing] Essentiel found:", essentielProduct ? essentielProduct.node.title : "NOT FOUND");
   console.log("[Pricing] Précieux candidates:", precieuxProducts.map(p => ({ title: p.node.title, handle: p.node.handle })));
   console.log("[Pricing] Selected Précieux:", precieuxProduct ? precieuxProduct.node.title : "NOT FOUND");
