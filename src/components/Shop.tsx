@@ -15,7 +15,11 @@ export const Shop = () => {
     const loadProducts = async () => {
       try {
         const data = await fetchProducts();
-        setProducts(data);
+        // Filter out packs - only show individual lockets
+        const filteredProducts = data.filter(p => 
+          !p.node.title.toLowerCase().includes('pack')
+        );
+        setProducts(filteredProducts);
       } catch (error) {
         console.error('Error loading products:', error);
       } finally {

@@ -5,6 +5,7 @@ import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/stores/cartStore";
 import { ShopifyProduct } from "@/lib/shopify";
+import { toast } from "sonner";
 
 import butterfly from "@/assets/locket-butterfly.png";
 import heart from "@/assets/locket-heart.png";
@@ -61,13 +62,6 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
   };
 
   const handleAddToCart = () => {
-    console.log("handleAddToCart called", { 
-      product, 
-      selectedDesigns, 
-      maxSelections,
-      packType 
-    });
-
     if (!product) {
       console.error("No product available");
       return;
@@ -86,8 +80,6 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
       LOCKET_DESIGNS.find(d => d.id === id)?.name
     );
 
-    console.log("Design names:", designNames);
-
     let variantOption1 = "";
     if (packType === "essentiel") {
       variantOption1 = designNames[0] || "";
@@ -96,19 +88,9 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
       variantOption1 = "Mix Au Choix";
     }
 
-    console.log("Looking for variant with:", { variantOption1, defaultColor });
-    console.log("Available variants:", product.node.variants.edges);
-
     const variant = product.node.variants.edges.find(v => {
       const option1Match = v.node.selectedOptions[0]?.value === variantOption1;
       const option2Match = v.node.selectedOptions[1]?.value === defaultColor;
-      console.log("Checking variant:", {
-        variant: v.node,
-        option1Match,
-        option2Match,
-        option1Value: v.node.selectedOptions[0]?.value,
-        option2Value: v.node.selectedOptions[1]?.value
-      });
       return option1Match && option2Match;
     });
 
@@ -124,8 +106,6 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
       return;
     }
 
-    console.log("Variant found:", variant);
-
     const displayTitle = packType === "essentiel" 
       ? `${designNames[0]}`
       : `${designNames[0]} + ${designNames[1]}`;
@@ -139,7 +119,9 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
       selectedOptions: variant.node.selectedOptions
     });
 
-    console.log("Item added to cart successfully");
+    toast.success("Ajouté au panier", {
+      description: displayTitle,
+    });
 
     // Reset and close
     setSelectedDesigns([]);
