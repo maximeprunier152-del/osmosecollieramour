@@ -131,6 +131,9 @@ export const useCartStore = create<CartStore>()(
         } else {
           set({ items: [...items, item] });
         }
+        
+        // Créer le checkout immédiatement pour Safari
+        setTimeout(() => get().createCheckout(), 100);
       },
 
       updateQuantity: (variantId, quantity) => {
@@ -144,12 +147,23 @@ export const useCartStore = create<CartStore>()(
             item.variantId === variantId ? { ...item, quantity } : item
           )
         });
+        
+        // Mettre à jour le checkout
+        setTimeout(() => get().createCheckout(), 100);
       },
 
       removeItem: (variantId) => {
         set({
           items: get().items.filter(item => item.variantId !== variantId)
         });
+        
+        // Mettre à jour le checkout
+        const { items } = get();
+        if (items.length > 0) {
+          setTimeout(() => get().createCheckout(), 100);
+        } else {
+          set({ checkoutUrl: null });
+        }
       },
 
       clearCart: () => {
