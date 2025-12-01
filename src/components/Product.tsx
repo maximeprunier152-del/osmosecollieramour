@@ -18,7 +18,7 @@ const Product = () => {
             <span className="text-sm font-sans font-medium tracking-[0.3em] uppercase text-emerald">
               Le médaillon
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-foreground">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-wide leading-tight text-foreground">
               Un écrin discret
               <br />
               <span className="italic text-burgundy">pour votre parfum</span>
@@ -47,7 +47,7 @@ const Product = () => {
             </div>
 
             <div className="space-y-6">
-              <h3 className="font-serif text-3xl text-foreground leading-relaxed">
+              <h3 className="font-display text-3xl text-foreground leading-relaxed">
                 Un murmure olfactif autour de vous
               </h3>
               
@@ -103,24 +103,24 @@ const Product = () => {
 
           {/* Technical details */}
           <div className="bg-gradient-to-br from-emerald/5 to-burgundy/5 rounded-2xl p-8 md:p-12">
-            <h3 className="font-serif text-2xl text-foreground mb-8 text-center">
+            <h3 className="font-display text-2xl text-foreground mb-8 text-center">
               Caractéristiques techniques
             </h3>
             <div className="grid md:grid-cols-4 gap-6 text-center">
               <div>
-                <div className="font-serif text-3xl text-emerald mb-2">316L</div>
+                <div className="font-display text-3xl text-emerald mb-2">316L</div>
                 <div className="text-sm text-body-text">Acier inoxydable chirurgical</div>
               </div>
               <div>
-                <div className="font-serif text-3xl text-burgundy mb-2">48h</div>
+                <div className="font-display text-3xl text-burgundy mb-2">48h</div>
                 <div className="text-sm text-body-text">Durée de diffusion</div>
               </div>
               <div>
-                <div className="font-serif text-3xl text-emerald mb-2">5</div>
+                <div className="font-display text-3xl text-emerald mb-2">5</div>
                 <div className="text-sm text-body-text">Disques absorbants inclus</div>
               </div>
               <div>
-                <div className="font-serif text-3xl text-burgundy mb-2">∅ 30mm</div>
+                <div className="font-display text-3xl text-burgundy mb-2">∅ 30mm</div>
                 <div className="text-sm text-body-text">Diamètre du médaillon</div>
               </div>
             </div>

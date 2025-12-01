@@ -13,7 +13,7 @@ const Lifestyle = () => {
             <span className="text-sm font-sans font-medium tracking-[0.3em] uppercase text-emerald">
               Au quotidien
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-foreground">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-wide leading-tight text-foreground">
               Votre compagnon
               <br />
               <span className="italic text-burgundy">de chaque instant</span>
@@ -32,7 +32,7 @@ const Lifestyle = () => {
                 <div className="w-12 h-12 bg-emerald/10 rounded-full flex items-center justify-center">
                   <Coffee className="w-6 h-6 text-emerald" />
                 </div>
-                <h3 className="font-serif text-2xl text-foreground">Vie quotidienne</h3>
+                <h3 className="font-display text-2xl text-foreground">Vie quotidienne</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Au bureau, en rendez-vous, pendant vos courses — 
                   votre parfum vous suit discrètement, 
@@ -47,7 +47,7 @@ const Lifestyle = () => {
                 <div className="w-12 h-12 bg-burgundy/10 rounded-full flex items-center justify-center">
                   <Heart className="w-6 h-6 text-burgundy" />
                 </div>
-                <h3 className="font-serif text-2xl text-foreground">Moments intimes</h3>
+                <h3 className="font-display text-2xl text-foreground">Moments intimes</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Rendez-vous amoureux, retrouvailles, 
                   instants privés — portez le parfum qui évoque 
@@ -62,7 +62,7 @@ const Lifestyle = () => {
                 <div className="w-12 h-12 bg-emerald/10 rounded-full flex items-center justify-center">
                   <Briefcase className="w-6 h-6 text-emerald" />
                 </div>
-                <h3 className="font-serif text-2xl text-foreground">Voyages & déplacements</h3>
+                <h3 className="font-display text-2xl text-foreground">Voyages & déplacements</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   En voyage d'affaires ou en vacances, 
                   gardez votre fragrance favorite sans vous encombrer. 
@@ -77,7 +77,7 @@ const Lifestyle = () => {
                 <div className="w-12 h-12 bg-burgundy/10 rounded-full flex items-center justify-center">
                   <Gift className="w-6 h-6 text-burgundy" />
                 </div>
-                <h3 className="font-serif text-2xl text-foreground">Cadeau d'exception</h3>
+                <h3 className="font-display text-2xl text-foreground">Cadeau d'exception</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Pour un anniversaire, la Saint-Valentin, 
                   une occasion spéciale — offrez un présent 
@@ -93,7 +93,7 @@ const Lifestyle = () => {
               <div className="w-16 h-16 bg-champagne rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-4xl">💝</span>
               </div>
-              <p className="font-serif text-2xl md:text-3xl text-foreground italic leading-relaxed">
+              <p className="font-display text-2xl md:text-3xl text-foreground italic leading-relaxed">
                 "Je porte le parfum de mon mari quand il voyage. 
                 C'est comme s'il était toujours près de moi."
               </p>

@@ -150,7 +150,7 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="font-serif text-3xl">
+          <DialogTitle className="font-display text-3xl tracking-wide">
             {packType === "essentiel" ? "Composez votre Essentiel" : "Composez votre Précieux"}
           </DialogTitle>
           <DialogDescription>

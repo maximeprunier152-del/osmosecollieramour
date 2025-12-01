@@ -10,7 +10,7 @@ const Guarantee = () => {
             <span className="text-sm font-sans font-medium tracking-[0.3em] uppercase text-emerald">
               Notre promesse
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl text-foreground">
+            <h2 className="font-display text-4xl md:text-5xl tracking-wide text-foreground">
               Qualité, soin & <span className="italic text-burgundy">discrétion</span>
             </h2>
           </div>
@@ -62,7 +62,7 @@ const Guarantee = () => {
           <div className="bg-gradient-to-r from-emerald/5 via-champagne/20 to-burgundy/5 rounded-2xl p-8 md:p-12">
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div className="space-y-2">
-                <div className="font-serif text-3xl text-emerald">✓</div>
+                <div className="font-display text-3xl text-emerald">✓</div>
                 <h4 className="font-sans font-semibold text-foreground">Hypoallergénique</h4>
                 <p className="text-sm text-body-text">
                   Convient aux peaux les plus sensibles
@@ -70,7 +70,7 @@ const Guarantee = () => {
               </div>
 
               <div className="space-y-2">
-                <div className="font-serif text-3xl text-burgundy">✓</div>
+                <div className="font-display text-3xl text-burgundy">✓</div>
                 <h4 className="font-sans font-semibold text-foreground">Écologique</h4>
                 <p className="text-sm text-body-text">
                   Emballage recyclé et respectueux
@@ -78,7 +78,7 @@ const Guarantee = () => {
               </div>
 
               <div className="space-y-2">
-                <div className="font-serif text-3xl text-emerald">✓</div>
+                <div className="font-display text-3xl text-emerald">✓</div>
                 <h4 className="font-sans font-semibold text-foreground">Support client</h4>
                 <p className="text-sm text-body-text">
                   Une équipe à votre écoute pour toute question

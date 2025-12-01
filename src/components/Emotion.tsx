@@ -18,7 +18,7 @@ const Emotion = () => {
             <span className="text-sm font-sans font-medium tracking-[0.3em] uppercase text-burgundy">
               L'essence
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-foreground">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-wide leading-tight text-foreground">
               Plus qu'un bijou,
               <br />
               <span className="italic text-emerald">un talisman émotionnel</span>
@@ -27,7 +27,7 @@ const Emotion = () => {
 
           {/* Main emotional content */}
           <div className="space-y-8 mb-16">
-            <p className="font-serif text-2xl md:text-3xl text-foreground text-center leading-relaxed italic">
+            <p className="font-display text-2xl md:text-3xl text-foreground text-center leading-relaxed italic">
               « Le parfum devient un invisible lien entre vous et qui vous voulez. »
             </p>
 
@@ -48,7 +48,7 @@ const Emotion = () => {
                 <div className="w-14 h-14 bg-emerald/10 rounded-full flex items-center justify-center">
                   <span className="text-3xl">🌙</span>
                 </div>
-                <h3 className="font-serif text-2xl text-foreground">Souvenirs incarnés</h3>
+                <h3 className="font-display text-2xl text-foreground">Souvenirs incarnés</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Portez le parfum de votre moitié quand elle est loin. 
                   Gardez près de vous l'essence d'un moment précieux, 
@@ -62,7 +62,7 @@ const Emotion = () => {
                 <div className="w-14 h-14 bg-burgundy/10 rounded-full flex items-center justify-center">
                   <span className="text-3xl">💫</span>
                 </div>
-                <h3 className="font-serif text-2xl text-foreground">Intimité portable</h3>
+                <h3 className="font-display text-2xl text-foreground">Intimité portable</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Votre fragrance signature vous accompagne discrètement. 
                   Un murmure olfactif qui ne s'impose pas, 
@@ -76,7 +76,7 @@ const Emotion = () => {
                 <div className="w-14 h-14 bg-emerald/10 rounded-full flex items-center justify-center">
                   <span className="text-3xl">🕊️</span>
                 </div>
-                <h3 className="font-serif text-2xl text-foreground">Réconfort quotidien</h3>
+                <h3 className="font-display text-2xl text-foreground">Réconfort quotidien</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Dans les moments de doute ou de solitude, 
                   ce parfum familier vous rappelle qui vous êtes, 
@@ -90,7 +90,7 @@ const Emotion = () => {
                 <div className="w-14 h-14 bg-burgundy/10 rounded-full flex items-center justify-center">
                   <span className="text-3xl">✨</span>
                 </div>
-                <h3 className="font-serif text-2xl text-foreground">Cadeau chargé de sens</h3>
+                <h3 className="font-display text-2xl text-foreground">Cadeau chargé de sens</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Offrir ce médaillon, c'est offrir un morceau de soi, 
                   une intention, une présence. 
@@ -102,7 +102,7 @@ const Emotion = () => {
 
           {/* Quote */}
           <div className="text-center space-y-6 py-12">
-            <blockquote className="font-serif text-xl md:text-2xl text-foreground italic leading-relaxed">
+            <blockquote className="font-display text-xl md:text-2xl text-foreground italic leading-relaxed">
               "Ce bijou porte l'âme d'un parfum. 
               Il fait revivre un souvenir. 
               Il rapproche des êtres."

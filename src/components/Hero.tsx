@@ -49,7 +49,7 @@ const Hero = () => {
               </span>
             </div>
             
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-tight text-foreground">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl tracking-wide leading-tight text-foreground">
               Adoptez l'odeur
               <br />
               <span className="text-emerald italic">de votre moitié</span>
