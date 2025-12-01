@@ -27,15 +27,23 @@ export const CartDrawer = () => {
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
 
   const handleCheckout = async () => {
+    setIsOpen(false); // Fermer d'abord le drawer
+    
     try {
       console.log('Starting checkout process...');
+      
+      // Afficher un état de chargement
+      toast.loading("Préparation du paiement...", { id: 'checkout' });
+      
       await createCheckout();
       const checkoutUrl = useCartStore.getState().checkoutUrl;
       console.log('Checkout URL received:', checkoutUrl);
       
+      toast.dismiss('checkout');
+      
       if (checkoutUrl) {
-        // Redirection directe - fonctionne mieux sur mobile
-        window.location.href = checkoutUrl;
+        // Redirection immédiate - crucial pour Safari
+        window.location.replace(checkoutUrl);
       } else {
         console.error('No checkout URL available');
         toast.error("Erreur lors de la création du panier", {
@@ -44,6 +52,7 @@ export const CartDrawer = () => {
       }
     } catch (error) {
       console.error('Checkout failed:', error);
+      toast.dismiss('checkout');
       toast.error("Erreur lors de la création du panier", {
         description: "Veuillez réessayer.",
       });
