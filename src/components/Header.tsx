@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { CartDrawer } from "./CartDrawer";
+import { useNavigateToSection } from "@/hooks/useNavigateToSection";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigateToSection = useNavigateToSection();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,12 +20,9 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
-    }
+  const handleSectionClick = (id: string) => {
+    navigateToSection(id);
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -35,7 +36,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() => navigate("/")}
           className="font-serif text-2xl font-bold text-foreground hover:text-primary transition-colors"
         >
           Osmose
@@ -44,31 +45,31 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           <button
-            onClick={() => scrollToSection("product")}
+            onClick={() => handleSectionClick("product")}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Le Produit
           </button>
           <button
-            onClick={() => scrollToSection("shop")}
+            onClick={() => handleSectionClick("shop")}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Boutique
           </button>
           <button
-            onClick={() => scrollToSection("emotion")}
+            onClick={() => handleSectionClick("emotion")}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             L'Essence
           </button>
           <button
-            onClick={() => scrollToSection("faq")}
+            onClick={() => handleSectionClick("faq")}
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Questions
           </button>
           <CartDrawer />
-          <Button onClick={() => scrollToSection("cta")}>Commander</Button>
+          <Button onClick={() => handleSectionClick("shop")}>Commander</Button>
         </nav>
 
         {/* Mobile Menu Button & Cart */}
@@ -88,30 +89,30 @@ const Header = () => {
         <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border/50 animate-fade-in">
           <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
             <button
-              onClick={() => scrollToSection("product")}
+              onClick={() => handleSectionClick("product")}
               className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
             >
               Le Produit
             </button>
             <button
-              onClick={() => scrollToSection("shop")}
+              onClick={() => handleSectionClick("shop")}
               className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
             >
               Boutique
             </button>
             <button
-              onClick={() => scrollToSection("emotion")}
+              onClick={() => handleSectionClick("emotion")}
               className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
             >
               L'Essence
             </button>
             <button
-              onClick={() => scrollToSection("faq")}
+              onClick={() => handleSectionClick("faq")}
               className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
             >
               Questions
             </button>
-            <Button onClick={() => scrollToSection("cta")} className="w-full">
+            <Button onClick={() => handleSectionClick("shop")} className="w-full">
               Commander
             </Button>
           </nav>
