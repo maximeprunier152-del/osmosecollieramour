@@ -15,6 +15,7 @@ import { toast } from "sonner";
 
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [preparingCheckout, setPreparingCheckout] = useState(false);
   const { 
     items, 
     isLoading,
@@ -27,8 +28,24 @@ export const CartDrawer = () => {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
 
+  // Créer le checkout dès qu'on ouvre le drawer avec des items
+  const handleOpenChange = async (open: boolean) => {
+    setIsOpen(open);
+    
+    if (open && items.length > 0 && !checkoutUrl && !isLoading) {
+      setPreparingCheckout(true);
+      try {
+        await createCheckout();
+      } catch (error) {
+        console.error('Failed to prepare checkout:', error);
+      } finally {
+        setPreparingCheckout(false);
+      }
+    }
+  };
+
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+    <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetTrigger asChild>
         <Button variant="outline" size="icon" className="relative">
           <ShoppingCart className="h-5 w-5" />
@@ -125,45 +142,24 @@ export const CartDrawer = () => {
                   </span>
                 </div>
                 
-                <Button 
-                  onClick={async () => {
-                    if (items.length === 0) return;
-                    
-                    console.log('Button clicked, creating checkout...');
-                    
-                    try {
-                      await createCheckout();
-                      const url = useCartStore.getState().checkoutUrl;
-                      console.log('Checkout URL:', url);
-                      
-                      if (url) {
-                        // Redirection directe sans délai
-                        console.log('Redirecting to:', url);
-                        window.location.href = url;
-                      } else {
-                        toast.error("Erreur lors de la création du panier");
-                      }
-                    } catch (error) {
-                      console.error('Checkout error:', error);
-                      toast.error("Erreur lors de la création du panier");
-                    }
-                  }}
-                  className="w-full" 
-                  size="lg"
-                  disabled={items.length === 0 || isLoading}
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Préparation...
-                    </>
-                  ) : (
-                    <>
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Passer commande
-                    </>
-                  )}
-                </Button>
+                {checkoutUrl ? (
+                  <a 
+                    href={checkoutUrl}
+                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 w-full"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Passer commande
+                  </a>
+                ) : (
+                  <Button 
+                    className="w-full" 
+                    size="lg"
+                    disabled={true}
+                  >
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    {preparingCheckout ? "Préparation..." : "Chargement..."}
+                  </Button>
+                )}
               </div>
             </>
           )}
