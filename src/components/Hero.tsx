@@ -5,6 +5,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import lifestyle1 from "@/assets/lifestyle-1.jpg";
 import lifestyle2 from "@/assets/lifestyle-2.jpg";
 import lifestyle3 from "@/assets/lifestyle-3.jpg";
@@ -99,6 +100,11 @@ const Hero = () => {
               {/* Carousel container */}
               <div className="relative">
                 <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 4000,
+                    }),
+                  ]}
                   opts={{
                     align: "start",
                     loop: true,
