@@ -17,7 +17,7 @@ const Problem = () => {
             <span className="italic text-burgundy">un souvenir reste</span>
           </h2>
           
-          <div className="prose prose-lg mx-auto font-sans text-muted-foreground leading-relaxed">
+          <div className="prose prose-lg mx-auto font-sans text-body-text leading-relaxed">
             <p className="text-xl">
               On aime un parfum, mais il s'évapore trop vite. 
               On ne peut pas toujours le porter. 
@@ -36,7 +36,7 @@ const Problem = () => {
                 <span className="text-2xl">✨</span>
               </div>
               <h3 className="font-serif text-xl text-foreground">Éphémère</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-body-text">
                 Les parfums traditionnels s'évaporent en quelques heures
               </p>
             </div>
@@ -46,7 +46,7 @@ const Problem = () => {
                 <span className="text-2xl">💭</span>
               </div>
               <h3 className="font-serif text-xl text-foreground">Mémoire</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-body-text">
                 Chaque fragrance rappelle un moment, une personne
               </p>
             </div>
@@ -56,7 +56,7 @@ const Problem = () => {
                 <span className="text-2xl">🤍</span>
               </div>
               <h3 className="font-serif text-xl text-foreground">Proximité</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-body-text">
                 Le besoin de garder un lien invisible mais constant
               </p>
             </div>

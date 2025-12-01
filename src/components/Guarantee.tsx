@@ -22,7 +22,7 @@ const Guarantee = () => {
                 <Award className="w-8 h-8 text-emerald" />
               </div>
               <h3 className="font-sans font-semibold text-foreground">Qualité premium</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-body-text">
                 Acier inoxydable 316L chirurgical, hypoallergénique et durable
               </p>
             </div>
@@ -32,7 +32,7 @@ const Guarantee = () => {
                 <Heart className="w-8 h-8 text-burgundy" />
               </div>
               <h3 className="font-sans font-semibold text-foreground">Fait avec soin</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-body-text">
                 Chaque bijou est préparé avec attention et emballé délicatement
               </p>
             </div>
@@ -42,7 +42,7 @@ const Guarantee = () => {
                 <Truck className="w-8 h-8 text-emerald" />
               </div>
               <h3 className="font-sans font-semibold text-foreground">Livraison sûre</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-body-text">
                 Envoi soigné et suivi pour que votre bijou arrive intact
               </p>
             </div>
@@ -52,7 +52,7 @@ const Guarantee = () => {
                 <Shield className="w-8 h-8 text-burgundy" />
               </div>
               <h3 className="font-sans font-semibold text-foreground">Garantie satisfait</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-body-text">
                 30 jours pour découvrir et aimer votre médaillon
               </p>
             </div>
@@ -64,7 +64,7 @@ const Guarantee = () => {
               <div className="space-y-2">
                 <div className="font-serif text-3xl text-emerald">✓</div>
                 <h4 className="font-sans font-semibold text-foreground">Hypoallergénique</h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-body-text">
                   Convient aux peaux les plus sensibles
                 </p>
               </div>
@@ -72,7 +72,7 @@ const Guarantee = () => {
               <div className="space-y-2">
                 <div className="font-serif text-3xl text-burgundy">✓</div>
                 <h4 className="font-sans font-semibold text-foreground">Écologique</h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-body-text">
                   Emballage recyclé et respectueux
                 </p>
               </div>
@@ -80,7 +80,7 @@ const Guarantee = () => {
               <div className="space-y-2">
                 <div className="font-serif text-3xl text-emerald">✓</div>
                 <h4 className="font-sans font-semibold text-foreground">Support client</h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-body-text">
                   Une équipe à votre écoute pour toute question
                 </p>
               </div>
@@ -89,7 +89,7 @@ const Guarantee = () => {
 
           {/* Small print */}
           <div className="mt-12 text-center">
-            <p className="text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm text-body-text max-w-2xl mx-auto leading-relaxed">
               Chaque médaillon Osmose est conçu pour durer et vous accompagner longtemps. 
               Nous prenons soin de chaque détail, de la fabrication à l'emballage, 
               pour que votre expérience soit aussi belle que le bijou lui-même.

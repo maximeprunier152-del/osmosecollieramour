@@ -70,6 +70,7 @@ export default {
           DEFAULT: "hsl(var(--silver))",
           light: "hsl(var(--silver-light))",
         },
+        "body-text": "hsl(var(--body-text))",
       },
       borderRadius: {
         lg: "var(--radius)",
