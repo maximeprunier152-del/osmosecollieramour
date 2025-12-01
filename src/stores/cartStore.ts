@@ -132,8 +132,8 @@ export const useCartStore = create<CartStore>()(
           set({ items: [...items, item] });
         }
         
-        // Invalider le checkout existant car le panier a changé
-        set({ checkoutUrl: null });
+        // Créer le checkout automatiquement
+        setTimeout(() => get().createCheckout(), 200);
       },
 
       updateQuantity: (variantId, quantity) => {
@@ -145,9 +145,11 @@ export const useCartStore = create<CartStore>()(
         set({
           items: get().items.map(item =>
             item.variantId === variantId ? { ...item, quantity } : item
-          ),
-          checkoutUrl: null // Invalider le checkout car le panier a changé
+          )
         });
+        
+        // Recréer le checkout avec les nouvelles quantités
+        setTimeout(() => get().createCheckout(), 200);
       },
 
       removeItem: (variantId) => {

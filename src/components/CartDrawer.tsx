@@ -145,20 +145,17 @@ export const CartDrawer = () => {
                 {checkoutUrl ? (
                   <a 
                     href={checkoutUrl}
-                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 w-full"
+                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 w-full"
+                    onClick={() => setIsOpen(false)}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Passer commande
                   </a>
                 ) : (
-                  <Button 
-                    className="w-full" 
-                    size="lg"
-                    disabled={true}
-                  >
+                  <div className="w-full h-11 px-8 flex items-center justify-center bg-primary/50 text-primary-foreground rounded-md">
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    {preparingCheckout ? "Préparation..." : "Chargement..."}
-                  </Button>
+                    {isLoading || preparingCheckout ? "Préparation du paiement..." : "Chargement..."}
+                  </div>
                 )}
               </div>
             </>
