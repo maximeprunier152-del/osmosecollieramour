@@ -7,6 +7,15 @@ import { useCartStore } from "@/stores/cartStore";
 import { ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
 
+// Helper function to decode Unicode escape sequences
+const decodeTitle = (title: string): string => {
+  try {
+    return JSON.parse(`"${title}"`);
+  } catch {
+    return title;
+  }
+};
+
 import butterfly from "@/assets/locket-butterfly.png";
 import heart from "@/assets/locket-heart.png";
 import floral from "@/assets/locket-floral.png";
