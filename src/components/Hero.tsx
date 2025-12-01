@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -19,6 +20,10 @@ const lifestyleImages = [
 ];
 
 const Hero = () => {
+  const plugin = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false })
+  );
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -100,11 +105,7 @@ const Hero = () => {
               {/* Carousel container */}
               <div className="relative">
                 <Carousel
-                  plugins={[
-                    Autoplay({
-                      delay: 4000,
-                    }),
-                  ]}
+                  plugins={[plugin.current]}
                   opts={{
                     align: "start",
                     loop: true,
