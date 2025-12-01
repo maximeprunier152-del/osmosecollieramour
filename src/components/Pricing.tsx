@@ -154,18 +154,8 @@ const Pricing = () => {
               </li>
               <li className="flex items-start gap-3">
                 <Check className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span className="text-muted-foreground">Écrin de luxe</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Check className="text-primary mt-1 flex-shrink-0" size={20} />
                 <span className="text-muted-foreground">
                   Livraison express offerte
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Check className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span className="text-muted-foreground">
-                  Carte personnalisée gratuite
                 </span>
               </li>
             </ul>
