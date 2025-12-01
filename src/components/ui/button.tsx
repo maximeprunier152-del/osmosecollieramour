@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 transition-all duration-300 relative overflow-hidden",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 transition-all duration-300",
   {
     variants: {
       variant: {
@@ -15,9 +15,8 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        luxury: "bg-primary text-primary-foreground hover:bg-emerald-light shadow-medium hover:shadow-strong hover:scale-105 font-semibold tracking-wide before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#d4af37] before:to-emerald before:translate-x-[-100%] hover:before:translate-x-0 before:transition-transform before:duration-700 before:ease-out",
+        luxury: "bg-primary text-primary-foreground hover:bg-emerald-light shadow-medium hover:shadow-strong hover:scale-105 font-semibold tracking-wide",
         elegant: "bg-primary text-primary-foreground hover:bg-emerald-light shadow-soft hover:shadow-medium hover:scale-105",
-        liquid: "bg-primary text-primary-foreground shadow-medium hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] font-semibold before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#d4af37] before:via-emerald before:to-[#d4af37] before:translate-y-[100%] hover:before:translate-y-0 before:transition-transform before:duration-500 before:ease-in-out after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-white/30 after:to-transparent after:translate-x-[-200%] hover:after:translate-x-[200%] after:transition-transform after:duration-700",
       },
       size: {
         default: "h-11 px-6 py-2 text-sm",
