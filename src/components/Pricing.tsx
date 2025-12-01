@@ -81,25 +81,25 @@ const Pricing = () => {
             <ul className="space-y-3 mb-8">
               <li className="flex items-start gap-3">
                 <Check className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span className="text-muted-foreground">
+                <span className="text-body-text">
                   1 médaillon diffuseur au choix
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Check className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span className="text-muted-foreground">
+                <span className="text-body-text">
                   Chaîne en acier inoxydable (50 cm)
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Check className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span className="text-muted-foreground">
+                <span className="text-body-text">
                   3 disques absorbants inclus
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Check className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span className="text-muted-foreground">
+                <span className="text-body-text">
                   Livraison offerte
                 </span>
               </li>
@@ -124,33 +124,35 @@ const Pricing = () => {
             </p>
 
             <div className="mb-6">
+              <div className="mb-1">
+                <span className="text-sm text-muted-foreground line-through">Valeur réelle 95€</span>
+              </div>
               <span className="text-4xl font-bold text-foreground">79€</span>
               <span className="text-muted-foreground ml-2">TTC</span>
-              <span className="ml-3 text-sm text-primary line-through">99€</span>
             </div>
 
             <ul className="space-y-3 mb-8">
               <li className="flex items-start gap-3">
                 <Check className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span className="text-muted-foreground">
+                <span className="text-body-text">
                   2 médaillons diffuseurs au choix
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Check className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span className="text-muted-foreground">
+                <span className="text-body-text">
                   1 chaîne en acier inoxydable (50 cm)
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Check className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span className="text-muted-foreground">
+                <span className="text-body-text">
                   10 disques absorbants premium
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Check className="text-primary mt-1 flex-shrink-0" size={20} />
-                <span className="text-muted-foreground">
+                <span className="text-body-text">
                   Livraison express offerte
                 </span>
               </li>

@@ -25,6 +25,8 @@ All colors MUST be HSL.
 
     --muted: 35 25% 92%;
     --muted-foreground: 160 15% 45%;
+    
+    --body-text: 0 0% 20%;
 
     --accent: 355 65% 45%;
     --accent-foreground: 0 0% 98%;
@@ -100,6 +102,8 @@ All colors MUST be HSL.
 
     --muted: 160 15% 18%;
     --muted-foreground: 35 15% 65%;
+    
+    --body-text: 0 0% 80%;
 
     --accent: 355 55% 55%;
     --accent-foreground: 0 0% 98%;

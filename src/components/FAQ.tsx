@@ -30,7 +30,7 @@ const FAQ = () => {
                   Comment fonctionne le médaillon diffuseur ?
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
+              <AccordionContent className="text-body-text">
                 Le médaillon contient un disque absorbant spécial. Vaporisez
                 simplement votre parfum préféré sur ce disque, refermez le
                 médaillon, et portez-le autour de votre cou. Le parfum diffuse
@@ -48,7 +48,7 @@ const FAQ = () => {
                   Combien de temps dure le parfum ?
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
+              <AccordionContent className="text-body-text">
                 La diffusion du parfum dure environ 48 heures. Après ce délai,
                 il suffit de vaporiser à nouveau le disque absorbant pour
                 renouveler la fragrance. C'est simple, discret et infiniment
@@ -65,7 +65,7 @@ const FAQ = () => {
                   Peut-on changer de parfum facilement ?
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
+              <AccordionContent className="text-body-text">
                 Absolument ! Vous pouvez changer de parfum à volonté. Il suffit
                 de laisser le disque absorbant s'aérer quelques heures ou de le
                 remplacer par un nouveau disque (fourni avec votre médaillon).
@@ -83,7 +83,7 @@ const FAQ = () => {
                   Le médaillon est-il hypoallergénique ?
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
+              <AccordionContent className="text-body-text">
                 Oui. Nos médaillons sont fabriqués en acier inoxydable de haute
                 qualité, hypoallergénique et sans nickel. Le parfum ne touche
                 jamais directement votre peau, ce qui convient parfaitement aux
@@ -100,7 +100,7 @@ const FAQ = () => {
                   Comment entretenir mon médaillon ?
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
+              <AccordionContent className="text-body-text">
                 L'entretien est minimal. Nettoyez délicatement le médaillon
                 avec un chiffon doux et sec pour préserver son éclat. Les
                 disques absorbants peuvent être remplacés régulièrement pour
@@ -118,7 +118,7 @@ const FAQ = () => {
                   Est-ce un cadeau approprié ?
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
+              <AccordionContent className="text-body-text">
                 Le médaillon Osmose est le cadeau parfait pour exprimer un
                 sentiment profond. Offrez-le avec le parfum préféré de la
                 personne, ou laissez-la choisir sa propre fragrance. C'est un
