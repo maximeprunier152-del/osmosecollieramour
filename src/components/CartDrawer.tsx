@@ -125,39 +125,45 @@ export const CartDrawer = () => {
                   </span>
                 </div>
                 
-                {checkoutUrl ? (
-                  <a 
-                    href={checkoutUrl} 
-                    className="w-full flex items-center justify-center h-10 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors font-medium"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Passer commande
-                  </a>
-                ) : (
-                  <Button 
-                    onClick={async () => {
-                      console.log('Creating checkout...');
+                <Button 
+                  onClick={async () => {
+                    if (items.length === 0) return;
+                    
+                    console.log('Button clicked, creating checkout...');
+                    
+                    try {
                       await createCheckout();
                       const url = useCartStore.getState().checkoutUrl;
-                      console.log('Checkout URL created:', url);
-                    }}
-                    className="w-full" 
-                    size="lg"
-                    disabled={items.length === 0 || isLoading}
-                  >
-                    {isLoading ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Préparation...
-                      </>
-                    ) : (
-                      <>
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Passer commande
-                      </>
-                    )}
-                  </Button>
-                )}
+                      console.log('Checkout URL:', url);
+                      
+                      if (url) {
+                        // Redirection directe sans délai
+                        console.log('Redirecting to:', url);
+                        window.location.href = url;
+                      } else {
+                        toast.error("Erreur lors de la création du panier");
+                      }
+                    } catch (error) {
+                      console.error('Checkout error:', error);
+                      toast.error("Erreur lors de la création du panier");
+                    }
+                  }}
+                  className="w-full" 
+                  size="lg"
+                  disabled={items.length === 0 || isLoading}
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Préparation...
+                    </>
+                  ) : (
+                    <>
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Passer commande
+                    </>
+                  )}
+                </Button>
               </div>
             </>
           )}

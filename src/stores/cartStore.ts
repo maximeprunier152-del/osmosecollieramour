@@ -132,12 +132,8 @@ export const useCartStore = create<CartStore>()(
           set({ items: [...items, item] });
         }
         
-        // Créer le checkout immédiatement pour Safari
-        console.log('Item added, creating checkout...');
-        setTimeout(() => {
-          console.log('Creating checkout after timeout...');
-          get().createCheckout();
-        }, 500);
+        // Invalider le checkout existant car le panier a changé
+        set({ checkoutUrl: null });
       },
 
       updateQuantity: (variantId, quantity) => {
@@ -149,25 +145,16 @@ export const useCartStore = create<CartStore>()(
         set({
           items: get().items.map(item =>
             item.variantId === variantId ? { ...item, quantity } : item
-          )
+          ),
+          checkoutUrl: null // Invalider le checkout car le panier a changé
         });
-        
-        // Mettre à jour le checkout
-        setTimeout(() => get().createCheckout(), 100);
       },
 
       removeItem: (variantId) => {
         set({
-          items: get().items.filter(item => item.variantId !== variantId)
+          items: get().items.filter(item => item.variantId !== variantId),
+          checkoutUrl: null // Invalider le checkout car le panier a changé
         });
-        
-        // Mettre à jour le checkout
-        const { items } = get();
-        if (items.length > 0) {
-          setTimeout(() => get().createCheckout(), 100);
-        } else {
-          set({ checkoutUrl: null });
-        }
       },
 
       clearCart: () => {
