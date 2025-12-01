@@ -10,10 +10,15 @@ const Pricing = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   
   useEffect(() => {
+    console.log("[Pricing] Fetching products...");
     fetchProducts(20).then(loadedProducts => {
+      console.log("[Pricing] Fetched products:", loadedProducts.map(p => ({ 
+        title: p.node.title, 
+        handle: p.node.handle 
+      })));
       setProducts(loadedProducts);
     }).catch(err => {
-      console.error("Error fetching products:", err);
+      console.error("[Pricing] Error fetching products:", err);
     });
   }, []);
 
@@ -26,6 +31,11 @@ const Pricing = () => {
     p.node.title.includes("Précieux") || p.node.title.includes("Precieux") || p.node.handle.includes("precieux")
   );
   const precieuxProduct = precieuxProducts[precieuxProducts.length - 1]; // Get the last one
+
+  console.log("[Pricing] Total products loaded:", products.length);
+  console.log("[Pricing] Essentiel found:", essentielProduct ? essentielProduct.node.title : "NOT FOUND");
+  console.log("[Pricing] Précieux candidates:", precieuxProducts.map(p => ({ title: p.node.title, handle: p.node.handle })));
+  console.log("[Pricing] Selected Précieux:", precieuxProduct ? precieuxProduct.node.title : "NOT FOUND");
 
   return (
     <section id="pricing" className="py-20 bg-gradient-to-b from-muted/20 to-background relative overflow-hidden">
@@ -177,6 +187,7 @@ const Pricing = () => {
         onClose={() => setIsPrecieuxModalOpen(false)}
         packType="precieux"
         product={precieuxProduct || null}
+        key={precieuxProduct?.node.id || "precieux-modal"}
       />
     </section>
   );
