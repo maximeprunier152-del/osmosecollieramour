@@ -1,29 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useRef } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import lifestyle1 from "@/assets/lifestyle-1.jpg";
-import lifestyle2 from "@/assets/lifestyle-2.jpg";
-import lifestyle3 from "@/assets/lifestyle-3.jpg";
-import lifestyle4 from "@/assets/lifestyle-4.jpg";
-
-const lifestyleImages = [
-  { src: lifestyle1, alt: "Médaillon parfumé dans la nature" },
-  { src: lifestyle2, alt: "Porter le médaillon au quotidien" },
-  { src: lifestyle3, alt: "Élégance et intimité" },
-  { src: lifestyle4, alt: "Style urbain avec médaillon" },
-];
+import FluidBackground from "./FluidBackground";
+import RotatingLocket from "./RotatingLocket";
 
 const Hero = () => {
-  const plugin = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: false })
-  );
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -33,10 +13,13 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-champagne-light to-background">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-emerald rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-burgundy rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+      {/* WebGL Fluid Background */}
+      <FluidBackground />
+      
+      {/* Enhanced decorative elements with glow */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-emerald rounded-full blur-3xl animate-float shadow-[0_0_100px_rgba(45,95,79,0.5)]"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-burgundy rounded-full blur-3xl animate-float shadow-[0_0_100px_rgba(212,175,55,0.5)]" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="container mx-auto px-4 py-20 relative z-10">
@@ -63,17 +46,18 @@ const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
-                variant="luxury" 
+                variant="liquid" 
                 size="lg"
-                className="group"
+                className="group relative z-10"
                 onClick={() => scrollToSection("shop")}
               >
-                Découvrir les bijoux
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <span className="relative z-10">Découvrir les bijoux</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
+                className="backdrop-blur-md border-[#d4af37]/30 hover:border-[#d4af37]/60 hover:bg-[#d4af37]/5"
                 onClick={() => scrollToSection("product")}
               >
                 En savoir plus
@@ -96,40 +80,21 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Lifestyle carousel */}
-          <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <div className="relative">
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-radial from-emerald/20 to-transparent blur-3xl"></div>
+          {/* Right: 3D Rotating Locket */}
+          <div className="relative animate-fade-in h-[600px]" style={{ animationDelay: '0.3s' }}>
+            <div className="relative h-full">
+              {/* Enhanced glow effect */}
+              <div className="absolute inset-0 bg-gradient-radial from-emerald/30 to-transparent blur-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-radial from-[#d4af37]/20 to-transparent blur-2xl animate-pulse"></div>
               
-              {/* Carousel container */}
-              <div className="relative">
-                <Carousel
-                  plugins={[plugin.current]}
-                  opts={{
-                    align: "start",
-                    loop: true,
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent>
-                    {lifestyleImages.map((image, index) => (
-                      <CarouselItem key={index}>
-                        <div className="rounded-2xl overflow-hidden shadow-strong hover:shadow-[0_20px_60px_rgba(160,90,70,0.25)] transition-shadow duration-500">
-                          <img 
-                            src={image.src} 
-                            alt={image.alt} 
-                            className="w-full h-auto object-cover aspect-[4/5]"
-                          />
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                </Carousel>
+              {/* 3D Locket container */}
+              <div className="relative h-full rounded-2xl overflow-hidden shadow-[0_20px_80px_rgba(212,175,55,0.4)] hover:shadow-[0_30px_100px_rgba(212,175,55,0.6)] transition-all duration-700 backdrop-blur-sm bg-background/5 border border-[#d4af37]/20">
+                <RotatingLocket />
               </div>
 
-              {/* Floating accent */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-burgundy/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '0.5s' }}></div>
+              {/* Prismatic light reflections */}
+              <div className="absolute top-10 right-10 w-20 h-20 bg-gradient-to-br from-[#d4af37]/30 to-emerald/20 rounded-full blur-xl animate-float"></div>
+              <div className="absolute bottom-20 left-10 w-16 h-16 bg-gradient-to-tl from-emerald/30 to-[#d4af37]/20 rounded-full blur-xl animate-float" style={{ animationDelay: '0.7s' }}></div>
             </div>
           </div>
         </div>
