@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { CartDrawer } from "./CartDrawer";
 import { useNavigateToSection } from "@/hooks/useNavigateToSection";
+import osmoseLogo from "@/assets/osmose-logo.jpg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,9 +38,9 @@ const Header = () => {
         {/* Logo */}
         <button
           onClick={() => navigate("/")}
-          className="font-serif text-2xl font-bold text-foreground hover:text-primary transition-colors"
+          className="hover:opacity-80 transition-opacity"
         >
-          Osmose
+          <img src={osmoseLogo} alt="Osmose" className="h-8 w-auto" />
         </button>
 
         {/* Desktop Navigation */}
