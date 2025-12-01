@@ -1,13 +1,20 @@
 import { Check, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
+import { PackSelectorModal } from "./PackSelectorModal";
+import { useState, useEffect } from "react";
+import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
 
 const Pricing = () => {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const [isEssentielModalOpen, setIsEssentielModalOpen] = useState(false);
+  const [isPrecieuxModalOpen, setIsPrecieuxModalOpen] = useState(false);
+  const [products, setProducts] = useState<ShopifyProduct[]>([]);
+  
+  useEffect(() => {
+    fetchProducts(10).then(setProducts).catch(console.error);
+  }, []);
+
+  const essentielProduct = products.find(p => p.node.title === "Pack L'Essentiel");
+  const precieuxProduct = products.find(p => p.node.title === "Pack Le Précieux");
 
   return (
     <section id="pricing" className="py-20 bg-gradient-to-b from-muted/20 to-background relative overflow-hidden">
@@ -75,7 +82,7 @@ const Pricing = () => {
               </li>
             </ul>
 
-            <Button variant="outline" className="w-full" onClick={() => scrollToSection("cta")}>
+            <Button variant="outline" className="w-full" onClick={() => setIsEssentielModalOpen(true)}>
               Choisir l'Essentiel
             </Button>
           </div>
@@ -109,7 +116,7 @@ const Pricing = () => {
               <li className="flex items-start gap-3">
                 <Check className="text-primary mt-1 flex-shrink-0" size={20} />
                 <span className="text-muted-foreground">
-                  2 chaînes en acier inoxydable
+                  1 chaîne en acier inoxydable (50 cm)
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -136,7 +143,7 @@ const Pricing = () => {
               </li>
             </ul>
 
-            <Button className="w-full" onClick={() => scrollToSection("cta")}>Choisir le Précieux</Button>
+            <Button className="w-full" onClick={() => setIsPrecieuxModalOpen(true)}>Choisir le Précieux</Button>
           </div>
         </div>
 
@@ -146,6 +153,20 @@ const Pricing = () => {
           </p>
         </div>
       </div>
+
+      <PackSelectorModal 
+        isOpen={isEssentielModalOpen}
+        onClose={() => setIsEssentielModalOpen(false)}
+        packType="essentiel"
+        product={essentielProduct || null}
+      />
+
+      <PackSelectorModal 
+        isOpen={isPrecieuxModalOpen}
+        onClose={() => setIsPrecieuxModalOpen(false)}
+        packType="precieux"
+        product={precieuxProduct || null}
+      />
     </section>
   );
 };
