@@ -10,25 +10,30 @@ const Pricing = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   
   useEffect(() => {
-    fetchProducts(10).then(loadedProducts => {
-      console.log("Loaded products:", loadedProducts.map(p => ({ title: p.node.title, handle: p.node.handle })));
+    console.log("Fetching products...");
+    fetchProducts(20).then(loadedProducts => {
+      console.log("ALL Loaded products:", loadedProducts.map(p => ({ 
+        title: p.node.title, 
+        handle: p.node.handle,
+        id: p.node.id 
+      })));
       setProducts(loadedProducts);
-    }).catch(console.error);
+    }).catch(err => {
+      console.error("Error fetching products:", err);
+    });
   }, []);
 
   const essentielProduct = products.find(p => 
     p.node.title.includes("Essentiel") || p.node.handle.includes("essentiel")
   );
   const precieuxProduct = products.find(p => 
-    p.node.title.includes("Précieux") || p.node.title.includes("Precieux") || p.node.handle.includes("precieux")
+    (p.node.title.includes("Précieux") || p.node.title.includes("Precieux") || p.node.handle.includes("precieux")) &&
+    p.node.handle === "pack-le-pr-u00e9cieux-3"
   );
 
-  useEffect(() => {
-    if (products.length > 0) {
-      console.log("Essentiel product found:", essentielProduct?.node.title);
-      console.log("Précieux product found:", precieuxProduct?.node.title);
-    }
-  }, [products, essentielProduct, precieuxProduct]);
+  console.log("Current products count:", products.length);
+  console.log("Essentiel product:", essentielProduct ? essentielProduct.node.title : "NOT FOUND");
+  console.log("Précieux product:", precieuxProduct ? precieuxProduct.node.title : "NOT FOUND");
 
   return (
     <section id="pricing" className="py-20 bg-gradient-to-b from-muted/20 to-background relative overflow-hidden">
