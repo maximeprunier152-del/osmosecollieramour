@@ -20,6 +20,10 @@ import butterfly from "@/assets/locket-butterfly.png";
 import heart from "@/assets/locket-heart.png";
 import floral from "@/assets/locket-floral.png";
 import tree from "@/assets/locket-tree.png";
+import empreintes from "@/assets/locket-empreintes.png";
+import serrure from "@/assets/locket-serrure.png";
+import chat from "@/assets/locket-chat.png";
+import oiseau from "@/assets/locket-oiseau.png";
 
 interface LocketDesign {
   id: string;
@@ -32,6 +36,10 @@ const LOCKET_DESIGNS: LocketDesign[] = [
   { id: "heart", name: "Cœur", image: heart },
   { id: "floral", name: "Floral", image: floral },
   { id: "tree", name: "Arbre de Vie", image: tree },
+  { id: "empreintes", name: "Empreintes", image: empreintes },
+  { id: "serrure", name: "Serrure", image: serrure },
+  { id: "chat", name: "Chat", image: chat },
+  { id: "oiseau", name: "Oiseau", image: oiseau },
 ];
 
 const COLORS = [
