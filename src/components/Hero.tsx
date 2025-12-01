@@ -47,7 +47,7 @@ const Hero = () => {
                 className="group"
                 onClick={() => scrollToSection("shop")}
               >
-                Découvrir le bijou
+                Découvrir les bijoux
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
