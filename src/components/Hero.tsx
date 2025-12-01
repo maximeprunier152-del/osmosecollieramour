@@ -45,7 +45,7 @@ const Hero = () => {
                 variant="luxury" 
                 size="lg"
                 className="group"
-                onClick={() => scrollToSection("pricing")}
+                onClick={() => scrollToSection("shop")}
               >
                 Découvrir le bijou
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
