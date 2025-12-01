@@ -27,8 +27,6 @@ export const CartDrawer = () => {
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
 
   const handleCheckout = async () => {
-    setIsOpen(false); // Fermer d'abord le drawer
-    
     try {
       console.log('Starting checkout process...');
       
@@ -42,8 +40,14 @@ export const CartDrawer = () => {
       toast.dismiss('checkout');
       
       if (checkoutUrl) {
-        // Redirection immédiate - crucial pour Safari
-        window.location.replace(checkoutUrl);
+        // Technique spéciale pour Safari : créer et soumettre un formulaire
+        // Les soumissions de formulaire ne sont pas bloquées comme les redirections
+        const form = document.createElement('form');
+        form.method = 'GET';
+        form.action = checkoutUrl;
+        form.style.display = 'none';
+        document.body.appendChild(form);
+        form.submit();
       } else {
         console.error('No checkout URL available');
         toast.error("Erreur lors de la création du panier", {
