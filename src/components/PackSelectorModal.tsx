@@ -61,12 +61,32 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
   };
 
   const handleAddToCart = () => {
-    if (!product || selectedDesigns.length !== maxSelections) return;
+    console.log("handleAddToCart called", { 
+      product, 
+      selectedDesigns, 
+      maxSelections,
+      packType 
+    });
+
+    if (!product) {
+      console.error("No product available");
+      return;
+    }
+
+    if (selectedDesigns.length !== maxSelections) {
+      console.error("Invalid selection count", { 
+        selectedDesigns: selectedDesigns.length, 
+        maxSelections 
+      });
+      return;
+    }
 
     // Find the matching variant
     const designNames = selectedDesigns.map(id => 
       LOCKET_DESIGNS.find(d => d.id === id)?.name
     );
+
+    console.log("Design names:", designNames);
 
     let variantOption1 = "";
     if (packType === "essentiel") {
@@ -76,16 +96,35 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
       variantOption1 = "Mix Au Choix";
     }
 
+    console.log("Looking for variant with:", { variantOption1, defaultColor });
+    console.log("Available variants:", product.node.variants.edges);
+
     const variant = product.node.variants.edges.find(v => {
       const option1Match = v.node.selectedOptions[0]?.value === variantOption1;
       const option2Match = v.node.selectedOptions[1]?.value === defaultColor;
+      console.log("Checking variant:", {
+        variant: v.node,
+        option1Match,
+        option2Match,
+        option1Value: v.node.selectedOptions[0]?.value,
+        option2Value: v.node.selectedOptions[1]?.value
+      });
       return option1Match && option2Match;
     });
 
     if (!variant) {
-      console.error("Variant not found for selection:", { variantOption1, defaultColor, product });
+      console.error("Variant not found for selection:", { 
+        variantOption1, 
+        defaultColor, 
+        availableVariants: product.node.variants.edges.map(v => ({
+          title: v.node.title,
+          options: v.node.selectedOptions
+        }))
+      });
       return;
     }
+
+    console.log("Variant found:", variant);
 
     const displayTitle = packType === "essentiel" 
       ? `${designNames[0]}`
@@ -99,6 +138,8 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
       quantity: 1,
       selectedOptions: variant.node.selectedOptions
     });
+
+    console.log("Item added to cart successfully");
 
     // Reset and close
     setSelectedDesigns([]);
