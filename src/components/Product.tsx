@@ -29,14 +29,14 @@ const Product = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
             <div className="relative">
               <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-xl overflow-hidden shadow-medium hover:shadow-strong transition-shadow duration-300">
+                <div className="rounded-2xl overflow-hidden transition-all duration-300 [filter:drop-shadow(0_0_25px_rgba(218,179,140,0.4))] hover:[filter:drop-shadow(0_0_45px_rgba(218,179,140,0.6))]">
                   <img 
                     src={locketTree} 
                     alt="Médaillon arbre de vie avec disque absorbant" 
                     className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="rounded-xl overflow-hidden shadow-medium hover:shadow-strong transition-shadow duration-300 mt-8">
+                <div className="rounded-2xl overflow-hidden transition-all duration-300 [filter:drop-shadow(0_0_25px_rgba(218,179,140,0.4))] hover:[filter:drop-shadow(0_0_45px_rgba(218,179,140,0.6))] mt-8">
                   <img 
                     src={locketBird} 
                     alt="Médaillon coeur avec motif oiseau" 

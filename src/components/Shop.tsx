@@ -106,7 +106,7 @@ export const Shop = () => {
               >
                 <Link to={`/product/${product.node.handle}`}>
                   {image && (
-                    <div className="aspect-square overflow-hidden bg-secondary/20">
+                    <div className="aspect-square overflow-hidden bg-secondary/20 rounded-2xl transition-all duration-300 [filter:drop-shadow(0_0_25px_rgba(218,179,140,0.35))] group-hover:[filter:drop-shadow(0_0_40px_rgba(218,179,140,0.55))]">
                       <img
                         src={image.url}
                         alt={image.altText || product.node.title}
