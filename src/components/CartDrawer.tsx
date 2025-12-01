@@ -17,7 +17,8 @@ export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { 
     items, 
-    isLoading, 
+    isLoading,
+    checkoutUrl,
     updateQuantity, 
     removeItem, 
     createCheckout 
@@ -25,34 +26,6 @@ export const CartDrawer = () => {
   
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
-
-  const handleCheckout = async () => {
-    const { checkoutUrl } = useCartStore.getState();
-    
-    // Si pas d'URL en cache, la créer d'abord
-    if (!checkoutUrl) {
-      try {
-        toast.loading("Préparation du paiement...", { id: 'checkout' });
-        await createCheckout();
-        const newCheckoutUrl = useCartStore.getState().checkoutUrl;
-        toast.dismiss('checkout');
-        
-        if (newCheckoutUrl) {
-          window.location.href = newCheckoutUrl;
-        } else {
-          toast.error("Erreur lors de la création du panier");
-        }
-      } catch (error) {
-        console.error('Checkout failed:', error);
-        toast.dismiss('checkout');
-        toast.error("Erreur lors de la création du panier");
-      }
-      return;
-    }
-    
-    // L'URL existe déjà, redirection immédiate (crucial pour Safari)
-    window.location.href = checkoutUrl;
-  };
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -153,15 +126,25 @@ export const CartDrawer = () => {
                 </div>
                 
                 <Button 
-                  onClick={handleCheckout}
+                  onClick={async () => {
+                    if (!checkoutUrl) {
+                      await createCheckout();
+                    }
+                  }}
                   className="w-full" 
                   size="lg"
                   disabled={items.length === 0 || isLoading}
+                  asChild={!!checkoutUrl}
                 >
-                  {isLoading ? (
+                  {checkoutUrl ? (
+                    <a href={checkoutUrl} rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Passer commande
+                    </a>
+                  ) : isLoading ? (
                     <>
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Création du panier...
+                      Préparation...
                     </>
                   ) : (
                     <>
