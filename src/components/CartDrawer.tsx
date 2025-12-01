@@ -34,15 +34,8 @@ export const CartDrawer = () => {
       console.log('Checkout URL received:', checkoutUrl);
       
       if (checkoutUrl) {
-        // Créer un lien temporaire et le cliquer (contourne les bloqueurs de popup)
-        const link = document.createElement('a');
-        link.href = checkoutUrl;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        setIsOpen(false);
+        // Redirection directe - fonctionne mieux sur mobile
+        window.location.href = checkoutUrl;
       } else {
         console.error('No checkout URL available');
         toast.error("Erreur lors de la création du panier", {
