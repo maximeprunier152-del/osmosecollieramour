@@ -45,6 +45,13 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
   const maxSelections = packType === "essentiel" ? 1 : 2;
   const defaultColor = "Or"; // Couleur par défaut
 
+  console.log("[PackSelectorModal] Rendered with:", { 
+    packType, 
+    hasProduct: !!product, 
+    productTitle: product?.node.title,
+    isOpen 
+  });
+
   const handleDesignSelect = (designId: string) => {
     if (selectedDesigns.includes(designId)) {
       setSelectedDesigns(selectedDesigns.filter(id => id !== designId));
