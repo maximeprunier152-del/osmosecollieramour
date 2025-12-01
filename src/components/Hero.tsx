@@ -1,6 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import locketHeart from "@/assets/locket-heart.png";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import lifestyle1 from "@/assets/lifestyle-1.jpg";
+import lifestyle2 from "@/assets/lifestyle-2.jpg";
+import lifestyle3 from "@/assets/lifestyle-3.jpg";
+import lifestyle4 from "@/assets/lifestyle-4.jpg";
+
+const lifestyleImages = [
+  { src: lifestyle1, alt: "Médaillon parfumé dans la nature" },
+  { src: lifestyle2, alt: "Porter le médaillon au quotidien" },
+  { src: lifestyle3, alt: "Élégance et intimité" },
+  { src: lifestyle4, alt: "Style urbain avec médaillon" },
+];
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -75,19 +90,35 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Product image */}
+          {/* Right: Lifestyle carousel */}
           <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <div className="relative">
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-radial from-emerald/20 to-transparent blur-3xl"></div>
               
-              {/* Image container */}
-              <div className="relative rounded-2xl overflow-hidden shadow-strong hover:shadow-[0_20px_60px_rgba(160,90,70,0.25)] transition-shadow duration-500">
-                <img 
-                  src={locketHeart} 
-                  alt="Collier-médaillon diffuseur de parfum Osmose avec motif coeur" 
-                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
-                />
+              {/* Carousel container */}
+              <div className="relative">
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent>
+                    {lifestyleImages.map((image, index) => (
+                      <CarouselItem key={index}>
+                        <div className="rounded-2xl overflow-hidden shadow-strong hover:shadow-[0_20px_60px_rgba(160,90,70,0.25)] transition-shadow duration-500">
+                          <img 
+                            src={image.src} 
+                            alt={image.alt} 
+                            className="w-full h-auto object-cover aspect-[4/5]"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
               </div>
 
               {/* Floating accent */}

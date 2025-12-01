@@ -1,22 +1,6 @@
-import { useEffect } from "react";
+import locketTree from "@/assets/locket-tree.png";
+import locketBird from "@/assets/locket-bird.png";
 import { Sparkles, Heart, Clock } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-import lifestyle1 from "@/assets/lifestyle-1.jpg";
-import lifestyle2 from "@/assets/lifestyle-2.jpg";
-import lifestyle3 from "@/assets/lifestyle-3.jpg";
-import lifestyle4 from "@/assets/lifestyle-4.jpg";
-
-const lifestyleImages = [
-  { src: lifestyle1, alt: "Médaillon parfumé dans la nature" },
-  { src: lifestyle2, alt: "Porter le médaillon au quotidien" },
-  { src: lifestyle3, alt: "Élégance et intimité" },
-  { src: lifestyle4, alt: "Style urbain avec médaillon" },
-];
 
 const Product = () => {
   return (
@@ -41,30 +25,25 @@ const Product = () => {
             </h2>
           </div>
 
-          {/* Product showcase with lifestyle carousel */}
+          {/* Product showcase */}
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
             <div className="relative">
-              <Carousel
-                opts={{
-                  align: "start",
-                  loop: true,
-                }}
-                className="w-full"
-              >
-                <CarouselContent>
-                  {lifestyleImages.map((image, index) => (
-                    <CarouselItem key={index}>
-                      <div className="rounded-2xl overflow-hidden shadow-strong">
-                        <img 
-                          src={image.src} 
-                          alt={image.alt} 
-                          className="w-full h-auto object-cover aspect-[4/5]"
-                        />
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-              </Carousel>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-xl overflow-hidden shadow-medium hover:shadow-strong transition-shadow duration-300">
+                  <img 
+                    src={locketTree} 
+                    alt="Médaillon arbre de vie avec disque absorbant" 
+                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="rounded-xl overflow-hidden shadow-medium hover:shadow-strong transition-shadow duration-300 mt-8">
+                  <img 
+                    src={locketBird} 
+                    alt="Médaillon coeur avec motif oiseau" 
+                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="space-y-6">
