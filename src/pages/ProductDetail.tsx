@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ShoppingCart, Heart, Share2 } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Share2, Sparkles, Package, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
@@ -137,27 +137,31 @@ const ProductDetail = () => {
               />
             </div>
             
-            {images.length > 1 && (
-              <div className="grid grid-cols-4 gap-4">
-                {images.map((image, index) => (
+            {/* Thumbnail Gallery - Always show 4 thumbnails */}
+            <div className="grid grid-cols-4 gap-4">
+              {[...Array(4)].map((_, index) => {
+                const image = images[index];
+                const displayImage = image?.url || images[0]?.url;
+                
+                return (
                   <button
                     key={index}
-                    onClick={() => setSelectedImage(image.url)}
+                    onClick={() => image && setSelectedImage(image.url)}
                     className={`aspect-square rounded-xl overflow-hidden transition-all duration-300 ${
-                      selectedImage === image.url
+                      selectedImage === displayImage
                         ? "[filter:drop-shadow(0_0_20px_rgba(16,121,91,0.5))]"
                         : "[filter:drop-shadow(0_0_10px_rgba(218,179,140,0.3))] hover:[filter:drop-shadow(0_0_20px_rgba(218,179,140,0.5))]"
                     }`}
                   >
                     <img
-                      src={image.url}
-                      alt={image.altText || `${product.node.title} ${index + 1}`}
+                      src={displayImage}
+                      alt={image?.altText || `${product.node.title} ${index + 1}`}
                       className="w-full h-full object-cover"
                     />
                   </button>
-                ))}
-              </div>
-            )}
+                );
+              })}
+            </div>
           </div>
 
           {/* Product Info */}
@@ -169,6 +173,23 @@ const ProductDetail = () => {
               <h1 className="text-4xl md:text-5xl tracking-wide font-display mb-4">
                 {product.node.title}
               </h1>
+              
+              {/* Social Proof - Reviews */}
+              <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className="w-5 h-5 fill-[#FFD700]"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-sm text-muted-foreground">(4.9/5 - Avis vérifiés)</span>
+              </div>
+              
               <p className="text-2xl font-semibold text-emerald">
                 {selectedVariant?.price.currencyCode === "EUR" ? "€" : "$"}
                 {parseFloat(selectedVariant?.price.amount || "0").toFixed(2)}
@@ -178,44 +199,6 @@ const ProductDetail = () => {
             <p className="text-lg text-muted-foreground leading-relaxed">
               {product.node.description}
             </p>
-
-            {/* Variants Selection */}
-            {options.map((option) => (
-              <div key={option.name} className="space-y-3">
-                <label className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
-                  {option.name}
-                </label>
-                <div className="flex flex-wrap gap-2">
-                  {option.values.map((value) => {
-                    const variant = variants.find((v) =>
-                      v.selectedOptions.some(
-                        (opt) => opt.name === option.name && opt.value === value
-                      )
-                    );
-                    const isSelected = selectedVariant?.selectedOptions.some(
-                      (opt) => opt.name === option.name && opt.value === value
-                    );
-                    const isAvailable = variant?.availableForSale;
-
-                    return (
-                      <Button
-                        key={value}
-                        variant={isSelected ? "default" : "outline"}
-                        className="min-w-[80px]"
-                        disabled={!isAvailable}
-                        onClick={() => {
-                          if (variant) {
-                            setSelectedVariant(variant);
-                          }
-                        }}
-                      >
-                        {value}
-                      </Button>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -269,6 +252,33 @@ const ProductDetail = () => {
                   <p className="text-sm text-muted-foreground">
                     Emballage soigné et expédition rapide
                   </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Usage Guide */}
+            <div className="border-t border-border pt-6 space-y-4">
+              <h3 className="text-lg font-semibold">Utilisation simple en 3 étapes</h3>
+              <div className="grid grid-cols-3 gap-4">
+                <div className="flex flex-col items-center text-center space-y-2">
+                  <div className="w-12 h-12 bg-emerald/10 rounded-full flex items-center justify-center">
+                    <Package className="w-6 h-6 text-emerald" />
+                  </div>
+                  <p className="text-sm font-medium">1. Ouvrez le médaillon</p>
+                </div>
+                
+                <div className="flex flex-col items-center text-center space-y-2">
+                  <div className="w-12 h-12 bg-emerald/10 rounded-full flex items-center justify-center">
+                    <Sparkles className="w-6 h-6 text-emerald" />
+                  </div>
+                  <p className="text-sm font-medium">2. Vaporisez le parfum</p>
+                </div>
+                
+                <div className="flex flex-col items-center text-center space-y-2">
+                  <div className="w-12 h-12 bg-emerald/10 rounded-full flex items-center justify-center">
+                    <Clock className="w-6 h-6 text-emerald" />
+                  </div>
+                  <p className="text-sm font-medium">3. Profitez 48h</p>
                 </div>
               </div>
             </div>
