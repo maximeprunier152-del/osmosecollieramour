@@ -10,11 +10,25 @@ const Pricing = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   
   useEffect(() => {
-    fetchProducts(10).then(setProducts).catch(console.error);
+    fetchProducts(10).then(loadedProducts => {
+      console.log("Loaded products:", loadedProducts.map(p => ({ title: p.node.title, handle: p.node.handle })));
+      setProducts(loadedProducts);
+    }).catch(console.error);
   }, []);
 
-  const essentielProduct = products.find(p => p.node.title === "Pack L'Essentiel");
-  const precieuxProduct = products.find(p => p.node.title === "Pack Le Précieux");
+  const essentielProduct = products.find(p => 
+    p.node.title.includes("Essentiel") || p.node.handle.includes("essentiel")
+  );
+  const precieuxProduct = products.find(p => 
+    p.node.title.includes("Précieux") || p.node.title.includes("Precieux") || p.node.handle.includes("precieux")
+  );
+
+  useEffect(() => {
+    if (products.length > 0) {
+      console.log("Essentiel product found:", essentielProduct?.node.title);
+      console.log("Précieux product found:", precieuxProduct?.node.title);
+    }
+  }, [products, essentielProduct, precieuxProduct]);
 
   return (
     <section id="pricing" className="py-20 bg-gradient-to-b from-muted/20 to-background relative overflow-hidden">
