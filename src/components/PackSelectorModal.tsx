@@ -39,10 +39,10 @@ interface PackSelectorModalProps {
 
 export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSelectorModalProps) => {
   const [selectedDesigns, setSelectedDesigns] = useState<string[]>([]);
-  const [selectedColor, setSelectedColor] = useState<string>("");
   const addItem = useCartStore(state => state.addItem);
 
   const maxSelections = packType === "essentiel" ? 1 : 2;
+  const defaultColor = "Or"; // Couleur par défaut
 
   const handleDesignSelect = (designId: string) => {
     if (selectedDesigns.includes(designId)) {
@@ -61,13 +61,12 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
   };
 
   const handleAddToCart = () => {
-    if (!product || selectedDesigns.length !== maxSelections || !selectedColor) return;
+    if (!product || selectedDesigns.length !== maxSelections) return;
 
     // Find the matching variant
     const designNames = selectedDesigns.map(id => 
       LOCKET_DESIGNS.find(d => d.id === id)?.name
     );
-    const colorName = COLORS.find(c => c.id === selectedColor)?.name;
 
     let variantOption1 = "";
     if (packType === "essentiel") {
@@ -79,18 +78,18 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
 
     const variant = product.node.variants.edges.find(v => {
       const option1Match = v.node.selectedOptions[0]?.value === variantOption1;
-      const option2Match = v.node.selectedOptions[1]?.value === colorName;
+      const option2Match = v.node.selectedOptions[1]?.value === defaultColor;
       return option1Match && option2Match;
     });
 
     if (!variant) {
-      console.error("Variant not found for selection:", { variantOption1, colorName });
+      console.error("Variant not found for selection:", { variantOption1, defaultColor, product });
       return;
     }
 
     const displayTitle = packType === "essentiel" 
-      ? `${designNames[0]} / ${colorName}`
-      : `${designNames[0]} + ${designNames[1]} / ${colorName}`;
+      ? `${designNames[0]}`
+      : `${designNames[0]} + ${designNames[1]}`;
 
     addItem({
       product,
@@ -98,19 +97,15 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
       variantTitle: displayTitle,
       price: variant.node.price,
       quantity: 1,
-      selectedOptions: [
-        { name: packType === "essentiel" ? "Design" : "Design (2 médaillons)", value: displayTitle },
-        { name: "Couleur", value: colorName || "" }
-      ]
+      selectedOptions: variant.node.selectedOptions
     });
 
     // Reset and close
     setSelectedDesigns([]);
-    setSelectedColor("");
     onClose();
   };
 
-  const isValid = selectedDesigns.length === maxSelections && selectedColor !== "";
+  const isValid = selectedDesigns.length === maxSelections;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -121,8 +116,8 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
           </DialogTitle>
           <DialogDescription>
             {packType === "essentiel" 
-              ? "Choisissez 1 médaillon et sa couleur"
-              : "Choisissez 2 médaillons (identiques ou différents) et leur couleur"
+              ? "Choisissez votre médaillon préféré"
+              : "Choisissez vos 2 médaillons (identiques ou différents)"
             }
           </DialogDescription>
         </DialogHeader>
@@ -169,43 +164,14 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
             </div>
           </div>
 
-          {/* Color Selection */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Choisissez la couleur</h3>
-            <div className="grid grid-cols-3 gap-4">
-              {COLORS.map(color => (
-                <button
-                  key={color.id}
-                  onClick={() => setSelectedColor(color.id)}
-                  className={cn(
-                    "relative rounded-lg border-2 p-6 transition-all hover:scale-105",
-                    selectedColor === color.id
-                      ? "border-primary"
-                      : "border-border hover:border-primary/50"
-                  )}
-                >
-                  {selectedColor === color.id && (
-                    <div className="absolute top-2 right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-                      <Check className="w-4 h-4 text-primary-foreground" />
-                    </div>
-                  )}
-                  <div className={cn("w-full aspect-square rounded-full mb-2", color.class)} />
-                  <p className="text-sm font-medium text-center">{color.name}</p>
-                </button>
-              ))}
-            </div>
-          </div>
-
           {/* Summary */}
-          {selectedDesigns.length > 0 && selectedColor && (
+          {selectedDesigns.length > 0 && (
             <div className="bg-muted/30 rounded-lg p-4">
               <h4 className="font-semibold mb-2">Votre sélection :</h4>
               <p className="text-sm text-muted-foreground">
                 {selectedDesigns.map(id => 
                   LOCKET_DESIGNS.find(d => d.id === id)?.name
                 ).join(" + ")}
-                {" · "}
-                {COLORS.find(c => c.id === selectedColor)?.name}
               </p>
             </div>
           )}
