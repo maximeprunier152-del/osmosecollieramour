@@ -133,7 +133,11 @@ export const useCartStore = create<CartStore>()(
         }
         
         // Créer le checkout immédiatement pour Safari
-        setTimeout(() => get().createCheckout(), 100);
+        console.log('Item added, creating checkout...');
+        setTimeout(() => {
+          console.log('Creating checkout after timeout...');
+          get().createCheckout();
+        }, 500);
       },
 
       updateQuantity: (variantId, quantity) => {
@@ -176,11 +180,14 @@ export const useCartStore = create<CartStore>()(
 
       createCheckout: async () => {
         const { items, setLoading, setCheckoutUrl } = get();
+        console.log('createCheckout called with items:', items.length);
         if (items.length === 0) return;
 
         setLoading(true);
         try {
+          console.log('Calling createStorefrontCheckout...');
           const checkoutUrl = await createStorefrontCheckout(items);
+          console.log('Checkout URL received:', checkoutUrl);
           setCheckoutUrl(checkoutUrl);
         } catch (error) {
           console.error('Failed to create checkout:', error);

@@ -125,34 +125,39 @@ export const CartDrawer = () => {
                   </span>
                 </div>
                 
-                <Button 
-                  onClick={async () => {
-                    if (!checkoutUrl) {
+                {checkoutUrl ? (
+                  <a 
+                    href={checkoutUrl} 
+                    className="w-full flex items-center justify-center h-10 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors font-medium"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Passer commande
+                  </a>
+                ) : (
+                  <Button 
+                    onClick={async () => {
+                      console.log('Creating checkout...');
                       await createCheckout();
-                    }
-                  }}
-                  className="w-full" 
-                  size="lg"
-                  disabled={items.length === 0 || isLoading}
-                  asChild={!!checkoutUrl}
-                >
-                  {checkoutUrl ? (
-                    <a href={checkoutUrl} rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Passer commande
-                    </a>
-                  ) : isLoading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Préparation...
-                    </>
-                  ) : (
-                    <>
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Passer commande
-                    </>
-                  )}
-                </Button>
+                      const url = useCartStore.getState().checkoutUrl;
+                      console.log('Checkout URL created:', url);
+                    }}
+                    className="w-full" 
+                    size="lg"
+                    disabled={items.length === 0 || isLoading}
+                  >
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Préparation...
+                      </>
+                    ) : (
+                      <>
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Passer commande
+                      </>
+                    )}
+                  </Button>
+                )}
               </div>
             </>
           )}
