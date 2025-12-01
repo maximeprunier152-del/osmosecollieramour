@@ -28,10 +28,26 @@ export const CartDrawer = () => {
 
   const handleCheckout = async () => {
     try {
+      console.log('Starting checkout process...');
       await createCheckout();
       const checkoutUrl = useCartStore.getState().checkoutUrl;
+      console.log('Checkout URL received:', checkoutUrl);
+      
       if (checkoutUrl) {
-        window.location.href = checkoutUrl;
+        // Créer un lien temporaire et le cliquer (contourne les bloqueurs de popup)
+        const link = document.createElement('a');
+        link.href = checkoutUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setIsOpen(false);
+      } else {
+        console.error('No checkout URL available');
+        toast.error("Erreur lors de la création du panier", {
+          description: "URL de paiement non disponible.",
+        });
       }
     } catch (error) {
       console.error('Checkout failed:', error);
