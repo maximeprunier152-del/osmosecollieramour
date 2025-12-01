@@ -7,6 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useNavigateToSection } from "@/hooks/useNavigateToSection";
 import locketTree from "@/assets/locket-tree.png";
 import locketBird from "@/assets/locket-bird.png";
 import locketHeart from "@/assets/locket-heart.png";
@@ -29,20 +30,14 @@ const images = [
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const navigateToSection = useNavigateToSection();
 
   const handleImageClick = (imageSrc: string) => {
     setSelectedImage(imageSrc);
-    // After 2 seconds, close the dialog and scroll to pricing
+    // After 2 seconds, close the dialog and navigate to shop
     setTimeout(() => {
       setSelectedImage(null);
-      scrollToSection("pricing");
+      navigateToSection("shop");
     }, 2000);
   };
 
