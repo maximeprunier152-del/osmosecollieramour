@@ -1,6 +1,22 @@
-import locketTree from "@/assets/locket-tree.png";
-import locketBird from "@/assets/locket-bird.png";
+import { useEffect } from "react";
 import { Sparkles, Heart, Clock } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import lifestyle1 from "@/assets/lifestyle-1.jpg";
+import lifestyle2 from "@/assets/lifestyle-2.jpg";
+import lifestyle3 from "@/assets/lifestyle-3.jpg";
+import lifestyle4 from "@/assets/lifestyle-4.jpg";
+
+const lifestyleImages = [
+  { src: lifestyle1, alt: "Médaillon parfumé dans la nature" },
+  { src: lifestyle2, alt: "Porter le médaillon au quotidien" },
+  { src: lifestyle3, alt: "Élégance et intimité" },
+  { src: lifestyle4, alt: "Style urbain avec médaillon" },
+];
 
 const Product = () => {
   return (
@@ -25,25 +41,30 @@ const Product = () => {
             </h2>
           </div>
 
-          {/* Product showcase */}
+          {/* Product showcase with lifestyle carousel */}
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
             <div className="relative">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-xl overflow-hidden shadow-medium hover:shadow-strong transition-shadow duration-300">
-                  <img 
-                    src={locketTree} 
-                    alt="Médaillon arbre de vie avec disque absorbant" 
-                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="rounded-xl overflow-hidden shadow-medium hover:shadow-strong transition-shadow duration-300 mt-8">
-                  <img 
-                    src={locketBird} 
-                    alt="Médaillon coeur avec motif oiseau" 
-                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              </div>
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent>
+                  {lifestyleImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="rounded-2xl overflow-hidden shadow-strong">
+                        <img 
+                          src={image.src} 
+                          alt={image.alt} 
+                          className="w-full h-auto object-cover aspect-[4/5]"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
             </div>
 
             <div className="space-y-6">
@@ -51,7 +72,7 @@ const Product = () => {
                 Un murmure olfactif autour de vous
               </h3>
               
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-body-text leading-relaxed">
                 Le médaillon s'ouvre délicatement pour accueillir un disque absorbant. 
                 Vaporisez votre fragrance favorite, refermez l'écrin, glissez-le autour de votre cou.
               </p>
@@ -68,7 +89,7 @@ const Product = () => {
                   </div>
                   <div>
                     <h4 className="font-sans font-semibold text-foreground mb-1">Mécanisme simple</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-body-text">
                       Ouvrez, vaporisez sur le disque absorbant, refermez
                     </p>
                   </div>
@@ -80,7 +101,7 @@ const Product = () => {
                   </div>
                   <div>
                     <h4 className="font-sans font-semibold text-foreground mb-1">Diffusion prolongée</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-body-text">
                       Jusqu'à 48h de parfum subtil et constant
                     </p>
                   </div>
@@ -92,7 +113,7 @@ const Product = () => {
                   </div>
                   <div>
                     <h4 className="font-sans font-semibold text-foreground mb-1">Confort absolu</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-body-text">
                       Aucun contact avec la peau, idéal pour les peaux sensibles
                     </p>
                   </div>
@@ -109,19 +130,19 @@ const Product = () => {
             <div className="grid md:grid-cols-4 gap-6 text-center">
               <div>
                 <div className="font-serif text-3xl text-emerald mb-2">316L</div>
-                <div className="text-sm text-muted-foreground">Acier inoxydable chirurgical</div>
+                <div className="text-sm text-body-text">Acier inoxydable chirurgical</div>
               </div>
               <div>
                 <div className="font-serif text-3xl text-burgundy mb-2">48h</div>
-                <div className="text-sm text-muted-foreground">Durée de diffusion</div>
+                <div className="text-sm text-body-text">Durée de diffusion</div>
               </div>
               <div>
                 <div className="font-serif text-3xl text-emerald mb-2">5</div>
-                <div className="text-sm text-muted-foreground">Disques absorbants inclus</div>
+                <div className="text-sm text-body-text">Disques absorbants inclus</div>
               </div>
               <div>
                 <div className="font-serif text-3xl text-burgundy mb-2">∅ 30mm</div>
-                <div className="text-sm text-muted-foreground">Diamètre du médaillon</div>
+                <div className="text-sm text-body-text">Diamètre du médaillon</div>
               </div>
             </div>
           </div>
