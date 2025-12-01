@@ -40,7 +40,7 @@ const Header = () => {
           onClick={() => navigate("/")}
           className="hover:opacity-80 transition-opacity"
         >
-          <img src={osmoseLogo} alt="Osmose" className="h-8 w-auto" />
+          <img src={osmoseLogo} alt="Osmose" className="h-12 w-auto" />
         </button>
 
         {/* Desktop Navigation */}
