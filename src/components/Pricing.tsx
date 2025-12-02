@@ -77,7 +77,7 @@ const Pricing = () => {
               <span className="text-lg text-muted-foreground line-through mr-2">30€</span>
               <span className="text-4xl font-bold text-foreground">15€</span>
               <span className="text-muted-foreground ml-2">TTC</span>
-              <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full ml-2">-50%</span>
+              <span className="bg-primary/90 text-primary-foreground text-xs font-bold px-2 py-1 rounded-full ml-2">-50%</span>
             </div>
 
             <ul className="space-y-3 mb-8">
@@ -126,10 +126,10 @@ const Pricing = () => {
             </p>
 
             <div className="mb-6">
-              <span className="text-lg text-muted-foreground line-through mr-2">60€</span>
-              <span className="text-4xl font-bold text-foreground">30€</span>
+              <span className="text-lg text-muted-foreground line-through mr-2">62€</span>
+              <span className="text-4xl font-bold text-foreground">24,99€</span>
               <span className="text-muted-foreground ml-2">TTC</span>
-              <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full ml-2">-50%</span>
+              <span className="bg-primary/90 text-primary-foreground text-xs font-bold px-2 py-1 rounded-full ml-2">-60%</span>
             </div>
 
             <ul className="space-y-3 mb-8">
