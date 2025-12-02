@@ -114,8 +114,13 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
 
     const variant = product.node.variants.edges.find(v => {
       const option1Match = v.node.selectedOptions[0]?.value === variantOption1;
-      const option2Match = v.node.selectedOptions[1]?.value === defaultColor;
-      return option1Match && option2Match;
+      // Pack L'Essentiel has only 1 option, Pack Le Précieux has 2 options
+      if (v.node.selectedOptions.length === 1) {
+        return option1Match;
+      } else {
+        const option2Match = v.node.selectedOptions[1]?.value === defaultColor;
+        return option1Match && option2Match;
+      }
     });
 
     if (!variant) {
