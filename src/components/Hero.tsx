@@ -66,7 +66,7 @@ const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button variant="luxury" size="lg" className="group" onClick={() => scrollToSection("shop")}>
-                Craquer à moitié prix
+                Je profite de l'offre -50%
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="outline" size="lg" onClick={() => scrollToSection("product")}>
