@@ -149,7 +149,7 @@ export const Shop = () => {
                           <span className="text-2xl font-bold text-primary">
                             {parseFloat(variant.price.amount).toFixed(2).replace('.', ',')} EUR
                           </span>
-                          <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                          <span className="bg-primary/90 text-primary-foreground text-xs font-bold px-2 py-1 rounded-full">
                             -50%
                           </span>
                         </div>
