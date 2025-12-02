@@ -28,11 +28,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border/50 shadow-sm"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background border-b border-border/50 shadow-sm"
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
@@ -87,7 +83,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border/50 animate-fade-in">
+        <div className="md:hidden bg-background/20 backdrop-blur-md border-t border-border/30 animate-fade-in">
           <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
             <button
               onClick={() => handleSectionClick("product")}
