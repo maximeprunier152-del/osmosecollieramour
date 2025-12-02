@@ -137,31 +137,28 @@ const ProductDetail = () => {
               />
             </div>
             
-            {/* Thumbnail Gallery - Always show 4 thumbnails */}
-            <div className="grid grid-cols-4 gap-4">
-              {[...Array(4)].map((_, index) => {
-                const image = images[index];
-                const displayImage = image?.url || images[0]?.url;
-                
-                return (
+            {/* Thumbnail Gallery - Only show actual images */}
+            {images.length > 1 && (
+              <div className="grid grid-cols-4 gap-4">
+                {images.map((image, index) => (
                   <button
                     key={index}
-                    onClick={() => image && setSelectedImage(image.url)}
+                    onClick={() => setSelectedImage(image.url)}
                     className={`aspect-square rounded-xl overflow-hidden transition-all duration-300 ${
-                      selectedImage === displayImage
+                      selectedImage === image.url
                         ? "[filter:drop-shadow(0_0_20px_rgba(16,121,91,0.5))]"
                         : "[filter:drop-shadow(0_0_10px_rgba(218,179,140,0.3))] hover:[filter:drop-shadow(0_0_20px_rgba(218,179,140,0.5))]"
                     }`}
                   >
                     <img
-                      src={displayImage}
-                      alt={image?.altText || `${product.node.title} ${index + 1}`}
+                      src={image.url}
+                      alt={image.altText || `${product.node.title} ${index + 1}`}
                       className="w-full h-full object-cover"
                     />
                   </button>
-                );
-              })}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Info */}
