@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { CartDrawer } from "./CartDrawer";
 import { useNavigateToSection } from "@/hooks/useNavigateToSection";
-import osmoseLogo from "@/assets/osmose-logo.jpg";
+import osmoseLogo from "@/assets/osmose-logo-new.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
