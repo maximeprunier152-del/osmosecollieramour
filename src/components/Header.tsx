@@ -39,6 +39,9 @@ const Header = () => {
           <button onClick={() => handleSectionClick("emotion")} className="transition-colors text-emerald-600">
             L'Essence
           </button>
+          <button onClick={() => handleSectionClick("pricing")} className="transition-colors text-emerald-600">
+            Offre de lancement
+          </button>
           <button onClick={() => handleSectionClick("faq")} className="transition-colors text-emerald-600">
             Questions
           </button>
@@ -69,6 +72,9 @@ const Header = () => {
             </button>
             <button onClick={() => handleSectionClick("emotion")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
               L'Essence
+            </button>
+            <button onClick={() => handleSectionClick("pricing")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
+              Offre de lancement
             </button>
             <button onClick={() => handleSectionClick("faq")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
               Questions
