@@ -87,7 +87,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-background/20 backdrop-blur-md border-t border-border/30 animate-fade-in">
+        <div className="md:hidden bg-white/10 backdrop-blur-sm border-t border-white/20 animate-fade-in">
           <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
             <button
               onClick={() => handleSectionClick("product")}
