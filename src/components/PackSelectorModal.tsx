@@ -29,17 +29,18 @@ interface LocketDesign {
   id: string;
   name: string;
   image: string;
+  variantName: string;
 }
 
 const LOCKET_DESIGNS: LocketDesign[] = [
-  { id: "butterfly", name: "Papillon", image: butterfly },
-  { id: "heart", name: "Cœur", image: heart },
-  { id: "floral", name: "Floral", image: floral },
-  { id: "tree", name: "Arbre de Vie", image: tree },
-  { id: "empreintes", name: "Empreintes", image: empreintes },
-  { id: "serrure", name: "Serrure", image: serrure },
-  { id: "chat", name: "Chat", image: chat },
-  { id: "oiseau", name: "Oiseau", image: oiseau },
+  { id: "volatis", name: "Le Volatis", image: butterfly, variantName: "Collier Diffuseur - Le Volatis" },
+  { id: "matria", name: "Le Matria", image: heart, variantName: "Collier Diffuseur - Le Matria" },
+  { id: "amethyste", name: "L'Améthyste", image: floral, variantName: "Collier Diffuseur - L'Améthyste" },
+  { id: "gaia", name: "Le Gaia", image: tree, variantName: "Collier Diffuseur - Le Gaia" },
+  { id: "nao", name: "Le Nao", image: empreintes, variantName: "Collier Diffuseur - Le Nao" },
+  { id: "secret", name: "Le Secret", image: serrure, variantName: "Collier Diffuseur - Le Secret" },
+  { id: "felix", name: "Le Félix", image: chat, variantName: "Collier Diffuseur - Le Félix" },
+  { id: "avia", name: "L'Avia", image: oiseau, variantName: "Collier Diffuseur - L'Avia" },
 ];
 
 const COLORS = [
@@ -99,25 +100,27 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
       return;
     }
 
-    // Find the matching variant
-    const designNames = selectedDesigns.map(id => 
-      LOCKET_DESIGNS.find(d => d.id === id)?.name
+    // Find the matching variant using variantName
+    const selectedDesignObjects = selectedDesigns.map(id => 
+      LOCKET_DESIGNS.find(d => d.id === id)
     );
 
-    let variantOption1 = "";
+    let variantTitle = "";
     if (packType === "essentiel") {
-      variantOption1 = designNames[0] || "";
+      // For essentiel, match by variant title (e.g., "Collier Diffuseur - Le Nao")
+      variantTitle = selectedDesignObjects[0]?.variantName || "";
     } else {
       // For "précieux", always use "Mix Au Choix"
-      variantOption1 = "Mix Au Choix";
+      variantTitle = "Mix Au Choix";
     }
 
     const variant = product.node.variants.edges.find(v => {
-      const option1Match = v.node.selectedOptions[0]?.value === variantOption1;
-      // Pack L'Essentiel has only 1 option, Pack Le Précieux has 2 options
-      if (v.node.selectedOptions.length === 1) {
-        return option1Match;
+      // Match by variant title for Pack L'Essentiel
+      if (packType === "essentiel") {
+        return v.node.title === variantTitle;
       } else {
+        // For précieux, match by option
+        const option1Match = v.node.selectedOptions[0]?.value === variantTitle;
         const option2Match = v.node.selectedOptions[1]?.value === defaultColor;
         return option1Match && option2Match;
       }
@@ -125,7 +128,7 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
 
     if (!variant) {
       console.error("Variant not found for selection:", { 
-        variantOption1, 
+        variantTitle, 
         defaultColor, 
         availableVariants: product.node.variants.edges.map(v => ({
           title: v.node.title,
@@ -136,8 +139,8 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
     }
 
     const displayTitle = packType === "essentiel" 
-      ? `${designNames[0]}`
-      : `${designNames[0]} + ${designNames[1]}`;
+      ? `${selectedDesignObjects[0]?.name}`
+      : `${selectedDesignObjects[0]?.name} + ${selectedDesignObjects[1]?.name}`;
 
     addItem({
       product,
