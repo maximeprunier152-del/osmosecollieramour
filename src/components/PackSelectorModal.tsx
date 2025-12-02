@@ -62,21 +62,11 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
   const maxSelections = packType === "essentiel" ? 1 : 2;
   const defaultColor = "Or"; // Couleur par défaut
 
-  // Filter designs based on available variants in the product
-  const availableDesigns = product 
-    ? LOCKET_DESIGNS.filter(design => 
-        product.node.variants.edges.some(v => 
-          v.node.selectedOptions.some(opt => opt.value === design.name)
-        )
-      )
-    : LOCKET_DESIGNS;
-
   console.log("[PackSelectorModal] Rendered with:", { 
     packType, 
     hasProduct: !!product, 
     productTitle: product?.node.title,
-    isOpen,
-    availableDesigns: availableDesigns.map(d => d.name)
+    isOpen 
   });
 
   const handleDesignSelect = (designId: string) => {
@@ -194,7 +184,7 @@ export const PackSelectorModal = ({ isOpen, onClose, packType, product }: PackSe
               </span>
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {availableDesigns.map(design => (
+              {LOCKET_DESIGNS.map(design => (
                 <button
                   key={design.id}
                   onClick={() => handleDesignSelect(design.id)}
