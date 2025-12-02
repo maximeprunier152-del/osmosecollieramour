@@ -87,29 +87,32 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white/10 backdrop-blur-sm border-t border-white/20 animate-fade-in">
+        <div 
+          className="md:hidden fixed inset-0 top-[72px] z-40 animate-fade-in"
+          style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(8px)' }}
+        >
           <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
             <button
               onClick={() => handleSectionClick("product")}
-              className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
+              className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg"
             >
               Le Produit
             </button>
             <button
               onClick={() => handleSectionClick("shop")}
-              className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
+              className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg"
             >
               Boutique
             </button>
             <button
               onClick={() => handleSectionClick("emotion")}
-              className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
+              className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg"
             >
               L'Essence
             </button>
             <button
               onClick={() => handleSectionClick("faq")}
-              className="text-left text-muted-foreground hover:text-foreground transition-colors py-2"
+              className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg"
             >
               Questions
             </button>
