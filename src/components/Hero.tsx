@@ -1,42 +1,45 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import lifestyle1 from "@/assets/lifestyle-1.jpg";
 import lifestyle2 from "@/assets/lifestyle-2.jpg";
 import lifestyle3 from "@/assets/lifestyle-3.jpg";
 import lifestyle4 from "@/assets/lifestyle-4.jpg";
-
-const lifestyleImages = [
-  { src: lifestyle1, alt: "Médaillon parfumé dans la nature" },
-  { src: lifestyle2, alt: "Porter le médaillon au quotidien" },
-  { src: lifestyle3, alt: "Élégance et intimité" },
-  { src: lifestyle4, alt: "Style urbain avec médaillon" },
-];
-
+const lifestyleImages = [{
+  src: lifestyle1,
+  alt: "Médaillon parfumé dans la nature"
+}, {
+  src: lifestyle2,
+  alt: "Porter le médaillon au quotidien"
+}, {
+  src: lifestyle3,
+  alt: "Élégance et intimité"
+}, {
+  src: lifestyle4,
+  alt: "Style urbain avec médaillon"
+}];
 const Hero = () => {
-  const plugin = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: false })
-  );
-
+  const plugin = useRef(Autoplay({
+    delay: 4000,
+    stopOnInteraction: false
+  }));
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({
+        behavior: "smooth"
+      });
     }
   };
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-champagne-light to-background">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-champagne-light to-background">
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-72 h-72 bg-emerald rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-burgundy rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-burgundy rounded-full blur-3xl animate-float" style={{
+        animationDelay: '1s'
+      }}></div>
       </div>
 
       <div className="container mx-auto px-4 py-20 relative z-10">
@@ -62,20 +65,11 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button 
-                variant="luxury" 
-                size="lg"
-                className="group"
-                onClick={() => scrollToSection("shop")}
-              >
-                Découvrir les bijoux
+              <Button variant="luxury" size="lg" className="group" onClick={() => scrollToSection("shop")}>
+                Craquer à moitié prix
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                onClick={() => scrollToSection("product")}
-              >
+              <Button variant="outline" size="lg" onClick={() => scrollToSection("product")}>
                 En savoir plus
               </Button>
             </div>
@@ -97,39 +91,33 @@ const Hero = () => {
           </div>
 
           {/* Right: Lifestyle carousel */}
-          <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <div className="relative animate-fade-in" style={{
+          animationDelay: '0.3s'
+        }}>
             <div className="relative">
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-radial from-emerald/20 to-transparent blur-3xl"></div>
               
               {/* Carousel container */}
               <div className="relative">
-                <Carousel
-                  plugins={[plugin.current]}
-                  opts={{
-                    align: "start",
-                    loop: true,
-                  }}
-                  className="w-full"
-                >
+                <Carousel plugins={[plugin.current]} opts={{
+                align: "start",
+                loop: true
+              }} className="w-full">
                   <CarouselContent>
-                    {lifestyleImages.map((image, index) => (
-                      <CarouselItem key={index}>
+                    {lifestyleImages.map((image, index) => <CarouselItem key={index}>
                         <div className="rounded-3xl overflow-hidden transition-all duration-500 [filter:drop-shadow(0_0_30px_rgba(218,179,140,0.4))] hover:[filter:drop-shadow(0_0_45px_rgba(218,179,140,0.6))]">
-                          <img 
-                            src={image.src} 
-                            alt={image.alt} 
-                            className="w-full h-auto object-cover aspect-[4/5]"
-                          />
+                          <img src={image.src} alt={image.alt} className="w-full h-auto object-cover aspect-[4/5]" />
                         </div>
-                      </CarouselItem>
-                    ))}
+                      </CarouselItem>)}
                   </CarouselContent>
                 </Carousel>
               </div>
 
               {/* Floating accent */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-burgundy/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '0.5s' }}></div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-burgundy/10 rounded-full blur-2xl animate-float" style={{
+              animationDelay: '0.5s'
+            }}></div>
             </div>
           </div>
         </div>
@@ -141,8 +129,6 @@ const Hero = () => {
           <div className="w-1 h-2 bg-emerald rounded-full"></div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
