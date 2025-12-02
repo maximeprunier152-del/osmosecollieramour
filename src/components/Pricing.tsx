@@ -74,7 +74,7 @@ const Pricing = () => {
             </p>
 
             <div className="mb-6">
-              <span className="text-4xl font-bold text-foreground">49€</span>
+              <span className="text-4xl font-bold text-foreground">16,99€</span>
               <span className="text-muted-foreground ml-2">TTC</span>
             </div>
 
@@ -124,10 +124,7 @@ const Pricing = () => {
             </p>
 
             <div className="mb-6">
-              <div className="mb-1">
-                <span className="text-sm text-muted-foreground line-through">Valeur réelle 95€</span>
-              </div>
-              <span className="text-4xl font-bold text-foreground">79€</span>
+              <span className="text-4xl font-bold text-foreground">24,99€</span>
               <span className="text-muted-foreground ml-2">TTC</span>
             </div>
 
