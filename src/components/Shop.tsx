@@ -105,7 +105,7 @@ export const Shop = () => {
           <Carousel
             opts={{
               align: "start",
-              loop: true,
+              loop: false,
             }}
             className="w-full"
           >
@@ -161,8 +161,8 @@ export const Shop = () => {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="left-0 h-12 w-12 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg" />
-            <CarouselNext className="right-0 h-12 w-12 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg" />
+            <CarouselPrevious className="left-0 h-12 w-12 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg disabled:opacity-0 disabled:pointer-events-none transition-opacity duration-300" />
+            <CarouselNext className="right-0 h-12 w-12 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg disabled:opacity-0 disabled:pointer-events-none transition-opacity duration-300" />
           </Carousel>
         </div>
       </div>
