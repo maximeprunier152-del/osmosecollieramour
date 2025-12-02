@@ -138,7 +138,7 @@ const Pricing = () => {
               <li className="flex items-start gap-3">
                 <Check className="text-primary mt-1 flex-shrink-0" size={20} />
                 <span className="text-body-text">
-                  1 chaîne en acier inoxydable (50 cm)
+                  2 chaînes en acier inoxydable (50 cm)
                 </span>
               </li>
               <li className="flex items-start gap-3">
