@@ -30,16 +30,16 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <button onClick={() => handleSectionClick("product")} className="transition-colors text-emerald-700">
+          <button onClick={() => handleSectionClick("product")} className="transition-colors text-emerald-600">
             Le Produit
           </button>
-          <button onClick={() => handleSectionClick("shop")} className="transition-colors text-emerald-700">
+          <button onClick={() => handleSectionClick("shop")} className="transition-colors text-emerald-600">
             Boutique
           </button>
-          <button onClick={() => handleSectionClick("emotion")} className="transition-colors text-emerald-700">
+          <button onClick={() => handleSectionClick("emotion")} className="transition-colors text-emerald-600">
             L'Essence
           </button>
-          <button onClick={() => handleSectionClick("faq")} className="transition-colors text-emerald-700">
+          <button onClick={() => handleSectionClick("faq")} className="transition-colors text-emerald-600">
             Questions
           </button>
           <CartDrawer />
