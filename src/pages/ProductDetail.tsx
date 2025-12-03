@@ -70,7 +70,7 @@ const ProductDetail = () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: product?.node.title || "Osmose",
+          title: product?.node.title || "SP-Osmose",
           url: window.location.href,
         });
       } catch (error) {
@@ -165,7 +165,7 @@ const ProductDetail = () => {
           <div className="space-y-6">
             <div>
               <Badge className="mb-4 bg-emerald/10 text-emerald border-emerald/20">
-                Osmose Collection
+                SP-Osmose Collection
               </Badge>
               <h1 className="text-4xl md:text-5xl tracking-wide font-display mb-4">
                 {product.node.title}

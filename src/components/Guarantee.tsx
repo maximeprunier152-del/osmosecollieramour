@@ -90,7 +90,7 @@ const Guarantee = () => {
           {/* Small print */}
           <div className="mt-12 text-center">
             <p className="text-sm text-body-text max-w-2xl mx-auto leading-relaxed">
-              Chaque médaillon Osmose est conçu pour durer et vous accompagner longtemps. 
+              Chaque médaillon SP-Osmose est conçu pour durer et vous accompagner longtemps. 
               Nous prenons soin de chaque détail, de la fabrication à l'emballage, 
               pour que votre expérience soit aussi belle que le bijou lui-même.
             </p>

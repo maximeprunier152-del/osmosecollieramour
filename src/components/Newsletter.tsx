@@ -35,7 +35,7 @@ const Newsletter = () => {
           </div>
 
           <h2 className="font-display text-3xl md:text-4xl tracking-wide font-bold text-foreground mb-4">
-            Rejoignez la communauté Osmose
+            Rejoignez la communauté SP-Osmose
           </h2>
 
           <p className="text-muted-foreground text-lg mb-8">

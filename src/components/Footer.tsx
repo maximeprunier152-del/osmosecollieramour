@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             {/* Brand */}
             <div className="space-y-4">
-              <h3 className="font-display text-2xl">Osmose</h3>
+              <h3 className="font-display text-2xl">SP-Osmose</h3>
               <p className="text-sm text-background/70 leading-relaxed">
                 Des bijoux qui portent l'âme d'un parfum
               </p>
@@ -51,7 +51,7 @@ const Footer = () => {
           {/* Bottom bar */}
           <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-background/60">
             <div>
-              © 2025 Osmose. Tous droits réservés.
+              © 2025 SP-Osmose. Tous droits réservés.
             </div>
             <div className="flex items-center gap-2">
               <span>Fait avec</span>

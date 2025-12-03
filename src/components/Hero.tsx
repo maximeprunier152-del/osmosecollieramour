@@ -29,7 +29,7 @@ const Hero = () => {
           <div className="space-y-8 animate-slide-up">
             <div className="inline-block">
               <span className="text-sm font-sans font-medium tracking-[0.3em] uppercase text-champagne-light">
-                Osmose
+                SP-Osmose
               </span>
             </div>
             
