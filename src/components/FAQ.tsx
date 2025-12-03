@@ -119,7 +119,7 @@ const FAQ = () => {
                 </span>
               </AccordionTrigger>
               <AccordionContent className="text-body-text">
-                Le médaillon Osmose est le cadeau parfait pour exprimer un
+                Le médaillon SP-Osmose est le cadeau parfait pour exprimer un
                 sentiment profond. Offrez-le avec le parfum préféré de la
                 personne, ou laissez-la choisir sa propre fragrance. C'est un
                 présent intime, symbolique, qui crée un lien invisible et

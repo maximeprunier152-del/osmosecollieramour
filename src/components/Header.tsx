@@ -25,7 +25,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <button onClick={() => navigate("/")} className="hover:opacity-80 transition-opacity">
-          <img src={osmoseLogo} alt="Osmose" className="h-12 w-auto" />
+          <img src={osmoseLogo} alt="SP-Osmose" className="h-12 w-auto" />
         </button>
 
         {/* Desktop Navigation */}

@@ -98,7 +98,7 @@ const Lifestyle = () => {
                 C'est comme s'il était toujours près de moi."
               </p>
               <div className="text-sm text-muted-foreground font-sans">
-                — Une cliente Osmose
+                — Une cliente SP-Osmose
               </div>
             </div>
           </div>
