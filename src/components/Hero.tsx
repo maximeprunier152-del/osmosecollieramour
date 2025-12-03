@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
-import osmoseOverlayLogo from "@/assets/osmose-overlay-logo.png";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -22,12 +21,6 @@ const Hero = () => {
       >
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
-        {/* Logo overlay to cover watermark */}
-        <img 
-          src={osmoseOverlayLogo} 
-          alt="" 
-          className="absolute bottom-8 right-8 w-24 h-auto opacity-80"
-        />
       </div>
 
       <div className="container mx-auto px-4 py-20 relative z-10">
