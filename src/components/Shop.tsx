@@ -168,8 +168,8 @@ export const Shop = () => {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="left-0 h-12 w-12 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg disabled:opacity-0 disabled:pointer-events-none transition-opacity duration-300" />
-            <CarouselNext className="right-0 h-12 w-12 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg disabled:opacity-0 disabled:pointer-events-none transition-opacity duration-300" />
+            <CarouselPrevious className="left-0 h-8 w-8 md:h-10 md:w-10 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg disabled:opacity-0 disabled:pointer-events-none transition-opacity duration-300" />
+            <CarouselNext className="right-0 h-8 w-8 md:h-10 md:w-10 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg disabled:opacity-0 disabled:pointer-events-none transition-opacity duration-300" />
           </Carousel>
         </div>
       </div>
