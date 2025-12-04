@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
 
 const Hero = () => {
@@ -13,7 +13,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
       {/* Background image - full width 2:1 aspect ratio */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -78,6 +78,10 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Scroll indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer" onClick={() => scrollToSection("shop")}>
+        <ChevronDown className="w-8 h-8 text-white/70 hover:text-white transition-colors" />
+      </div>
     </section>
   );
 };
