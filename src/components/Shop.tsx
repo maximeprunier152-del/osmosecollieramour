@@ -118,7 +118,7 @@ export const Shop = () => {
                 const image = product.node.images.edges[0]?.node;
                 
                 return (
-                  <CarouselItem key={product.node.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <CarouselItem key={product.node.id} className="pl-4 basis-1/2 lg:basis-1/3">
                     <div className="group bg-white/80 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-white transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(52,127,99,0.4)]">
                       <Link to={`/product/${product.node.handle}`}>
                         {image && (
