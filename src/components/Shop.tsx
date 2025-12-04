@@ -104,7 +104,7 @@ export const Shop = () => {
           <h2 className="font-display text-4xl md:text-5xl tracking-wide font-bold text-foreground mb-4">Notre Collection</h2>
         </div>
         
-        <div className="max-w-7xl mx-auto px-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
           <Carousel
             opts={{
               align: "start",
@@ -118,8 +118,8 @@ export const Shop = () => {
                 const image = product.node.images.edges[0]?.node;
                 
                 return (
-                  <CarouselItem key={product.node.id} className="pl-4 basis-1/2 lg:basis-1/3">
-                    <div className="group bg-white/80 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 hover:border-white transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(52,127,99,0.4)]">
+                  <CarouselItem key={product.node.id} className="pl-2 md:pl-4 basis-1/2 lg:basis-1/3">
+                    <div className="group bg-white/80 backdrop-blur-md rounded-xl md:rounded-2xl overflow-hidden border border-white/50 hover:border-white transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(52,127,99,0.4)]">
                       <Link to={`/product/${product.node.handle}`}>
                         {image && (
                           <div className="aspect-square overflow-hidden bg-secondary/20 transition-all duration-300 [filter:drop-shadow(0_0_25px_rgba(218,179,140,0.35))] group-hover:[filter:drop-shadow(0_0_40px_rgba(218,179,140,0.55))]">
@@ -132,37 +132,35 @@ export const Shop = () => {
                         )}
                       </Link>
                       
-                      <div className="p-6">
+                      <div className="p-3 md:p-6">
                         <Link to={`/product/${product.node.handle}`}>
-                          <h3 className="text-xl font-semibold mb-2 hover:text-primary transition-colors">
+                          <h3 className="text-sm md:text-xl font-semibold mb-1 md:mb-2 hover:text-primary transition-colors line-clamp-2">
                             {product.node.title}
                           </h3>
                         </Link>
                         
-                        {product.node.description && (
-                          <p className="text-body-text text-sm mb-4 line-clamp-2">
-                            {product.node.description}
-                          </p>
-                        )}
+                        <p className="hidden md:block text-body-text text-sm mb-4 line-clamp-2">
+                          {product.node.description}
+                        </p>
                         
-                        <div className="flex items-center gap-3 mb-4">
-                          <span className="text-lg text-muted-foreground line-through">
-                            30,00 EUR
+                        <div className="flex flex-wrap items-center gap-1 md:gap-3 mb-2 md:mb-4">
+                          <span className="text-xs md:text-lg text-muted-foreground line-through">
+                            30€
                           </span>
-                          <span className="text-2xl font-bold text-primary">
-                            {parseFloat(variant.price.amount).toFixed(2).replace('.', ',')} EUR
+                          <span className="text-base md:text-2xl font-bold text-primary">
+                            {parseFloat(variant.price.amount).toFixed(0)}€
                           </span>
-                          <span className="bg-primary/90 text-primary-foreground text-xs font-bold px-2 py-1 rounded-full">
+                          <span className="bg-primary/90 text-primary-foreground text-[10px] md:text-xs font-bold px-1.5 md:px-2 py-0.5 md:py-1 rounded-full">
                             -50%
                           </span>
                         </div>
                         
                         <Button 
                           onClick={() => handleAddToCart(product)}
-                          className="w-full rounded-full bg-gradient-to-r from-[#347f63] to-[#2d6b54] hover:from-[#2d6b54] hover:to-[#347f63] shadow-lg hover:shadow-[0_8px_30px_rgba(52,127,99,0.5)] transition-all duration-300"
+                          className="w-full rounded-full text-xs md:text-sm py-2 md:py-2.5 bg-gradient-to-r from-[#347f63] to-[#2d6b54] hover:from-[#2d6b54] hover:to-[#347f63] shadow-lg hover:shadow-[0_8px_30px_rgba(52,127,99,0.5)] transition-all duration-300"
                           disabled={!variant.availableForSale}
                         >
-                          {variant.availableForSale ? "Ajouter au panier" : "Rupture de stock"}
+                          {variant.availableForSale ? "Ajouter" : "Rupture"}
                         </Button>
                       </div>
                     </div>
