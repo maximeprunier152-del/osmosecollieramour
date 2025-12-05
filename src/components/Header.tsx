@@ -37,7 +37,7 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="transition-colors text-emerald-600">
+          <button onClick={() => navigate("/")} className="transition-colors text-emerald-600">
             Accueil
           </button>
           <button onClick={() => handleSectionClick("product")} className="transition-colors text-emerald-600">
@@ -98,7 +98,7 @@ const Header = () => {
           backdropFilter: 'blur(8px)'
         }}>
           <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
-            <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
+            <button onClick={() => { navigate("/"); setIsMobileMenuOpen(false); }} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
               Accueil
             </button>
             <button onClick={() => handleSectionClick("product")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
