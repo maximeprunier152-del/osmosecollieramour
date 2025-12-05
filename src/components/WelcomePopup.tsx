@@ -11,6 +11,7 @@ const WelcomePopup = () => {
   const [step, setStep] = useState<"email" | "password">("email");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { signUp, user } = useAuth();
 
@@ -58,6 +59,11 @@ const WelcomePopup = () => {
 
     if (password.length < 6) {
       toast.error("Le mot de passe doit contenir au moins 6 caractères");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast.error("Les mots de passe ne correspondent pas");
       return;
     }
 
@@ -148,6 +154,22 @@ const WelcomePopup = () => {
                   autoFocus
                 />
                 <p className="text-xs text-muted-foreground">Minimum 6 caractères</p>
+              </div>
+
+              <div className="space-y-2 text-left">
+                <Label htmlFor="popup-confirm-password" className="text-sm text-muted-foreground">
+                  Confirmer le mot de passe
+                </Label>
+                <Input
+                  id="popup-confirm-password"
+                  type="password"
+                  placeholder="••••••••"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  minLength={6}
+                  className="w-full border border-border rounded-md focus:ring-0 focus:border-primary px-3 py-2"
+                />
               </div>
               
               <Button
