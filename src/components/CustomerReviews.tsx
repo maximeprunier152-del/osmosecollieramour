@@ -12,50 +12,56 @@ const reviews = [
   {
     id: 1,
     name: "Marie L.",
-    date: "12 novembre 2024",
+    date: "il y a 2 jours",
     rating: 5,
     title: "Un bijou magique",
     text: "Je porte le parfum de mon mari quand il voyage. C'est comme s'il était toujours près de moi. Ce médaillon est devenu mon compagnon quotidien.",
+    products: ["Le Matria"],
   },
   {
     id: 2,
     name: "Sophie B.",
-    date: "8 novembre 2024",
+    date: "il y a 4 jours",
     rating: 5,
     title: "Indispensable !",
     text: "J'ai offert ce médaillon à ma mère et elle ne le quitte plus. La diffusion du parfum est subtile et élégante. Qualité exceptionnelle !",
+    products: ["Le Gaia", "Le Volatis"],
   },
   {
     id: 3,
     name: "Claire D.",
-    date: "3 novembre 2024",
+    date: "il y a 1 semaine",
     rating: 5,
     title: "Cadeau parfait",
     text: "J'ai commandé pour l'anniversaire de ma meilleure amie. Elle a pleuré de joie ! Le packaging est magnifique et le produit de grande qualité.",
+    products: ["L'Améthyste"],
   },
   {
     id: 4,
     name: "Émilie R.",
-    date: "28 octobre 2024",
+    date: "il y a 1 semaine",
     rating: 5,
     title: "Je recommande vivement",
     text: "Livraison rapide, médaillon superbe. Le parfum tient vraiment 48h comme promis. Je suis conquise et j'en ai commandé un deuxième !",
+    products: ["Le Secret", "Le Nao"],
   },
   {
     id: 5,
     name: "Nathalie M.",
-    date: "22 octobre 2024",
+    date: "il y a 2 semaines",
     rating: 5,
     title: "Élégance et émotion",
     text: "Ce médaillon porte le parfum de ma grand-mère disparue. Un vrai réconfort au quotidien. Merci pour cette belle invention.",
+    products: ["Le Félix"],
   },
   {
     id: 6,
     name: "Isabelle C.",
-    date: "15 octobre 2024",
+    date: "il y a 3 semaines",
     rating: 5,
     title: "Coup de cœur absolu",
     text: "Design raffiné, finitions impeccables. J'ai choisi le modèle Matria en or rose, il est sublime. Un bijou qui a du sens.",
+    products: ["Le Matria", "L'Avia"],
   },
 ];
 
@@ -101,13 +107,25 @@ const CustomerReviews = () => {
               {reviews.map((review) => (
                 <CarouselItem key={review.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <div className="bg-white rounded-xl p-6 shadow-sm border border-border/50 h-full flex flex-col">
-                    {/* Stars */}
-                    <div className="flex gap-0.5 mb-3">
-                      {[...Array(review.rating)].map((_, i) => (
-                        <div key={i} className="w-5 h-5 bg-primary rounded-sm flex items-center justify-center">
-                          <Star className="w-3 h-3 text-white fill-white" />
-                        </div>
-                      ))}
+                    {/* Stars and Products */}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex gap-0.5">
+                        {[...Array(review.rating)].map((_, i) => (
+                          <div key={i} className="w-5 h-5 bg-primary rounded-sm flex items-center justify-center">
+                            <Star className="w-3 h-3 text-white fill-white" />
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex flex-wrap gap-1 justify-end">
+                        {review.products.map((product, i) => (
+                          <span 
+                            key={i} 
+                            className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full"
+                          >
+                            {product}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                     
                     {/* Title */}
