@@ -14,6 +14,7 @@ const Account = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
   const { signIn, signUp } = useAuth();
 
@@ -33,6 +34,11 @@ const Account = () => {
 
     if (password.length < 6) {
       toast.error("Le mot de passe doit contenir au moins 6 caractères");
+      return;
+    }
+
+    if (!isLogin && password !== confirmPassword) {
+      toast.error("Les mots de passe ne correspondent pas");
       return;
     }
 
@@ -158,6 +164,21 @@ const Account = () => {
                     minLength={6}
                   />
                 </div>
+
+                {!isLogin && (
+                  <div className="space-y-2">
+                    <Label htmlFor="confirmPassword">Confirmer le mot de passe</Label>
+                    <Input
+                      id="confirmPassword"
+                      type="password"
+                      placeholder="••••••••"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      required
+                      minLength={6}
+                    />
+                  </div>
+                )}
 
                 <Button type="submit" className="w-full bg-foreground text-background hover:bg-foreground/90">
                   {isLogin ? "Se connecter" : "S'inscrire"}
