@@ -11,8 +11,9 @@ const Newsletter = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [isLoginMode, setIsLoginMode] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { signUp, user } = useAuth();
+  const { signUp, signIn, user } = useAuth();
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ const Newsletter = () => {
     }
 
     setShowPasswordModal(true);
+    setIsLoginMode(false);
   };
 
   const handlePasswordSubmit = async (e: React.FormEvent) => {
@@ -44,31 +46,48 @@ const Newsletter = () => {
       return;
     }
 
-    if (password !== confirmPassword) {
+    if (!isLoginMode && password !== confirmPassword) {
       toast.error("Les mots de passe ne correspondent pas");
       return;
     }
 
     setIsLoading(true);
-    const { error } = await signUp(email, password);
-    setIsLoading(false);
 
-    if (error) {
-      if (error.message.includes("already registered")) {
-        toast.error("Cet email est déjà utilisé", {
-          description: "Connectez-vous depuis la page compte",
-        });
+    if (isLoginMode) {
+      // Login mode
+      const { error } = await signIn(email, password);
+      setIsLoading(false);
+
+      if (error) {
+        toast.error("Erreur de connexion", { description: "Email ou mot de passe incorrect" });
       } else {
-        toast.error("Erreur d'inscription", { description: error.message });
+        toast.success("Connexion réussie !", {
+          description: "Profitez de 10% de réduction sur votre première commande",
+        });
+        closeModal();
       }
     } else {
-      toast.success("Compte créé avec succès !", {
-        description: "Profitez de 10% de réduction sur votre première commande",
-      });
-      setShowPasswordModal(false);
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
+      // Signup mode
+      const { error } = await signUp(email, password);
+      setIsLoading(false);
+
+      if (error) {
+        if (error.message.includes("already registered")) {
+          // Switch to login mode
+          setIsLoginMode(true);
+          setPassword("");
+          toast.info("Ce compte existe déjà", {
+            description: "Connectez-vous avec votre mot de passe",
+          });
+        } else {
+          toast.error("Erreur d'inscription", { description: error.message });
+        }
+      } else {
+        toast.success("Compte créé avec succès !", {
+          description: "Profitez de 10% de réduction sur votre première commande",
+        });
+        closeModal();
+      }
     }
   };
 
@@ -76,6 +95,8 @@ const Newsletter = () => {
     setShowPasswordModal(false);
     setPassword("");
     setConfirmPassword("");
+    setIsLoginMode(false);
+    setEmail("");
   };
 
   // If user is logged in, show a thank you message
@@ -173,12 +194,15 @@ const Newsletter = () => {
 
             <div className="text-center space-y-4">
               <h2 className="font-heading text-2xl font-bold text-foreground">
-                Créer votre compte
+                {isLoginMode ? "Connexion" : "Créer votre compte"}
               </h2>
               
               <p className="text-muted-foreground text-sm">
-                Choisissez un mot de passe pour finaliser votre inscription avec{" "}
-                <span className="font-medium text-foreground">{email}</span>
+                {isLoginMode ? (
+                  <>Connectez-vous avec <span className="font-medium text-foreground">{email}</span></>
+                ) : (
+                  <>Choisissez un mot de passe pour <span className="font-medium text-foreground">{email}</span></>
+                )}
               </p>
 
               <form onSubmit={handlePasswordSubmit} className="space-y-4 pt-2">
@@ -197,33 +221,57 @@ const Newsletter = () => {
                     className="w-full"
                     autoFocus
                   />
-                  <p className="text-xs text-muted-foreground">Minimum 6 caractères</p>
+                  {!isLoginMode && (
+                    <p className="text-xs text-muted-foreground">Minimum 6 caractères</p>
+                  )}
                 </div>
 
-                <div className="space-y-2 text-left">
-                  <Label htmlFor="newsletter-confirm-password" className="text-sm text-muted-foreground">
-                    Confirmer le mot de passe
-                  </Label>
-                  <Input
-                    id="newsletter-confirm-password"
-                    type="password"
-                    placeholder="••••••••"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required
-                    minLength={6}
-                    className="w-full"
-                  />
-                </div>
+                {!isLoginMode && (
+                  <div className="space-y-2 text-left">
+                    <Label htmlFor="newsletter-confirm-password" className="text-sm text-muted-foreground">
+                      Confirmer le mot de passe
+                    </Label>
+                    <Input
+                      id="newsletter-confirm-password"
+                      type="password"
+                      placeholder="••••••••"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      required
+                      minLength={6}
+                      className="w-full"
+                    />
+                  </div>
+                )}
                 
                 <Button
                   type="submit"
                   disabled={isLoading}
                   className="w-full bg-foreground text-background hover:bg-foreground/90 font-heading tracking-widest py-6"
                 >
-                  {isLoading ? "INSCRIPTION..." : "CRÉER MON COMPTE"}
+                  {isLoading 
+                    ? (isLoginMode ? "CONNEXION..." : "INSCRIPTION...") 
+                    : (isLoginMode ? "SE CONNECTER" : "CRÉER MON COMPTE")
+                  }
                 </Button>
               </form>
+
+              <div className="text-center pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsLoginMode(!isLoginMode);
+                    setPassword("");
+                    setConfirmPassword("");
+                  }}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {isLoginMode 
+                    ? "Pas encore de compte ? S'inscrire" 
+                    : "Déjà un compte ? Se connecter"
+                  }
+                </button>
+              </div>
 
               <button
                 onClick={closeModal}
