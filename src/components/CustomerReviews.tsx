@@ -113,6 +113,11 @@ const CustomerReviews = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showLoginMessage, setShowLoginMessage] = useState(false);
 
+  const handleRatingChange = (newRating: number) => {
+    console.log("Rating clicked:", newRating, "Current rating:", selectedRating);
+    setSelectedRating(newRating);
+  };
+
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -243,17 +248,25 @@ const CustomerReviews = () => {
                     return (
                       <div key={star} className="relative w-8 h-8 cursor-pointer">
                         {/* Left half - for .5 rating */}
-                        <div
-                          onClick={() => setSelectedRating(star - 0.5)}
-                          className="absolute left-0 top-0 w-1/2 h-full z-10 cursor-pointer"
-                          role="button"
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleRatingChange(star - 0.5);
+                          }}
+                          className="absolute left-0 top-0 w-1/2 h-full z-10 cursor-pointer bg-transparent border-none"
                           aria-label={`${star - 0.5} étoiles`}
                         />
                         {/* Right half - for full rating */}
-                        <div
-                          onClick={() => setSelectedRating(star)}
-                          className="absolute right-0 top-0 w-1/2 h-full z-10 cursor-pointer"
-                          role="button"
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleRatingChange(star);
+                          }}
+                          className="absolute right-0 top-0 w-1/2 h-full z-10 cursor-pointer bg-transparent border-none"
                           aria-label={`${star} étoiles`}
                         />
                         {/* Star display */}
