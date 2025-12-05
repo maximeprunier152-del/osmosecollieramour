@@ -11,24 +11,17 @@ const Problem = () => {
             Le désir
           </span>
           
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-wide leading-tight text-foreground">
-            Un parfum s'évapore,
-            <br />
-            <span className="italic text-burgundy">un souvenir reste</span>
+          <h2 className="font-display text-3xl md:text-4xl tracking-wide leading-relaxed text-foreground">
+            Un parfum s'évapore, <span className="italic text-burgundy">un souvenir reste</span>
           </h2>
           
-          <div className="prose prose-lg mx-auto font-sans text-body-text leading-relaxed">
-            <p className="text-xl">
-              On aime un parfum, mais il s'évapore trop vite. 
-              On ne peut pas toujours le porter. 
-              On veut rester proche d'un souvenir, d'un être aimé, d'une émotion qui nous traverse.
-            </p>
-            <p className="text-lg pt-4">
-              Ce bijou est né de ce désir : garder près de soi ce qui nous touche, 
-              <span className="text-foreground font-medium"> porter une fragrance comme on porte un secret</span>, 
-              faire revivre un instant à chaque respiration.
-            </p>
-          </div>
+          <p className="font-sans text-body-text leading-loose text-base md:text-lg max-w-2xl mx-auto">
+            On aime un parfum, mais il s'évapore trop vite. On veut rester proche d'un souvenir, d'un être aimé, d'une émotion qui nous traverse.
+          </p>
+          
+          <p className="font-sans text-body-text/80 leading-loose text-sm md:text-base max-w-xl mx-auto">
+            Ce bijou est né de ce désir : <span className="text-foreground">porter une fragrance comme on porte un secret</span>.
+          </p>
 
         </div>
       </div>
