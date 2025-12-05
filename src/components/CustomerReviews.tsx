@@ -233,38 +233,44 @@ const CustomerReviews = () => {
             <form onSubmit={handleSubmitReview} className="space-y-4">
               {/* Rating Selection with half-star support */}
               <div className="flex flex-col items-center gap-2">
-                <span className="text-sm text-muted-foreground">Votre note: {selectedRating}/5</span>
+                <span className="text-sm text-muted-foreground">Votre note : {selectedRating}/5</span>
                 <div className="flex gap-1">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <div key={star} className="relative w-8 h-8">
-                      {/* Left half - for .5 rating */}
-                      <button
-                        type="button"
-                        onClick={() => setSelectedRating(star - 0.5)}
-                        className="absolute left-0 top-0 w-1/2 h-full z-10 focus:outline-none"
-                        aria-label={`${star - 0.5} étoiles`}
-                      />
-                      {/* Right half - for full rating */}
-                      <button
-                        type="button"
-                        onClick={() => setSelectedRating(star)}
-                        className="absolute right-0 top-0 w-1/2 h-full z-10 focus:outline-none"
-                        aria-label={`${star} étoiles`}
-                      />
-                      {/* Star display */}
-                      <div className={`w-8 h-8 rounded-sm flex items-center justify-center transition-transform hover:scale-110 ${
-                        star <= selectedRating ? 'bg-primary' : star - 0.5 === selectedRating ? 'bg-primary' : 'bg-gray-200'
-                      }`}>
-                        {star <= selectedRating ? (
-                          <Star className="w-5 h-5 text-white fill-white" />
-                        ) : star - 0.5 === selectedRating ? (
-                          <StarHalf className="w-5 h-5 text-white fill-white" />
-                        ) : (
-                          <Star className="w-5 h-5 text-gray-400" />
-                        )}
+                  {[1, 2, 3, 4, 5].map((star) => {
+                    const isFullStar = star <= selectedRating;
+                    const isHalfStar = !isFullStar && star - 0.5 === selectedRating;
+                    const isFilled = isFullStar || isHalfStar;
+                    
+                    return (
+                      <div key={star} className="relative w-8 h-8 cursor-pointer">
+                        {/* Left half - for .5 rating */}
+                        <div
+                          onClick={() => setSelectedRating(star - 0.5)}
+                          className="absolute left-0 top-0 w-1/2 h-full z-10 cursor-pointer"
+                          role="button"
+                          aria-label={`${star - 0.5} étoiles`}
+                        />
+                        {/* Right half - for full rating */}
+                        <div
+                          onClick={() => setSelectedRating(star)}
+                          className="absolute right-0 top-0 w-1/2 h-full z-10 cursor-pointer"
+                          role="button"
+                          aria-label={`${star} étoiles`}
+                        />
+                        {/* Star display */}
+                        <div className={`w-8 h-8 rounded-sm flex items-center justify-center transition-transform hover:scale-110 ${
+                          isFilled ? 'bg-primary' : 'bg-gray-200'
+                        }`}>
+                          {isFullStar ? (
+                            <Star className="w-5 h-5 text-white fill-white" />
+                          ) : isHalfStar ? (
+                            <StarHalf className="w-5 h-5 text-white fill-white" />
+                          ) : (
+                            <Star className="w-5 h-5 text-gray-400" />
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
