@@ -301,19 +301,16 @@ const CustomerReviews = () => {
                 </Button>
               </form>
             ) : (
-              <div className="text-center py-6">
-                <p className="text-muted-foreground mb-4">
+              <div className="text-center py-8">
+                <p className="text-muted-foreground mb-6 text-lg">
                   Connectez-vous pour partager votre expérience avec nos médaillons.
                 </p>
-                <Button 
-                  variant="outline" 
-                  onClick={() => {
-                    const accountBtn = document.querySelector('[href="/compte"]') as HTMLElement;
-                    if (accountBtn) accountBtn.click();
-                  }}
+                <a 
+                  href="/compte"
+                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-primary/30 rounded-full text-foreground hover:bg-primary/5 hover:border-primary/50 transition-all duration-300 font-medium"
                 >
                   Se connecter pour laisser un avis
-                </Button>
+                </a>
               </div>
             )}
           </div>
