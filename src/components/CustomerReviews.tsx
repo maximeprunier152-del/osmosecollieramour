@@ -112,12 +112,13 @@ const CustomerReviews = () => {
   const [reviewText, setReviewText] = useState("");
   const [selectedRating, setSelectedRating] = useState(5);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showLoginMessage, setShowLoginMessage] = useState(false);
 
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!user) {
-      toast.error("Veuillez vous connecter pour laisser un avis");
+      setShowLoginMessage(true);
       return;
     }
 
@@ -139,6 +140,7 @@ const CustomerReviews = () => {
     setReviewText("");
     setSelectedRating(5);
     setIsSubmitting(false);
+    setShowLoginMessage(false);
   };
 
   // Calculate average (round to .5)
@@ -236,83 +238,85 @@ const CustomerReviews = () => {
               Laissez-nous votre avis
             </h3>
             
-            {user ? (
-              <form onSubmit={handleSubmitReview} className="space-y-4">
-                {/* Rating Selection */}
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-sm text-muted-foreground">Votre note</span>
-                  <div className="flex gap-1">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <button
-                        key={star}
-                        type="button"
-                        onClick={() => setSelectedRating(star)}
-                        className="focus:outline-none transition-transform hover:scale-110"
-                      >
-                        <div className={`w-8 h-8 rounded-sm flex items-center justify-center ${
-                          star <= selectedRating ? 'bg-primary' : 'bg-gray-200'
-                        }`}>
-                          <Star className={`w-5 h-5 ${
-                            star <= selectedRating ? 'text-white fill-white' : 'text-gray-400'
-                          }`} />
-                        </div>
-                      </button>
-                    ))}
-                  </div>
+            <form onSubmit={handleSubmitReview} className="space-y-4">
+              {/* Rating Selection */}
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-sm text-muted-foreground">Votre note</span>
+                <div className="flex gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      onClick={() => setSelectedRating(star)}
+                      className="focus:outline-none transition-transform hover:scale-110"
+                    >
+                      <div className={`w-8 h-8 rounded-sm flex items-center justify-center ${
+                        star <= selectedRating ? 'bg-primary' : 'bg-gray-200'
+                      }`}>
+                        <Star className={`w-5 h-5 ${
+                          star <= selectedRating ? 'text-white fill-white' : 'text-gray-400'
+                        }`} />
+                      </div>
+                    </button>
+                  ))}
                 </div>
-
-                {/* Title */}
-                <div>
-                  <Input
-                    placeholder="Titre de votre avis"
-                    value={reviewTitle}
-                    onChange={(e) => setReviewTitle(e.target.value)}
-                    maxLength={100}
-                    className="bg-background"
-                  />
-                </div>
-
-                {/* Review Text */}
-                <div>
-                  <Textarea
-                    placeholder="Partagez votre expérience avec nos médaillons..."
-                    value={reviewText}
-                    onChange={(e) => setReviewText(e.target.value)}
-                    maxLength={500}
-                    rows={4}
-                    className="bg-background resize-none"
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <Button 
-                  type="submit" 
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    "Envoi en cours..."
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4 mr-2" />
-                      Publier mon avis
-                    </>
-                  )}
-                </Button>
-              </form>
-            ) : (
-              <div className="text-center py-10">
-                <p className="text-muted-foreground mb-8 text-lg">
-                  Connectez-vous pour partager votre expérience avec nos médaillons.
-                </p>
-                <a 
-                  href="/compte"
-                  className="inline-flex items-center justify-center px-10 py-4 border border-primary/40 rounded-full text-foreground hover:bg-primary hover:text-white hover:shadow-[0_0_20px_rgba(52,127,99,0.4)] transition-all duration-300 font-medium text-base"
-                >
-                  Se connecter pour laisser un avis
-                </a>
               </div>
-            )}
+
+              {/* Title */}
+              <div>
+                <Input
+                  placeholder="Titre de votre avis"
+                  value={reviewTitle}
+                  onChange={(e) => setReviewTitle(e.target.value)}
+                  maxLength={100}
+                  className="bg-background"
+                />
+              </div>
+
+              {/* Review Text */}
+              <div>
+                <Textarea
+                  placeholder="Partagez votre expérience avec nos médaillons..."
+                  value={reviewText}
+                  onChange={(e) => setReviewText(e.target.value)}
+                  maxLength={500}
+                  rows={4}
+                  className="bg-background resize-none"
+                />
+              </div>
+
+              {/* Login Required Message */}
+              {showLoginMessage && (
+                <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 text-center">
+                  <p className="text-foreground font-medium mb-2">Connexion requise</p>
+                  <p className="text-muted-foreground text-sm mb-3">
+                    Vous devez avoir un compte pour laisser un avis.
+                  </p>
+                  <a 
+                    href="/compte"
+                    className="inline-flex items-center justify-center px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors text-sm font-medium"
+                  >
+                    Créer un compte / Se connecter
+                  </a>
+                </div>
+              )}
+
+              {/* Submit Button */}
+              <Button 
+                type="submit" 
+                className="w-full"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  "Envoi en cours..."
+                ) : (
+                  <>
+                    <Send className="w-4 h-4 mr-2" />
+                    Publier mon avis
+                  </>
+                )}
+              </Button>
+            </form>
           </div>
         </div>
       </div>
