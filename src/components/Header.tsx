@@ -55,27 +55,35 @@ const Header = () => {
           <button onClick={() => handleSectionClick("faq")} className="transition-colors text-emerald-600">
             Questions
           </button>
-          <button
+          <Button
+            variant="outline"
+            size="icon"
             onClick={() => navigate("/compte")}
-            className="transition-colors text-emerald-600 hover:text-emerald-700 flex items-center gap-1"
+            className="relative"
             title={user ? "Mon compte" : "Se connecter"}
           >
             <User className="h-5 w-5" />
-            {user && <span className="w-2 h-2 bg-primary rounded-full"></span>}
-          </button>
+            {user && (
+              <span className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full border-2 border-background"></span>
+            )}
+          </Button>
           <CartDrawer />
           <Button onClick={() => handleSectionClick("shop")}>Commander</Button>
         </nav>
 
-        {/* Mobile Menu Button & Cart */}
         <div className="md:hidden flex items-center gap-2">
-          <button
+          <Button
+            variant="outline"
+            size="icon"
             onClick={() => navigate("/compte")}
-            className="text-foreground p-2"
+            className="relative"
             title={user ? "Mon compte" : "Se connecter"}
           >
             <User className="h-5 w-5" />
-          </button>
+            {user && (
+              <span className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full border-2 border-background"></span>
+            )}
+          </Button>
           <CartDrawer />
           <button className="text-foreground" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
