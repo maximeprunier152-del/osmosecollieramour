@@ -8,6 +8,7 @@ import { useAuth } from "@/contexts/AuthContext";
 
 const WelcomePopup = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [step, setStep] = useState<"email" | "password">("email");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -33,11 +34,30 @@ const WelcomePopup = () => {
     localStorage.setItem("sp-osmose-welcome-popup", "true");
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email || !password) {
-      toast.error("Veuillez remplir tous les champs");
+    if (!email) {
+      toast.error("Veuillez entrer votre email");
+      return;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Veuillez entrer un email valide");
+      return;
+    }
+
+    // Move to password step
+    setStep("password");
+  };
+
+  const handlePasswordSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!password) {
+      toast.error("Veuillez entrer un mot de passe");
       return;
     }
 
@@ -90,47 +110,68 @@ const WelcomePopup = () => {
             Inscrivez-vous pour recevoir 10 % de réduction sur votre première commande et un accès exclusif à nos meilleures offres.
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-4 pt-2">
-            <div className="space-y-2 text-left">
-              <Label htmlFor="popup-email" className="text-sm text-muted-foreground">
-                Email
-              </Label>
-              <Input
-                id="popup-email"
-                type="email"
-                placeholder="votre@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full border-0 border-b border-border rounded-none focus:ring-0 focus:border-primary px-1 py-2"
-              />
-            </div>
+          {step === "email" ? (
+            <form onSubmit={handleEmailSubmit} className="space-y-4 pt-2">
+              <div className="space-y-2 text-left">
+                <Label htmlFor="popup-email" className="text-sm text-muted-foreground">
+                  E-mail
+                </Label>
+                <Input
+                  id="popup-email"
+                  type="email"
+                  placeholder="votre@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full border border-border rounded-md focus:ring-0 focus:border-primary px-3 py-2"
+                  autoFocus
+                />
+              </div>
+              
+              <Button
+                type="submit"
+                className="w-full bg-foreground text-background hover:bg-foreground/90 font-heading tracking-widest py-6"
+              >
+                M'INSCRIRE
+              </Button>
+            </form>
+          ) : (
+            <form onSubmit={handlePasswordSubmit} className="space-y-4 pt-2">
+              <div className="space-y-2 text-left">
+                <Label htmlFor="popup-password" className="text-sm text-muted-foreground">
+                  Mot de passe
+                </Label>
+                <Input
+                  id="popup-password"
+                  type="password"
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  minLength={6}
+                  className="w-full border border-border rounded-md focus:ring-0 focus:border-primary px-3 py-2"
+                  autoFocus
+                />
+                <p className="text-xs text-muted-foreground">Minimum 6 caractères</p>
+              </div>
+              
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="w-full bg-foreground text-background hover:bg-foreground/90 font-heading tracking-widest py-6"
+              >
+                {isLoading ? "INSCRIPTION..." : "M'INSCRIRE"}
+              </Button>
 
-            <div className="space-y-2 text-left">
-              <Label htmlFor="popup-password" className="text-sm text-muted-foreground">
-                Mot de passe
-              </Label>
-              <Input
-                id="popup-password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                minLength={6}
-                className="w-full border-0 border-b border-border rounded-none focus:ring-0 focus:border-primary px-1 py-2"
-              />
-              <p className="text-xs text-muted-foreground">Minimum 6 caractères</p>
-            </div>
-            
-            <Button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-foreground text-background hover:bg-foreground/90 font-heading tracking-widest py-6"
-            >
-              {isLoading ? "INSCRIPTION..." : "M'INSCRIRE"}
-            </Button>
-          </form>
+              <button
+                type="button"
+                onClick={() => setStep("email")}
+                className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+              >
+                ← Modifier l'email
+              </button>
+            </form>
+          )}
 
           <button
             onClick={handleClose}
