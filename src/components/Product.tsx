@@ -1,6 +1,16 @@
 import locketTree from "@/assets/locket-tree.png";
 import locketBird from "@/assets/locket-bird.png";
+import lifestyle1 from "@/assets/lifestyle-1.jpg";
+import lifestyle2 from "@/assets/lifestyle-2.jpg";
+import lifestyle3 from "@/assets/lifestyle-3.jpg";
+import lifestyle4 from "@/assets/lifestyle-4.jpg";
 import { Sparkles, Heart, Clock } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const Product = () => {
   return (
@@ -101,28 +111,62 @@ const Product = () => {
             </div>
           </div>
 
-          {/* Technical details */}
-          <div className="bg-gradient-to-br from-emerald/5 to-burgundy/5 rounded-2xl p-8 md:p-12">
-            <h3 className="font-display text-2xl text-foreground mb-8 text-center">
-              Caractéristiques techniques
-            </h3>
-            <div className="grid md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="font-display text-3xl text-emerald mb-2">316L</div>
-                <div className="text-sm text-body-text">Acier inoxydable chirurgical</div>
+          {/* Technical details with Lifestyle Carousel */}
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            {/* Left: Technical specs */}
+            <div className="bg-gradient-to-br from-emerald/5 to-burgundy/5 rounded-2xl p-8 md:p-12">
+              <h3 className="font-display text-2xl text-foreground mb-8 text-center">
+                Caractéristiques techniques
+              </h3>
+              <div className="grid grid-cols-2 gap-6 text-center">
+                <div>
+                  <div className="font-display text-3xl text-emerald mb-2">316L</div>
+                  <div className="text-sm text-body-text">Acier inoxydable chirurgical</div>
+                </div>
+                <div>
+                  <div className="font-display text-3xl text-burgundy mb-2">48h</div>
+                  <div className="text-sm text-body-text">Durée de diffusion</div>
+                </div>
+                <div>
+                  <div className="font-display text-3xl text-emerald mb-2">5</div>
+                  <div className="text-sm text-body-text">Disques absorbants inclus</div>
+                </div>
+                <div>
+                  <div className="font-display text-3xl text-burgundy mb-2">∅ 30mm</div>
+                  <div className="text-sm text-body-text">Diamètre du médaillon</div>
+                </div>
               </div>
-              <div>
-                <div className="font-display text-3xl text-burgundy mb-2">48h</div>
-                <div className="text-sm text-body-text">Durée de diffusion</div>
-              </div>
-              <div>
-                <div className="font-display text-3xl text-emerald mb-2">5</div>
-                <div className="text-sm text-body-text">Disques absorbants inclus</div>
-              </div>
-              <div>
-                <div className="font-display text-3xl text-burgundy mb-2">∅ 30mm</div>
-                <div className="text-sm text-body-text">Diamètre du médaillon</div>
-              </div>
+            </div>
+
+            {/* Right: Lifestyle Carousel */}
+            <div className="rounded-2xl overflow-hidden [filter:drop-shadow(0_0_30px_rgba(218,179,140,0.4))]">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                plugins={[
+                  Autoplay({
+                    delay: 3500,
+                    stopOnInteraction: false,
+                  }),
+                ]}
+                className="w-full"
+              >
+                <CarouselContent>
+                  {[lifestyle1, lifestyle2, lifestyle3, lifestyle4].map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="aspect-square">
+                        <img
+                          src={image}
+                          alt={`Lifestyle SP-Osmose ${index + 1}`}
+                          className="w-full h-full object-cover rounded-2xl"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
             </div>
           </div>
         </div>
