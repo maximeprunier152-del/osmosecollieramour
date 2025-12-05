@@ -301,13 +301,13 @@ const CustomerReviews = () => {
                 </Button>
               </form>
             ) : (
-              <div className="text-center py-8">
-                <p className="text-muted-foreground mb-6 text-lg">
+              <div className="text-center py-10">
+                <p className="text-muted-foreground mb-8 text-lg">
                   Connectez-vous pour partager votre expérience avec nos médaillons.
                 </p>
                 <a 
                   href="/compte"
-                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-primary/30 rounded-full text-foreground hover:bg-primary/5 hover:border-primary/50 transition-all duration-300 font-medium"
+                  className="inline-flex items-center justify-center px-10 py-4 border border-primary/40 rounded-full text-foreground hover:bg-primary hover:text-white hover:shadow-[0_0_20px_rgba(52,127,99,0.4)] transition-all duration-300 font-medium text-base"
                 >
                   Se connecter pour laisser un avis
                 </a>
