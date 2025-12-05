@@ -47,7 +47,7 @@ const Header = () => {
             Boutique
           </button>
           <button onClick={() => handleSectionClick("pricing")} className="transition-colors text-emerald-600">
-            Offre de lancement
+            Offre Black Friday
           </button>
           <button onClick={() => handleSectionClick("emotion")} className="transition-colors text-emerald-600">
             L'Essence
@@ -108,7 +108,7 @@ const Header = () => {
               Boutique
             </button>
             <button onClick={() => handleSectionClick("pricing")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
-              Offre de lancement
+              Offre Black Friday
             </button>
             <button onClick={() => handleSectionClick("emotion")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
               L'Essence

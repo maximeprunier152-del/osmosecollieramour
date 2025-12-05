@@ -53,7 +53,7 @@ const Pricing = () => {
         <div className="text-center mb-12 animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-4">
             <Sparkles size={16} />
-            <span className="text-sm font-medium">Offre de lancement</span>
+            <span className="text-sm font-medium">Offre Black Friday</span>
           </div>
           <h2 className="font-display text-4xl md:text-5xl tracking-wide font-bold text-foreground mb-4">
             Votre Médaillon Parfumé
