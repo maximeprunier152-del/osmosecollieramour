@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Star } from "lucide-react";
 import {
   Carousel,
@@ -6,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 
 interface Review {
   id: number;
@@ -170,13 +170,6 @@ const ProductReviews = ({ productHandle }: ProductReviewsProps) => {
               align: "start",
               loop: true,
             }}
-            plugins={[
-              Autoplay({
-                delay: 4000,
-                stopOnInteraction: false,
-                stopOnMouseEnter: true,
-              }),
-            ]}
             className="w-full"
           >
             <CarouselContent className="-ml-4">
@@ -244,4 +237,4 @@ const ProductReviews = ({ productHandle }: ProductReviewsProps) => {
   );
 };
 
-export default ProductReviews;
+export default memo(ProductReviews);

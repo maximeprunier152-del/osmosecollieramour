@@ -135,6 +135,8 @@ const ProductDetail = () => {
                 src={selectedImage || images[0]?.url}
                 alt={product.node.title}
                 className="w-full h-full object-cover"
+                loading="eager"
+                decoding="async"
               />
             </div>
             
@@ -155,6 +157,8 @@ const ProductDetail = () => {
                       src={image.url}
                       alt={image.altText || `${product.node.title} ${index + 1}`}
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </button>
                 ))}
