@@ -22,9 +22,9 @@ const reviews = [
     id: 2,
     name: "Sophie B.",
     date: "il y a 3 jours",
-    rating: 5,
-    title: "Indispensable !",
-    text: "J'ai offert ce médaillon à ma mère et elle ne le quitte plus. La diffusion du parfum est subtile et élégante. Qualité exceptionnelle !",
+    rating: 4,
+    title: "Très satisfaite",
+    text: "J'ai offert ce médaillon à ma mère et elle l'adore. La diffusion est subtile. Petit bémol : la chaîne aurait pu être un peu plus longue, mais le produit reste top !",
     products: ["Le Gaia", "Le Volatis"],
   },
   {
@@ -49,9 +49,9 @@ const reviews = [
     id: 5,
     name: "Nathalie M.",
     date: "il y a 4 mois",
-    rating: 5,
-    title: "Élégance et émotion",
-    text: "Ce médaillon porte le parfum de ma grand-mère disparue. Un vrai réconfort au quotidien. Merci pour cette belle invention.",
+    rating: 4,
+    title: "Bon produit",
+    text: "Le concept est génial et le médaillon est joli. J'aurais aimé que le parfum tienne un peu plus longtemps (36h chez moi), mais je reste contente de mon achat.",
     products: ["Le Félix"],
   },
   {
@@ -67,9 +67,9 @@ const reviews = [
     id: 7,
     name: "Camille V.",
     date: "il y a 1 an",
-    rating: 5,
-    title: "Mon indispensable",
-    text: "Cela fait un an que je porte ce médaillon tous les jours. Il est toujours aussi beau et fonctionne parfaitement. Un achat que je ne regrette pas !",
+    rating: 3,
+    title: "Correct mais perfectible",
+    text: "Le médaillon est joli mais le fermoir est un peu difficile à manipuler. Le parfum diffuse bien. Pour le prix, je m'attendais à un peu mieux sur les finitions.",
     products: ["Le Gaia"],
   },
   {
@@ -93,7 +93,7 @@ const CustomerReviews = () => {
             Ce que nos clientes disent...
           </h2>
           <div className="flex items-center justify-center gap-2 mb-2">
-            <span className="text-primary font-semibold">Excellent 4.9/5</span>
+            <span className="text-primary font-semibold">Excellent 4.7/5</span>
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
                 <div key={i} className="w-5 h-5 bg-primary rounded-sm flex items-center justify-center">
