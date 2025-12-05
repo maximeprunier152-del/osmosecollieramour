@@ -86,22 +86,6 @@ const Lifestyle = () => {
               </div>
             </div>
           </div>
-
-          {/* Testimonial-style section */}
-          <div className="bg-gradient-to-br from-emerald/5 via-background to-burgundy/5 rounded-3xl p-12 text-center">
-            <div className="max-w-3xl mx-auto space-y-6">
-              <div className="w-16 h-16 bg-champagne rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">💝</span>
-              </div>
-              <p className="font-display text-2xl md:text-3xl text-foreground italic leading-relaxed">
-                "Je porte le parfum de mon mari quand il voyage. 
-                C'est comme s'il était toujours près de moi."
-              </p>
-              <div className="text-sm text-muted-foreground font-sans">
-                — Une cliente SP-Osmose
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
