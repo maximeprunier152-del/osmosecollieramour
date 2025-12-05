@@ -187,10 +187,19 @@ const ProductDetail = () => {
                 <span className="text-sm text-muted-foreground">(4.9/5 - Avis vérifiés)</span>
               </div>
               
-              <p className="text-2xl font-semibold text-emerald">
-                {selectedVariant?.price.currencyCode === "EUR" ? "€" : "$"}
-                {parseFloat(selectedVariant?.price.amount || "0").toFixed(2)}
-              </p>
+              {/* Price with Promotion */}
+              <div className="flex items-center gap-3">
+                <span className="text-lg text-muted-foreground line-through">
+                  30€
+                </span>
+                <span className="text-3xl font-bold text-primary">
+                  15€
+                </span>
+                <span className="text-sm text-muted-foreground">TTC</span>
+                <Badge className="bg-primary/90 text-primary-foreground text-xs">
+                  -50%
+                </Badge>
+              </div>
             </div>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
