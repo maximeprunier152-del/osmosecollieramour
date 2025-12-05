@@ -56,19 +56,17 @@ const Product = () => {
               </div>
             </div>
 
-            <div className="space-y-6">
-              <h3 className="font-display text-3xl text-foreground leading-relaxed">
+            <div className="space-y-5">
+              <h3 className="font-display text-2xl md:text-3xl text-foreground leading-relaxed">
                 Un murmure olfactif autour de vous
               </h3>
               
-              <p className="text-lg text-body-text leading-relaxed">
-                Le médaillon s'ouvre délicatement pour accueillir un disque absorbant. 
-                Vaporisez votre fragrance favorite, refermez l'écrin, glissez-le autour de votre cou.
+              <p className="text-base text-body-text leading-loose">
+                Ouvrez le médaillon, vaporisez votre fragrance favorite sur le disque, refermez délicatement.
               </p>
 
-              <p className="text-lg text-foreground leading-relaxed">
-                Toute la journée, un souffle parfumé vous enveloppe. 
-                <span className="font-medium"> 48 heures de délicatesse</span>, sans contact direct avec la peau.
+              <p className="text-base text-body-text/80 leading-loose">
+                <span className="text-foreground font-medium">48 heures de délicatesse</span>, sans contact avec la peau.
               </p>
 
               <div className="space-y-4 pt-4">
