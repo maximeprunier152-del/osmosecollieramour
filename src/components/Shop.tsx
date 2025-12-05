@@ -57,7 +57,7 @@ export const Shop = () => {
 
   if (loading) {
     return (
-      <section className="py-24 bg-background" id="shop">
+      <section className="py-12 md:py-16 bg-background" id="shop">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Notre Collection</h2>
@@ -75,7 +75,7 @@ export const Shop = () => {
 
   if (products.length === 0) {
     return (
-      <section className="py-24 bg-background" id="shop">
+      <section className="py-12 md:py-16 bg-background" id="shop">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Notre Collection</h2>
@@ -95,7 +95,7 @@ export const Shop = () => {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-muted/20" id="shop">
+    <section className="py-12 md:py-16 bg-gradient-to-b from-background to-muted/20" id="shop">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <span className="inline-block bg-primary/10 text-primary font-semibold text-sm px-4 py-2 rounded-full mb-4">

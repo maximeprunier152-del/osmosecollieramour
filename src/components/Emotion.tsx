@@ -4,7 +4,7 @@ const Emotion = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="emotion" ref={ref} className="py-24 bg-gradient-to-br from-burgundy/10 via-background to-emerald/5 relative overflow-hidden">
+    <section id="emotion" ref={ref} className="py-12 md:py-16 bg-gradient-to-br from-burgundy/10 via-background to-emerald/5 relative overflow-hidden">
       {/* Decorative gradient orbs */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-emerald rounded-full blur-3xl animate-float"></div>

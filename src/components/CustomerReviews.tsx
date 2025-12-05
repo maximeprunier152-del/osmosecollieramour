@@ -151,7 +151,7 @@ const CustomerReviews = () => {
   const avgRating = Math.round((reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length) * 2) / 2;
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-[#faf8f5] to-background">
+    <section className="py-12 md:py-16 bg-gradient-to-b from-[#faf8f5] to-background">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">

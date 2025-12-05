@@ -4,7 +4,7 @@ const Problem = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-24 bg-champagne/30">
+    <section ref={ref} className="py-12 md:py-16 bg-champagne/30">
       <div className="container mx-auto px-4">
         <div className={`max-w-4xl mx-auto text-center space-y-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <span className="text-sm font-sans font-medium tracking-[0.3em] uppercase text-emerald">
