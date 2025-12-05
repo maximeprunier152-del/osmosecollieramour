@@ -1,0 +1,9 @@
+-- Add profile personalization fields
+ALTER TABLE public.profiles 
+ADD COLUMN IF NOT EXISTS first_name TEXT,
+ADD COLUMN IF NOT EXISTS last_name TEXT,
+ADD COLUMN IF NOT EXISTS address_line1 TEXT,
+ADD COLUMN IF NOT EXISTS address_line2 TEXT,
+ADD COLUMN IF NOT EXISTS city TEXT,
+ADD COLUMN IF NOT EXISTS postal_code TEXT,
+ADD COLUMN IF NOT EXISTS country TEXT DEFAULT 'France';
