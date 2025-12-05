@@ -18,10 +18,10 @@ const Footer = () => {
             <div className="space-y-4">
               <h4 className="font-sans font-semibold text-sm uppercase tracking-wider">Boutique</h4>
               <ul className="space-y-2 text-sm text-background/70">
-                <li><a href="#" className="hover:text-background transition-colors">Tous les médaillons</a></li>
-                <li><a href="#" className="hover:text-background transition-colors">Accessoires</a></li>
-                <li><a href="#" className="hover:text-background transition-colors">Coffrets cadeaux</a></li>
-                <li><a href="#" className="hover:text-background transition-colors">Carte cadeau</a></li>
+                <li><a href="#shop" className="hover:text-background transition-colors">Tous les médaillons</a></li>
+                <li><a href="#product" className="hover:text-background transition-colors">Accessoires</a></li>
+                <li><a href="#pricing" className="hover:text-background transition-colors">Coffrets cadeaux</a></li>
+                <li><a href="#pricing" className="hover:text-background transition-colors">Carte cadeau</a></li>
               </ul>
             </div>
 
@@ -29,10 +29,10 @@ const Footer = () => {
             <div className="space-y-4">
               <h4 className="font-sans font-semibold text-sm uppercase tracking-wider">À propos</h4>
               <ul className="space-y-2 text-sm text-background/70">
-                <li><a href="#" className="hover:text-background transition-colors">Notre histoire</a></li>
-                <li><a href="#" className="hover:text-background transition-colors">Comment ça marche</a></li>
-                <li><a href="#" className="hover:text-background transition-colors">Matériaux</a></li>
-                <li><a href="#" className="hover:text-background transition-colors">Blog</a></li>
+                <li><a href="#lifestyle" className="hover:text-background transition-colors">Notre histoire</a></li>
+                <li><a href="#product" className="hover:text-background transition-colors">Comment ça marche</a></li>
+                <li><a href="#product" className="hover:text-background transition-colors">Matériaux</a></li>
+                <li><a href="#problem" className="hover:text-background transition-colors">Blog</a></li>
               </ul>
             </div>
 
@@ -40,10 +40,10 @@ const Footer = () => {
             <div className="space-y-4">
               <h4 className="font-sans font-semibold text-sm uppercase tracking-wider">Aide</h4>
               <ul className="space-y-2 text-sm text-background/70">
-                <li><a href="#" className="hover:text-background transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-background transition-colors">Livraison</a></li>
-                <li><a href="#" className="hover:text-background transition-colors">Retours</a></li>
-                <li><a href="#" className="hover:text-background transition-colors">FAQ</a></li>
+                <li><a href="#newsletter" className="hover:text-background transition-colors">Contact</a></li>
+                <li><a href="#faq" className="hover:text-background transition-colors">Livraison</a></li>
+                <li><a href="#guarantee" className="hover:text-background transition-colors">Retours</a></li>
+                <li><a href="#faq" className="hover:text-background transition-colors">FAQ</a></li>
               </ul>
             </div>
           </div>
