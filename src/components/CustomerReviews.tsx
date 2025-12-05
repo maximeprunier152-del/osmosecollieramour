@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Star, StarHalf, Send } from "lucide-react";
 import {
   Carousel,
@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import Autoplay from "embla-carousel-autoplay";
 import { useAuth } from "@/contexts/AuthContext";
 
 const reviews = [
@@ -170,13 +169,6 @@ const CustomerReviews = () => {
               align: "start",
               loop: true,
             }}
-            plugins={[
-              Autoplay({
-                delay: 4000,
-                stopOnInteraction: false,
-                stopOnMouseEnter: true,
-              }),
-            ]}
             className="w-full"
           >
             <CarouselContent className="-ml-4">
