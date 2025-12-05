@@ -8,6 +8,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ProductReviews from "@/components/ProductReviews";
 
 const ProductDetail = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -291,6 +292,8 @@ const ProductDetail = () => {
           </div>
         </div>
       </main>
+
+      {handle && <ProductReviews productHandle={handle} />}
 
       <Footer />
     </div>
