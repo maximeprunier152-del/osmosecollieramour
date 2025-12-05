@@ -30,37 +30,6 @@ const Problem = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 pt-12">
-            <div className="space-y-3">
-              <div className="w-12 h-12 bg-emerald/10 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-2xl">✨</span>
-              </div>
-              <h3 className="font-display text-xl text-foreground">Éphémère</h3>
-              <p className="text-sm text-body-text">
-                Les parfums traditionnels s'évaporent en quelques heures
-              </p>
-            </div>
-            
-            <div className="space-y-3">
-              <div className="w-12 h-12 bg-burgundy/10 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-2xl">💭</span>
-              </div>
-              <h3 className="font-display text-xl text-foreground">Mémoire</h3>
-              <p className="text-sm text-body-text">
-                Chaque fragrance rappelle un moment, une personne
-              </p>
-            </div>
-            
-            <div className="space-y-3">
-              <div className="w-12 h-12 bg-emerald/10 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-2xl">🤍</span>
-              </div>
-              <h3 className="font-display text-xl text-foreground">Proximité</h3>
-              <p className="text-sm text-body-text">
-                Le besoin de garder un lien invisible mais constant
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
