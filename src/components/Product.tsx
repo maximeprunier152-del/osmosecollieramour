@@ -14,7 +14,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 const Product = () => {
   return (
-    <section id="product" className="py-24 bg-background relative overflow-hidden">
+    <section id="product" className="py-12 md:py-16 bg-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 left-0 w-64 h-64 bg-emerald rounded-full blur-3xl"></div>

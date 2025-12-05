@@ -5,7 +5,7 @@ const Lifestyle = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section ref={ref} className="py-24 bg-champagne/20">
+    <section ref={ref} className="py-12 md:py-16 bg-champagne/20">
       <div className="container mx-auto px-4">
         <div className={`max-w-6xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Header */}
