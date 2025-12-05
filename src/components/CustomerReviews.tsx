@@ -12,7 +12,7 @@ const reviews = [
   {
     id: 1,
     name: "Marie L.",
-    date: "il y a 2 jours",
+    date: "il y a 1 jour",
     rating: 5,
     title: "Un bijou magique",
     text: "Je porte le parfum de mon mari quand il voyage. C'est comme s'il était toujours près de moi. Ce médaillon est devenu mon compagnon quotidien.",
@@ -21,7 +21,7 @@ const reviews = [
   {
     id: 2,
     name: "Sophie B.",
-    date: "il y a 4 jours",
+    date: "il y a 3 jours",
     rating: 5,
     title: "Indispensable !",
     text: "J'ai offert ce médaillon à ma mère et elle ne le quitte plus. La diffusion du parfum est subtile et élégante. Qualité exceptionnelle !",
@@ -30,7 +30,7 @@ const reviews = [
   {
     id: 3,
     name: "Claire D.",
-    date: "il y a 1 semaine",
+    date: "il y a 2 semaines",
     rating: 5,
     title: "Cadeau parfait",
     text: "J'ai commandé pour l'anniversaire de ma meilleure amie. Elle a pleuré de joie ! Le packaging est magnifique et le produit de grande qualité.",
@@ -39,7 +39,7 @@ const reviews = [
   {
     id: 4,
     name: "Émilie R.",
-    date: "il y a 1 semaine",
+    date: "il y a 1 mois",
     rating: 5,
     title: "Je recommande vivement",
     text: "Livraison rapide, médaillon superbe. Le parfum tient vraiment 48h comme promis. Je suis conquise et j'en ai commandé un deuxième !",
@@ -48,7 +48,7 @@ const reviews = [
   {
     id: 5,
     name: "Nathalie M.",
-    date: "il y a 2 semaines",
+    date: "il y a 4 mois",
     rating: 5,
     title: "Élégance et émotion",
     text: "Ce médaillon porte le parfum de ma grand-mère disparue. Un vrai réconfort au quotidien. Merci pour cette belle invention.",
@@ -57,11 +57,29 @@ const reviews = [
   {
     id: 6,
     name: "Isabelle C.",
-    date: "il y a 3 semaines",
+    date: "il y a 8 mois",
     rating: 5,
     title: "Coup de cœur absolu",
     text: "Design raffiné, finitions impeccables. J'ai choisi le modèle Matria en or rose, il est sublime. Un bijou qui a du sens.",
     products: ["Le Matria", "L'Avia"],
+  },
+  {
+    id: 7,
+    name: "Camille V.",
+    date: "il y a 1 an",
+    rating: 5,
+    title: "Mon indispensable",
+    text: "Cela fait un an que je porte ce médaillon tous les jours. Il est toujours aussi beau et fonctionne parfaitement. Un achat que je ne regrette pas !",
+    products: ["Le Gaia"],
+  },
+  {
+    id: 8,
+    name: "Aurélie P.",
+    date: "il y a 1 an et 6 mois",
+    rating: 5,
+    title: "Fidèle depuis le début",
+    text: "J'ai été parmi les premières clientes et je suis toujours aussi fan. J'en ai offert 3 depuis ! Un concept génial et une qualité irréprochable.",
+    products: ["Le Volatis", "Le Secret", "L'Avia"],
   },
 ];
 
