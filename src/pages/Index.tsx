@@ -5,6 +5,7 @@ import Product from "@/components/Product";
 import { Shop } from "@/components/Shop";
 import Emotion from "@/components/Emotion";
 import Lifestyle from "@/components/Lifestyle";
+import CustomerReviews from "@/components/CustomerReviews";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import Guarantee from "@/components/Guarantee";
@@ -25,6 +26,7 @@ const Index = () => {
       <Pricing />
       <Emotion />
       <Lifestyle />
+      <CustomerReviews />
       <FAQ />
       <Guarantee />
       <Newsletter />
