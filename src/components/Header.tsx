@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { CartDrawer } from "./CartDrawer";
 import { useNavigateToSection } from "@/hooks/useNavigateToSection";
+import { useAuth } from "@/contexts/AuthContext";
 import osmoseLogo from "@/assets/osmose-logo-new.png";
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigateToSection = useNavigateToSection();
   const navigate = useNavigate();
+  const { user } = useAuth();
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -17,11 +21,14 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const handleSectionClick = (id: string) => {
     navigateToSection(id);
     setIsMobileMenuOpen(false);
   };
-  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-[hsl(45,30%,96%)] border-b border-border/50 shadow-sm" : "bg-transparent"}`}>
+
+  return (
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-[hsl(45,30%,96%)] border-b border-border/50 shadow-sm" : "bg-transparent"}`}>
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <button onClick={() => navigate("/")} className="hover:opacity-80 transition-opacity">
@@ -48,12 +55,27 @@ const Header = () => {
           <button onClick={() => handleSectionClick("faq")} className="transition-colors text-emerald-600">
             Questions
           </button>
+          <button
+            onClick={() => navigate("/compte")}
+            className="transition-colors text-emerald-600 hover:text-emerald-700 flex items-center gap-1"
+            title={user ? "Mon compte" : "Se connecter"}
+          >
+            <User className="h-5 w-5" />
+            {user && <span className="w-2 h-2 bg-primary rounded-full"></span>}
+          </button>
           <CartDrawer />
           <Button onClick={() => handleSectionClick("shop")}>Commander</Button>
         </nav>
 
         {/* Mobile Menu Button & Cart */}
         <div className="md:hidden flex items-center gap-2">
+          <button
+            onClick={() => navigate("/compte")}
+            className="text-foreground p-2"
+            title={user ? "Mon compte" : "Se connecter"}
+          >
+            <User className="h-5 w-5" />
+          </button>
           <CartDrawer />
           <button className="text-foreground" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -62,10 +84,11 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && <div className="md:hidden fixed inset-0 top-[72px] z-40 animate-fade-in" style={{
-      backgroundColor: 'rgba(255, 255, 255, 0.15)',
-      backdropFilter: 'blur(8px)'
-    }}>
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 top-[72px] z-40 animate-fade-in" style={{
+          backgroundColor: 'rgba(255, 255, 255, 0.15)',
+          backdropFilter: 'blur(8px)'
+        }}>
           <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
             <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
               Accueil
@@ -85,11 +108,18 @@ const Header = () => {
             <button onClick={() => handleSectionClick("faq")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
               Questions
             </button>
+            <button onClick={() => { navigate("/compte"); setIsMobileMenuOpen(false); }} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg flex items-center gap-2">
+              <User className="h-5 w-5" />
+              {user ? "Mon compte" : "Se connecter"}
+            </button>
             <Button onClick={() => handleSectionClick("shop")} className="w-full">
               Commander
             </Button>
           </nav>
-        </div>}
-    </header>;
+        </div>
+      )}
+    </header>
+  );
 };
+
 export default Header;

@@ -2,13 +2,21 @@ import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { useAuth } from "@/contexts/AuthContext";
 
 const WelcomePopup = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { signUp, user } = useAuth();
 
   useEffect(() => {
+    // Don't show if user is already logged in
+    if (user) return;
+
     // Check if popup was already shown
     const hasSeenPopup = localStorage.getItem("sp-osmose-welcome-popup");
     if (!hasSeenPopup) {
@@ -18,18 +26,41 @@ const WelcomePopup = () => {
       }, 1500);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [user]);
 
   const handleClose = () => {
     setIsOpen(false);
     localStorage.setItem("sp-osmose-welcome-popup", "true");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      toast.success("Merci pour votre inscription !", {
-        description: "Vous recevrez bientôt nos offres exclusives.",
+    
+    if (!email || !password) {
+      toast.error("Veuillez remplir tous les champs");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error("Le mot de passe doit contenir au moins 6 caractères");
+      return;
+    }
+
+    setIsLoading(true);
+    const { error } = await signUp(email, password);
+    setIsLoading(false);
+
+    if (error) {
+      if (error.message.includes("already registered")) {
+        toast.error("Cet email est déjà utilisé", {
+          description: "Connectez-vous depuis la page compte",
+        });
+      } else {
+        toast.error("Erreur d'inscription", { description: error.message });
+      }
+    } else {
+      toast.success("Compte créé avec succès !", {
+        description: "Profitez de 10% de réduction sur votre première commande",
       });
       handleClose();
     }
@@ -60,20 +91,44 @@ const WelcomePopup = () => {
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4 pt-2">
-            <Input
-              type="email"
-              placeholder="Votre email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full border-0 border-b border-border rounded-none focus:ring-0 focus:border-primary px-1 py-2"
-            />
+            <div className="space-y-2 text-left">
+              <Label htmlFor="popup-email" className="text-sm text-muted-foreground">
+                Email
+              </Label>
+              <Input
+                id="popup-email"
+                type="email"
+                placeholder="votre@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full border-0 border-b border-border rounded-none focus:ring-0 focus:border-primary px-1 py-2"
+              />
+            </div>
+
+            <div className="space-y-2 text-left">
+              <Label htmlFor="popup-password" className="text-sm text-muted-foreground">
+                Mot de passe
+              </Label>
+              <Input
+                id="popup-password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                minLength={6}
+                className="w-full border-0 border-b border-border rounded-none focus:ring-0 focus:border-primary px-1 py-2"
+              />
+              <p className="text-xs text-muted-foreground">Minimum 6 caractères</p>
+            </div>
             
             <Button
               type="submit"
+              disabled={isLoading}
               className="w-full bg-foreground text-background hover:bg-foreground/90 font-heading tracking-widest py-6"
             >
-              M'INSCRIRE
+              {isLoading ? "INSCRIPTION..." : "M'INSCRIRE"}
             </Button>
           </form>
 
