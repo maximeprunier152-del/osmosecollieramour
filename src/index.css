@@ -144,7 +144,7 @@ All colors MUST be HSL.
   body {
     @apply text-foreground;
     font-feature-settings: "kern" 1, "liga" 1;
-    background: linear-gradient(180deg, hsl(160 60% 25%) 0%, hsl(160 45% 45%) 25%, hsl(160 30% 70%) 50%, hsl(160 20% 85%) 75%, hsl(0 0% 100%) 100%);
+    background: linear-gradient(180deg, hsl(160 25% 88%) 0%, hsl(160 20% 92%) 30%, hsl(160 15% 95%) 60%, hsl(0 0% 98%) 100%);
     background-attachment: fixed;
     min-height: 100vh;
   }
