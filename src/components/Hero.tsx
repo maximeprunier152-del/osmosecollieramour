@@ -63,15 +63,15 @@ const Hero = () => {
             <div className="flex items-center gap-8 pt-8 text-sm font-sans text-white/80">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-emerald-light rounded-full"></div>
-                <span>Diffusion 48h</span>
+                <span>Service Rapide</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-emerald-light rounded-full"></div>
-                <span>Fait avec soin</span>
+                <span>Savoir-faire d'excellence</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-emerald-light rounded-full"></div>
-                <span>Livraison sûre</span>
+                <span>Livraison Premium</span>
               </div>
             </div>
           </div>
