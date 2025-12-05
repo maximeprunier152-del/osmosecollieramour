@@ -18,20 +18,15 @@ const WelcomePopup = () => {
     // Don't show if user is already logged in
     if (user) return;
 
-    // Check if popup was already shown
-    const hasSeenPopup = localStorage.getItem("sp-osmose-welcome-popup");
-    if (!hasSeenPopup) {
-      // Show popup after a short delay
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 1500);
-      return () => clearTimeout(timer);
-    }
+    // Show popup after a short delay for every visit
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 1500);
+    return () => clearTimeout(timer);
   }, [user]);
 
   const handleClose = () => {
     setIsOpen(false);
-    localStorage.setItem("sp-osmose-welcome-popup", "true");
   };
 
   const handleEmailSubmit = (e: React.FormEvent) => {
