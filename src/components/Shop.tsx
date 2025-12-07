@@ -128,11 +128,13 @@ export const Shop = () => {
                         {image && (
                           <div className="aspect-square overflow-hidden bg-secondary/20 transition-all duration-300 [filter:drop-shadow(0_0_25px_rgba(218,179,140,0.35))] group-hover:[filter:drop-shadow(0_0_40px_rgba(218,179,140,0.55))]">
                             <img
-                              src={image.url}
-                              alt={image.altText || product.node.title}
+                              src={`${image.url}&width=400`}
+                              alt={image.altText || `${product.node.title} - Collier diffuseur de parfum SP-Osmose`}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                               loading="lazy"
                               decoding="async"
+                              width={400}
+                              height={400}
                             />
                           </div>
                         )}
@@ -181,8 +183,14 @@ export const Shop = () => {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="left-0 h-8 w-8 md:h-10 md:w-10 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg disabled:opacity-0 disabled:pointer-events-none transition-opacity duration-300" />
-            <CarouselNext className="right-0 h-8 w-8 md:h-10 md:w-10 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg disabled:opacity-0 disabled:pointer-events-none transition-opacity duration-300" />
+            <CarouselPrevious 
+              className="left-0 h-8 w-8 md:h-10 md:w-10 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg disabled:opacity-0 disabled:pointer-events-none transition-opacity duration-300" 
+              aria-label="Produit précédent"
+            />
+            <CarouselNext 
+              className="right-0 h-8 w-8 md:h-10 md:w-10 rounded-full bg-white/90 backdrop-blur-md border-white/50 hover:bg-white shadow-lg disabled:opacity-0 disabled:pointer-events-none transition-opacity duration-300" 
+              aria-label="Produit suivant"
+            />
           </Carousel>
         </div>
       </div>

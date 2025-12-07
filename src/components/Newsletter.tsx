@@ -5,6 +5,7 @@ import { Label } from "./ui/label";
 import { Mail, X } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
+import { emailSchema, passwordSchema, validateForm, signupSchema } from "@/lib/validations";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
@@ -18,14 +19,10 @@ const Newsletter = () => {
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email) {
-      toast.error("Veuillez entrer votre email");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      toast.error("Veuillez entrer un email valide");
+    // Validate email with Zod
+    const result = emailSchema.safeParse(email);
+    if (!result.success) {
+      toast.error(result.error.issues[0].message);
       return;
     }
 
@@ -36,19 +33,20 @@ const Newsletter = () => {
   const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!password) {
-      toast.error("Veuillez entrer un mot de passe");
+    // Validate password with Zod
+    const passwordResult = passwordSchema.safeParse(password);
+    if (!passwordResult.success) {
+      toast.error(passwordResult.error.issues[0].message);
       return;
     }
 
-    if (password.length < 6) {
-      toast.error("Le mot de passe doit contenir au moins 6 caractères");
-      return;
-    }
-
-    if (!isLoginMode && password !== confirmPassword) {
-      toast.error("Les mots de passe ne correspondent pas");
-      return;
+    if (!isLoginMode) {
+      const validation = validateForm(signupSchema, { email, password, confirmPassword });
+      if (!validation.success && validation.errors) {
+        const firstError = Object.values(validation.errors)[0];
+        toast.error(firstError);
+        return;
+      }
     }
 
     setIsLoading(true);
