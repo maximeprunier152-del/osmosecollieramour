@@ -34,41 +34,6 @@ const reviews = [
   { id: 18, name: "Zoé A.", date: "il y a 2 mois", rating: 5, title: "Le plus beau cadeau", text: "Mon mari me l'a offert pour notre anniversaire. Un bijou chargé d'émotion et de sens.", products: ["Le Gaia"] },
   { id: 19, name: "Margot S.", date: "il y a 2 mois", rating: 4, title: "Très satisfaite", text: "Bon produit, bonne qualité. J'aurais aimé un peu plus de disques de rechange inclus.", products: ["L'Améthyste"] },
   { id: 20, name: "Céline E.", date: "il y a 2 mois", rating: 5, title: "Une révélation", text: "Ce médaillon a révolutionné ma relation au parfum. Je le recommande à toutes mes amies !", products: ["Le Volatis", "Le Félix"] },
-  { id: 21, name: "Bérénice D.", date: "il y a 2 mois", rating: 4.5, title: "Superbe bijou", text: "Le design est magnifique et le concept génial. Mon parfum préféré toujours avec moi.", products: ["Le Matria"] },
-  { id: 22, name: "Héloïse M.", date: "il y a 3 mois", rating: 5, title: "Parfait", text: "Exactement ce que je cherchais. Un bijou élégant qui porte mon parfum partout.", products: ["Le Secret"] },
-  { id: 23, name: "Constance L.", date: "il y a 3 mois", rating: 4, title: "Bon achat", text: "Médaillon de qualité, livraison rapide. Le parfum diffuse bien pendant 2 jours.", products: ["Le Gaia"] },
-  { id: 24, name: "Élisabeth R.", date: "il y a 3 mois", rating: 5, title: "Émouvant", text: "J'y ai mis le parfum de ma mère disparue. Ce médaillon est devenu mon trésor.", products: ["Le Nao"] },
-  { id: 25, name: "Victoire P.", date: "il y a 3 mois", rating: 4.5, title: "Très bien", text: "Belle finition, concept original. Un cadeau qui fait toujours plaisir.", products: ["L'Avia", "Le Volatis"] },
-  { id: 26, name: "Adélaïde G.", date: "il y a 4 mois", rating: 3, title: "Correct", text: "Joli médaillon mais le fermoir demande de l'habitude. Le parfum diffuse bien.", products: ["L'Améthyste"] },
-  { id: 27, name: "Joséphine N.", date: "il y a 4 mois", rating: 5, title: "Indémodable", text: "Un an de bonheur avec ce bijou. Il n'a pas pris une ride.", products: ["Le Félix"] },
-  { id: 28, name: "Apolline T.", date: "il y a 4 mois", rating: 5, title: "Magnifique", text: "Le plus beau bijou de ma collection. Je reçois des compliments tous les jours.", products: ["Le Matria", "Le Gaia"] },
-  { id: 29, name: "Capucine B.", date: "il y a 5 mois", rating: 4, title: "Satisfaite", text: "Bon rapport qualité-prix. Le médaillon est élégant et fonctionne bien.", products: ["Le Secret"] },
-  { id: 30, name: "Églantine H.", date: "il y a 5 mois", rating: 5, title: "Coup de cœur", text: "Je l'adore ! Mon parfum me suit partout discrètement. Un bijou intelligent.", products: ["Le Volatis"] },
-  { id: 31, name: "Pénélope C.", date: "il y a 5 mois", rating: 3.5, title: "Bien", text: "Design sympa, parfum qui diffuse correctement. Quelques améliorations possibles.", products: ["Le Nao"] },
-  { id: 32, name: "Garance V.", date: "il y a 6 mois", rating: 5, title: "Sublime", text: "Un bijou d'une élégance rare. Je suis conquise depuis le premier jour.", products: ["L'Améthyste", "Le Secret"] },
-  { id: 33, name: "Sixtine F.", date: "il y a 6 mois", rating: 4.5, title: "Excellent", text: "Qualité impeccable, design soigné. Mon nouveau bijou préféré.", products: ["Le Gaia"] },
-  { id: 34, name: "Olympe D.", date: "il y a 6 mois", rating: 5, title: "Parfait", text: "Ce médaillon est devenu mon indispensable. Je ne sors plus sans.", products: ["Le Matria"] },
-  { id: 35, name: "Agathe L.", date: "il y a 7 mois", rating: 4, title: "Très bien", text: "Beau bijou, bon fonctionnement. La chaîne est de bonne qualité.", products: ["Le Félix", "L'Avia"] },
-  { id: 36, name: "Colombe R.", date: "il y a 7 mois", rating: 5, title: "Merveilleux", text: "Un concept génial et une réalisation parfaite. Je recommande !", products: ["Le Volatis"] },
-  { id: 37, name: "Albane M.", date: "il y a 7 mois", rating: 3, title: "Moyen", text: "Le médaillon est joli mais le parfum ne tient pas aussi longtemps qu'espéré.", products: ["Le Nao"] },
-  { id: 38, name: "Clémence S.", date: "il y a 8 mois", rating: 5, title: "Excellent", text: "J'en ai offert plusieurs et tout le monde adore. Un cadeau parfait.", products: ["L'Améthyste", "Le Matria", "Le Gaia"] },
-  { id: 39, name: "Éléonore P.", date: "il y a 8 mois", rating: 4.5, title: "Super", text: "Design élégant, qualité au rendez-vous. Je suis très contente.", products: ["Le Secret"] },
-  { id: 40, name: "Adeline K.", date: "il y a 8 mois", rating: 5, title: "Adorable", text: "Ce petit médaillon est devenu mon compagnon quotidien. Je l'adore !", products: ["Le Félix"] },
-  { id: 41, name: "Romane G.", date: "il y a 9 mois", rating: 4, title: "Bon produit", text: "Satisfaite de mon achat. Le parfum diffuse bien et le bijou est joli.", products: ["Le Volatis", "Le Nao"] },
-  { id: 42, name: "Ségolène T.", date: "il y a 9 mois", rating: 5, title: "Incroyable", text: "Le meilleur cadeau que j'ai jamais fait. Ma mère ne le quitte plus.", products: ["L'Avia"] },
-  { id: 43, name: "Tiphaine B.", date: "il y a 9 mois", rating: 3.5, title: "Correct", text: "Joli médaillon, concept sympa. La tenue du parfum pourrait être améliorée.", products: ["Le Gaia"] },
-  { id: 44, name: "Gwenaëlle H.", date: "il y a 10 mois", rating: 5, title: "Parfait", text: "Tout est parfait : design, qualité, diffusion. Je ne peux plus m'en passer.", products: ["Le Matria", "Le Secret"] },
-  { id: 45, name: "Solène C.", date: "il y a 10 mois", rating: 4.5, title: "Très satisfaite", text: "Un bijou élégant qui fonctionne vraiment bien. Je recommande.", products: ["L'Améthyste"] },
-  { id: 46, name: "Axelle V.", date: "il y a 10 mois", rating: 5, title: "Sublime", text: "Ce médaillon est une merveille. La qualité est exceptionnelle.", products: ["Le Félix", "Le Volatis"] },
-  { id: 47, name: "Blandine L.", date: "il y a 11 mois", rating: 4, title: "Bien", text: "Bon médaillon, bonne qualité. J'aurais aimé plus de choix de designs.", products: ["Le Nao"] },
-  { id: 48, name: "Mélissa R.", date: "il y a 11 mois", rating: 5, title: "Exceptionnel", text: "Un bijou unique qui porte mon parfum partout. Je suis ravie !", products: ["L'Avia", "Le Gaia"] },
-  { id: 49, name: "Johanna D.", date: "il y a 1 an", rating: 3, title: "Moyen", text: "Le concept est bien mais l'exécution pourrait être améliorée.", products: ["Le Secret"] },
-  { id: 50, name: "Priscilla M.", date: "il y a 1 an", rating: 5, title: "Magnifique", text: "Un an après, il est toujours aussi beau. Un investissement durable.", products: ["Le Matria"] },
-  { id: 51, name: "Stéphanie G.", date: "il y a 1 an", rating: 4.5, title: "Excellent", text: "Très contente de mon achat. Le parfum diffuse parfaitement.", products: ["L'Améthyste", "Le Félix"] },
-  { id: 52, name: "Karine P.", date: "il y a 1 an et 2 mois", rating: 5, title: "Parfait", text: "Ce médaillon est devenu mon bijou préféré. Qualité irréprochable.", products: ["Le Volatis"] },
-  { id: 53, name: "Sonia T.", date: "il y a 1 an et 3 mois", rating: 4, title: "Très bien", text: "Bon produit, bon concept. Je le porte régulièrement avec plaisir.", products: ["Le Nao", "Le Gaia"] },
-  { id: 54, name: "Sabrina H.", date: "il y a 1 an et 4 mois", rating: 5, title: "Sublime", text: "Un bijou d'exception que je porterai encore longtemps.", products: ["Le Secret", "L'Avia"] },
-  { id: 55, name: "Delphine B.", date: "il y a 1 an et 6 mois", rating: 5, title: "Indispensable", text: "Plus d'un an de bonheur avec ce médaillon. Je ne peux plus m'en passer !", products: ["Le Matria", "Le Félix"] },
 ];
 
 // Render stars with half star support
@@ -114,7 +79,6 @@ const CustomerReviews = () => {
   const [showLoginMessage, setShowLoginMessage] = useState(false);
 
   const handleRatingChange = (newRating: number) => {
-    console.log("Rating clicked:", newRating, "Current rating:", selectedRating);
     setSelectedRating(newRating);
   };
 
