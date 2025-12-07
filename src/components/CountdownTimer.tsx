@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { Clock } from "lucide-react";
 
 interface CountdownTimerProps {
-  targetDate: Date;
+  targetDate?: Date;
+  autoReset?: boolean;
+  cycleDays?: number;
   className?: string;
   compact?: boolean;
 }
@@ -14,16 +16,58 @@ interface TimeLeft {
   seconds: number;
 }
 
-export const CountdownTimer = ({ targetDate, className = "", compact = false }: CountdownTimerProps) => {
+// Fixed reference date for consistent cycles across all visitors
+const REFERENCE_DATE = new Date('2025-12-07T00:00:00');
+
+const getNextCycleEndDate = (cycleDays: number): Date => {
+  const now = new Date();
+  const msPerDay = 1000 * 60 * 60 * 24;
+  const daysSinceReference = Math.floor((now.getTime() - REFERENCE_DATE.getTime()) / msPerDay);
+  const currentCycle = Math.floor(daysSinceReference / cycleDays);
+  const nextCycleEnd = new Date(REFERENCE_DATE.getTime() + ((currentCycle + 1) * cycleDays * msPerDay));
+  return nextCycleEnd;
+};
+
+export const CountdownTimer = ({ 
+  targetDate, 
+  autoReset = false, 
+  cycleDays = 7, 
+  className = "", 
+  compact = false 
+}: CountdownTimerProps) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [isExpired, setIsExpired] = useState(false);
+  const [currentTargetDate, setCurrentTargetDate] = useState<Date>(() => {
+    if (autoReset) {
+      return getNextCycleEndDate(cycleDays);
+    }
+    return targetDate || new Date();
+  });
 
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      const difference = targetDate.getTime() - new Date().getTime();
+    if (autoReset) {
+      setCurrentTargetDate(getNextCycleEndDate(cycleDays));
+    } else if (targetDate) {
+      setCurrentTargetDate(targetDate);
+    }
+  }, [autoReset, cycleDays, targetDate]);
+
+  useEffect(() => {
+    const calculateTimeLeft = (): TimeLeft => {
+      const difference = currentTargetDate.getTime() - new Date().getTime();
       
       if (difference <= 0) {
-        setIsExpired(true);
+        // If autoReset is enabled, calculate the next cycle
+        if (autoReset) {
+          const newTarget = getNextCycleEndDate(cycleDays);
+          setCurrentTargetDate(newTarget);
+          const newDifference = newTarget.getTime() - new Date().getTime();
+          return {
+            days: Math.floor(newDifference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((newDifference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((newDifference / (1000 * 60)) % 60),
+            seconds: Math.floor((newDifference / 1000) % 60)
+          };
+        }
         return { days: 0, hours: 0, minutes: 0, seconds: 0 };
       }
 
@@ -42,8 +86,10 @@ export const CountdownTimer = ({ targetDate, className = "", compact = false }: 
     setTimeLeft(calculateTimeLeft());
 
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, [currentTargetDate, autoReset, cycleDays]);
 
+  // Only hide if expired AND not auto-resetting
+  const isExpired = !autoReset && currentTargetDate.getTime() <= new Date().getTime();
   if (isExpired) {
     return null;
   }

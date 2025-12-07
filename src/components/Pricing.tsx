@@ -11,8 +11,7 @@ const Pricing = () => {
   const [isPrecieuxModalOpen, setIsPrecieuxModalOpen] = useState(false);
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   
-  // Black Friday end date - December 31, 2024 23:59:59
-  const blackFridayEndDate = new Date('2024-12-31T23:59:59');
+  // Auto-resetting 7-day offer cycle
   
   useEffect(() => {
     console.log("[Pricing] Fetching products...");
@@ -58,7 +57,7 @@ const Pricing = () => {
         <div className="text-center mb-8 animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-4">
             <Sparkles size={16} />
-            <span className="text-sm font-medium">Offre Black Friday</span>
+            <span className="text-sm font-medium">Offre Flash Limitée</span>
           </div>
           <h2 className="font-display text-4xl md:text-5xl tracking-wide font-bold text-foreground mb-4">
             Votre Médaillon Parfumé
@@ -67,8 +66,8 @@ const Pricing = () => {
             Un bijou unique qui porte l'essence de vos souvenirs
           </p>
           
-          {/* Countdown Timer */}
-          <CountdownTimer targetDate={blackFridayEndDate} className="mb-8" />
+          {/* Countdown Timer - Auto-resets every 7 days */}
+          <CountdownTimer autoReset cycleDays={7} className="mb-8" />
         </div>
 
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
