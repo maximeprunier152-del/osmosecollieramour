@@ -9,6 +9,7 @@ import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductReviews from "@/components/ProductReviews";
+import StickyMobileCart from "@/components/StickyMobileCart";
 
 const ProductDetail = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -300,6 +301,15 @@ const ProductDetail = () => {
       {handle && <ProductReviews productHandle={handle} />}
 
       <Footer />
+
+      {/* Sticky Mobile CTA */}
+      <StickyMobileCart
+        productTitle={product.node.title}
+        price="15"
+        originalPrice="30"
+        onAddToCart={handleAddToCart}
+        isAvailable={selectedVariant?.availableForSale ?? false}
+      />
     </div>
   );
 };
