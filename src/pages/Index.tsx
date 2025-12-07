@@ -13,10 +13,16 @@ import Newsletter from "@/components/Newsletter";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import WelcomePopup from "@/components/WelcomePopup";
+import { OrganizationStructuredData, WebsiteStructuredData, FAQStructuredData } from "@/components/SEOStructuredData";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      {/* SEO Structured Data */}
+      <OrganizationStructuredData />
+      <WebsiteStructuredData />
+      <FAQStructuredData />
+      
       <WelcomePopup />
       <Header />
       <Hero />

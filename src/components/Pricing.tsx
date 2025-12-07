@@ -3,11 +3,16 @@ import { Button } from "./ui/button";
 import { PackSelectorModal } from "./PackSelectorModal";
 import { useState, useEffect } from "react";
 import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
+import { CountdownTimer } from "./CountdownTimer";
+import { TrustBadges } from "./TrustBadges";
 
 const Pricing = () => {
   const [isEssentielModalOpen, setIsEssentielModalOpen] = useState(false);
   const [isPrecieuxModalOpen, setIsPrecieuxModalOpen] = useState(false);
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
+  
+  // Black Friday end date - December 31, 2024 23:59:59
+  const blackFridayEndDate = new Date('2024-12-31T23:59:59');
   
   useEffect(() => {
     console.log("[Pricing] Fetching products...");
@@ -44,13 +49,13 @@ const Pricing = () => {
   console.log("[Pricing] Selected Précieux:", precieuxProduct ? precieuxProduct.node.title : "NOT FOUND");
 
   return (
-    <section id="pricing" className="py-20 bg-gradient-to-b from-muted/20 to-background relative overflow-hidden">
+    <section id="pricing" className="py-20 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12 animate-fade-in">
+        <div className="text-center mb-8 animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-4">
             <Sparkles size={16} />
             <span className="text-sm font-medium">Offre Black Friday</span>
@@ -58,9 +63,12 @@ const Pricing = () => {
           <h2 className="font-display text-4xl md:text-5xl tracking-wide font-bold text-foreground mb-4">
             Votre Médaillon Parfumé
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-6">
             Un bijou unique qui porte l'essence de vos souvenirs
           </p>
+          
+          {/* Countdown Timer */}
+          <CountdownTimer targetDate={blackFridayEndDate} className="mb-8" />
         </div>
 
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
@@ -163,10 +171,8 @@ const Pricing = () => {
           </div>
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Paiement sécurisé · Garantie satisfait ou remboursé 30 jours
-          </p>
+        <div className="mt-12">
+          <TrustBadges variant="horizontal" className="max-w-4xl mx-auto" />
         </div>
       </div>
 
