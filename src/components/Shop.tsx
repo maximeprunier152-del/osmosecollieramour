@@ -12,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { ProductStructuredData } from "./SEOStructuredData";
 
 export const Shop = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
@@ -95,7 +96,10 @@ export const Shop = () => {
   }
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-b from-background to-muted/20" id="shop">
+    <section className="py-12 md:py-16" id="shop">
+      {/* JSON-LD Structured Data for SEO */}
+      <ProductStructuredData products={products} />
+      
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <span className="inline-block bg-primary/10 text-primary font-semibold text-sm px-4 py-2 rounded-full mb-4">
