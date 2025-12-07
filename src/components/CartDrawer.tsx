@@ -56,10 +56,15 @@ export const CartDrawer = () => {
   return (
     <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="relative">
-          <ShoppingCart className="h-5 w-5" />
+        <Button 
+          variant="outline" 
+          size="icon" 
+          className="relative"
+          aria-label={totalItems > 0 ? `Panier (${totalItems} article${totalItems !== 1 ? 's' : ''})` : "Panier vide"}
+        >
+          <ShoppingCart className="h-5 w-5" aria-hidden="true" />
           {totalItems > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs">
+            <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs" aria-hidden="true">
               {totalItems}
             </Badge>
           )}
@@ -108,36 +113,39 @@ export const CartDrawer = () => {
                         </p>
                       </div>
                       
-                      <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-6 w-6"
-                          onClick={() => removeItem(item.variantId)}
-                        >
-                          <Trash2 className="h-3 w-3" />
-                        </Button>
-                        
-                        <div className="flex items-center gap-1">
+                        <div className="flex flex-col items-end gap-2 flex-shrink-0">
                           <Button
-                            variant="outline"
+                            variant="ghost"
                             size="icon"
                             className="h-6 w-6"
-                            onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
+                            onClick={() => removeItem(item.variantId)}
+                            aria-label={`Supprimer ${decodeTitle(item.product.node.title)} du panier`}
                           >
-                            <Minus className="h-3 w-3" />
+                            <Trash2 className="h-3 w-3" aria-hidden="true" />
                           </Button>
-                          <span className="w-8 text-center text-sm">{item.quantity}</span>
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            className="h-6 w-6"
-                            onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
-                          >
-                            <Plus className="h-3 w-3" />
-                          </Button>
+                          
+                          <div className="flex items-center gap-1" role="group" aria-label={`Quantité de ${decodeTitle(item.product.node.title)}`}>
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              className="h-6 w-6"
+                              onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
+                              aria-label="Diminuer la quantité"
+                            >
+                              <Minus className="h-3 w-3" aria-hidden="true" />
+                            </Button>
+                            <span className="w-8 text-center text-sm" aria-live="polite">{item.quantity}</span>
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              className="h-6 w-6"
+                              onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
+                              aria-label="Augmenter la quantité"
+                            >
+                              <Plus className="h-3 w-3" aria-hidden="true" />
+                            </Button>
+                          </div>
                         </div>
-                      </div>
                     </div>
                   ))}
                 </div>

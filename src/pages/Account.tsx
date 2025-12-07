@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { User, Mail, Calendar, LogOut, MapPin, Save } from "lucide-react";
+import { loginSchema, signupSchema, profileSchema, validateForm } from "@/lib/validations";
 
 interface ProfileData {
   first_name: string | null;
@@ -73,6 +74,14 @@ const Account = () => {
   const handleSaveProfile = async () => {
     if (!user) return;
 
+    // Validate profile data with Zod
+    const validation = validateForm(profileSchema, profileData);
+    if (!validation.success && validation.errors) {
+      const firstError = Object.values(validation.errors)[0];
+      toast.error("Erreur de validation", { description: firstError });
+      return;
+    }
+
     setIsSaving(true);
     const { error } = await supabase
       .from("profiles")
@@ -99,19 +108,21 @@ const Account = () => {
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email || !password) {
-      toast.error("Veuillez remplir tous les champs");
-      return;
-    }
-
-    if (password.length < 6) {
-      toast.error("Le mot de passe doit contenir au moins 6 caractères");
-      return;
-    }
-
-    if (!isLogin && password !== confirmPassword) {
-      toast.error("Les mots de passe ne correspondent pas");
-      return;
+    // Validate with Zod based on mode
+    if (isLogin) {
+      const validation = validateForm(loginSchema, { email, password });
+      if (!validation.success && validation.errors) {
+        const firstError = Object.values(validation.errors)[0];
+        toast.error("Erreur de validation", { description: firstError });
+        return;
+      }
+    } else {
+      const validation = validateForm(signupSchema, { email, password, confirmPassword });
+      if (!validation.success && validation.errors) {
+        const firstError = Object.values(validation.errors)[0];
+        toast.error("Erreur de validation", { description: firstError });
+        return;
+      }
     }
 
     if (isLogin) {

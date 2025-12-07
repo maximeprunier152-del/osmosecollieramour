@@ -32,28 +32,32 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-[hsl(45,30%,96%)] border-b border-border/50 shadow-sm" : "bg-transparent"}`}>
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <button onClick={() => navigate("/")} className="hover:opacity-80 transition-opacity">
-          <img src={osmoseLogo} alt="SP-Osmose" className="h-12 w-auto" />
+        <button 
+          onClick={() => navigate("/")} 
+          className="hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md"
+          aria-label="Retour à l'accueil SP-Osmose"
+        >
+          <img src={osmoseLogo} alt="SP-Osmose - Colliers diffuseurs de parfum" className="h-12 w-auto" />
         </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
-          <button onClick={() => navigate("/")} className="transition-colors text-emerald-600">
+        <nav className="hidden md:flex items-center gap-6" aria-label="Navigation principale">
+          <button onClick={() => navigate("/")} className="transition-colors text-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md px-2 py-1">
             Accueil
           </button>
-          <button onClick={() => handleSectionClick("product")} className="transition-colors text-emerald-600">
+          <button onClick={() => handleSectionClick("product")} className="transition-colors text-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md px-2 py-1">
             Le Produit
           </button>
-          <button onClick={() => handleSectionClick("shop")} className="transition-colors text-emerald-600">
+          <button onClick={() => handleSectionClick("shop")} className="transition-colors text-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md px-2 py-1">
             Boutique
           </button>
-          <button onClick={() => handleSectionClick("pricing")} className="transition-colors text-emerald-600">
+          <button onClick={() => handleSectionClick("pricing")} className="transition-colors text-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md px-2 py-1">
             Offre Flash
           </button>
-          <button onClick={() => handleSectionClick("emotion")} className="transition-colors text-emerald-600">
+          <button onClick={() => handleSectionClick("emotion")} className="transition-colors text-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md px-2 py-1">
             L'Essence
           </button>
-          <button onClick={() => handleSectionClick("faq")} className="transition-colors text-emerald-600">
+          <button onClick={() => handleSectionClick("faq")} className="transition-colors text-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md px-2 py-1">
             Questions
           </button>
           <Button
@@ -61,11 +65,11 @@ const Header = () => {
             size="icon"
             onClick={() => navigate("/compte")}
             className="relative"
-            title={user ? "Mon compte" : "Se connecter"}
+            aria-label={user ? "Accéder à mon compte" : "Se connecter"}
           >
-            <User className="h-5 w-5" />
+            <User className="h-5 w-5" aria-hidden="true" />
             {user && (
-              <span className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full border-2 border-background"></span>
+              <span className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full border-2 border-background" aria-hidden="true"></span>
             )}
           </Button>
           <CartDrawer />
@@ -78,16 +82,21 @@ const Header = () => {
             size="icon"
             onClick={() => navigate("/compte")}
             className="relative"
-            title={user ? "Mon compte" : "Se connecter"}
+            aria-label={user ? "Accéder à mon compte" : "Se connecter"}
           >
-            <User className="h-5 w-5" />
+            <User className="h-5 w-5" aria-hidden="true" />
             {user && (
-              <span className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full border-2 border-background"></span>
+              <span className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full border-2 border-background" aria-hidden="true"></span>
             )}
           </Button>
           <CartDrawer />
-          <button className="text-foreground" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <button 
+            className="text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md p-1" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           </button>
         </div>
       </div>
@@ -98,27 +107,27 @@ const Header = () => {
           backgroundColor: 'rgba(255, 255, 255, 0.15)',
           backdropFilter: 'blur(8px)'
         }}>
-          <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
-            <button onClick={() => { navigate("/"); setIsMobileMenuOpen(false); }} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
+          <nav className="container mx-auto px-4 py-6 flex flex-col gap-4" aria-label="Navigation mobile">
+            <button onClick={() => { navigate("/"); setIsMobileMenuOpen(false); }} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2">
               Accueil
             </button>
-            <button onClick={() => handleSectionClick("product")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
+            <button onClick={() => handleSectionClick("product")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2">
               Le Produit
             </button>
-            <button onClick={() => handleSectionClick("shop")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
+            <button onClick={() => handleSectionClick("shop")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2">
               Boutique
             </button>
-            <button onClick={() => handleSectionClick("pricing")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
+            <button onClick={() => handleSectionClick("pricing")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2">
               Offre Flash
             </button>
-            <button onClick={() => handleSectionClick("emotion")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
+            <button onClick={() => handleSectionClick("emotion")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2">
               L'Essence
             </button>
-            <button onClick={() => handleSectionClick("faq")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg">
+            <button onClick={() => handleSectionClick("faq")} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2">
               Questions
             </button>
-            <button onClick={() => { navigate("/compte"); setIsMobileMenuOpen(false); }} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg flex items-center gap-2">
-              <User className="h-5 w-5" />
+            <button onClick={() => { navigate("/compte"); setIsMobileMenuOpen(false); }} className="text-left text-foreground/80 hover:text-foreground transition-colors py-2 text-lg flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2">
+              <User className="h-5 w-5" aria-hidden="true" />
               {user ? "Mon compte" : "Se connecter"}
             </button>
             <Button onClick={() => handleSectionClick("shop")} className="w-full">

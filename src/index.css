@@ -156,4 +156,14 @@ All colors MUST be HSL.
   img {
     content-visibility: auto;
   }
+  
+  /* Improved focus visibility for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+  
+  /* Skip to main content link for screen readers */
+  .skip-link {
+    @apply absolute left-0 top-0 -translate-y-full bg-primary text-primary-foreground px-4 py-2 z-[100] transition-transform focus:translate-y-0;
+  }
 }
