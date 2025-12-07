@@ -14,16 +14,9 @@ const Pricing = () => {
   // Auto-resetting 7-day offer cycle
   
   useEffect(() => {
-    console.log("[Pricing] Fetching products...");
     fetchProducts(20).then(loadedProducts => {
-      console.log("[Pricing] Fetched products:", loadedProducts.map(p => ({ 
-        title: p.node.title, 
-        handle: p.node.handle 
-      })));
       setProducts(loadedProducts);
-    }).catch(err => {
-      console.error("[Pricing] Error fetching products:", err);
-    });
+    }).catch(() => {});
   }, []);
 
   const essentielProduct = products.find(p => 
@@ -41,11 +34,6 @@ const Pricing = () => {
   });
   const precieuxProduct = precieuxProducts.length > 0 ? precieuxProducts[precieuxProducts.length - 1] : null;
 
-  console.log("[Pricing] Total products loaded:", products.length);
-  console.log("[Pricing] All product titles:", products.map(p => p.node.title));
-  console.log("[Pricing] Essentiel found:", essentielProduct ? essentielProduct.node.title : "NOT FOUND");
-  console.log("[Pricing] Précieux candidates:", precieuxProducts.map(p => ({ title: p.node.title, handle: p.node.handle })));
-  console.log("[Pricing] Selected Précieux:", precieuxProduct ? precieuxProduct.node.title : "NOT FOUND");
 
   return (
     <section id="pricing" className="py-20 relative overflow-hidden">
